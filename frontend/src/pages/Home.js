@@ -1,5 +1,6 @@
 import React from 'react'
 import headerVideo from '../assets/backgroundHeader.mp4'
+import soccerVideo from '../assets/soccer.mp4'
 import MissionStatement from '../components/MissionStatement'
 import MiniSportsLogo from '../components/MiniSportsLogo'
 import {AiFillPlayCircle} from 'react-icons/ai'
@@ -49,7 +50,18 @@ function Home() {
             </div>
         </section>
         <section>
-            <h3 className='sports-heading-choices'>Sports-On-The-Go offers tracking for multiple sports!</h3>
+        <div className='video-text-container'>
+            <video className='videoTag soccer-video' autoPlay loop muted>
+                <source src={soccerVideo} type='video/mp4' />
+            </video>
+            <div className="text-overlay soccer-overlay">
+                <h1>Manage practice. Manage games. Manage athletes.</h1>
+                <p>One application to manage it all.</p>
+            </div>
+        </div>
+        </section>
+        <section>
+            <h3 className='sports-heading-choices'>Sports On The Go offers tracking for multiple sports!</h3>
             <div className='sport-choice-container'>
                 <MiniSportsLogo 
                 sportsImg={<GiHockey size={50}/>}

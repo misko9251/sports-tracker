@@ -96,6 +96,11 @@ header{
     object-position: center;
 }
 
+.soccer-video{
+	max-height: 350px;
+    min-height: 300px;
+}
+
 .video-text-container {
 	position: relative; 
   }
@@ -114,6 +119,10 @@ header{
 	color: white;
 	font-size: 4rem;
   }
+
+.soccer-overlay h1{
+	font-size: 2rem;
+}
   
 .text-overlay h1, .text-overlay p {
 	width: 40%;
@@ -123,6 +132,10 @@ header{
 .text-overlay p {
 	font-size: 2rem;
 	margin-top: 3%;
+}
+
+.soccer-overlay p{
+	font-size: 1.5rem;
 }
 
 .mission-statement-container{
