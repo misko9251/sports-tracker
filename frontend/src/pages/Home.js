@@ -32,17 +32,17 @@ function Home() {
         <section>
             <div className='mission-statement-container'>
                 <MissionStatement 
-                logo={<AiFillPlayCircle color={'#03045e'} size={45}/>}
+                logo={<AiFillPlayCircle color={'#A8281F'} size={45}/>}
                 title={'Upload Videos'}
                 content={'Bring the game to anyone, anywhere! Upload highlight reel worthy plays!'}
                 />
                 <MissionStatement 
-                logo={<BsFillPencilFill color={'#03045e'} size={45}/>}
+                logo={<BsFillPencilFill color={'#A8281F'} size={45}/>}
                 title={'Track Gameplay'}
                 content={'Cant make the game? Read all of the play-by-play provided by loved ones.'}
                 />
                 <MissionStatement 
-                logo={<MdOutlineSportsHandball color={'#03045e'} size={45}/>}
+                logo={<MdOutlineSportsHandball color={'#A8281F'} size={45}/>}
                 title={'Live Rosters'}
                 content={'Update rosters and player profiles so every kid feels like a professional!'}
                 />
