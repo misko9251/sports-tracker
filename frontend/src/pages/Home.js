@@ -1,5 +1,6 @@
 import React from 'react'
 import headerVideo from '../assets/backgroundHeader.mp4'
+import MissionStatement from '../components/MissionStatement'
 
 function Home() {
   return (
@@ -14,8 +15,14 @@ function Home() {
                     <p>Upload. Score. Share.</p>
                 </div>
             </div>
-
         </header>
+        <section>
+            <div className='mission-statement-container'>
+                <MissionStatement logoColor={'#03045e'}/>
+                <MissionStatement />
+                <MissionStatement />
+            </div>
+        </section>
     </>
   )
 }
