@@ -112,6 +112,21 @@ header{
     transform: scale(1.03);
 }
 
+@keyframes moveArrow {
+    0% {transform: translateX(0);}
+    50% {transform: translateX(10px);}
+    100% {transform: translateX(0);}
+}
+
+.mission-statement:hover .arrow {
+    transform: scale(1.03);
+	animation: moveArrow 1s linear infinite;
+}
+
+.arrow{
+	cursor: pointer;
+}
+
 .mission-statement h5{
 	margin-top: 5%;
 	font-size: 2rem;

@@ -9,7 +9,7 @@ function MissionStatement(props) {
         <span><AiFillPlayCircle color={props.logoColor} size={45}/></span>
         <h5>Upload videos</h5>
         <p>Bring the game to anyone, anywhere! Upload highlight reel worthy plays!</p>
-        <span><BsArrowRight color={arrowColor} size={30}/></span>
+        <span><BsArrowRight className='arrow' color={arrowColor} size={30}/></span>
     </div>
   )
 }
