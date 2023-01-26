@@ -72,8 +72,45 @@ table {
 }
 
 .navBar li{
-	margin: 0 3%;
+	margin: 0 30px;
 	text-align: center;
+}
+
+.sports-drop-down{
+	position: absolute;
+	display: flex;
+	flex-wrap: wrap;
+	top: 70px;
+	right: 70px;
+	width: 800px;
+	height: 100px;
+	padding: 1%;
+	background-color: white;
+	color: black;
+	border-radius: 10px;
+	border: 1px solid green;
+}
+
+.sports-drop-down:before {
+	content: "";
+	position: absolute;
+	top: -10px;
+	right: 185px;
+	border-left: 30px solid transparent;
+	border-right: 30px solid transparent;
+	border-bottom: 30px solid white;
+}
+
+.drop-down-sports-logo{
+	display: flex;
+	flex: 0 0 20%;
+	flex-wrap: wrap;
+	align-items: center;
+	height: 50px;
+}
+
+.drop-down-sports-logo span{
+	margin-left: 5%;
 }
 
 /* Header and home page */
@@ -208,7 +245,6 @@ header{
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	cursor: pointer;
     width: 150px;
 	height: 150px;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
