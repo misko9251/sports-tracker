@@ -9,9 +9,9 @@ function Login() {
   const [formData, setFormData] = useState({username: '', password: ''})
 
   return (
-    <div className='login-container'>
-        <section className='login-section'>
-            <div className='login-form-section'>
+    <div className='login-register-container'>
+        <section className='login-register-section'>
+            <div className='login-register-form-section'>
                 <Link to='/'><FcSportsMode size={50} style={{marginBottom: '5%'}}/> </Link>
                 <h5>Login</h5>
                 <p>Welcome back, hope the game was great!</p>
@@ -33,7 +33,7 @@ function Login() {
                 <p>Not registered yet? <Link to='/register' style={{textDecoration: 'none', color: '#429488', fontWeight: 'bold'}}>Create an Account</Link></p>
             </div>
         </section>
-        <section className='login-section'>
+        <section className='login-register-section'>
             <img src={LoginPhoto}/>
         </section>
     </div>
