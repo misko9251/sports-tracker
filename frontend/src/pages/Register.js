@@ -35,7 +35,7 @@ function Register() {
                 placeholder='Confirm password'
                 type='password'
                 />
-                <button>Login</button>
+                <button>Register</button>
             </form>
             <p>Already registered? <Link to='/login' style={{textDecoration: 'none', color: '#429488', fontWeight: 'bold'}}>Login</Link></p>
         </div>
