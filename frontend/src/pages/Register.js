@@ -13,6 +13,8 @@ function Register() {
         password2: ''
     })
 
+    console.log(formData)
+
     const onChange = (e) => {
         setFormData((prevVal)=> {
             return {
@@ -30,7 +32,7 @@ function Register() {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(formData)
         }
-        const response = await fetch('http://localhost:2006/register', formInfo)
+        const response = await fetch('http://localhost:2121/auth/register', formInfo)
         const data = await response.json()
         console.log(data)
     }

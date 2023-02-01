@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcrypt')
 const User = require('../models/User')
 
 module.exports = {
@@ -15,13 +15,14 @@ module.exports = {
             errors.push({msg: 'Password must be at least 6 characters long'})
         }
         else{
-            const hashedPw = bcrypt.hash(password, 10)
+            const hashedPw = await bcrypt.hash(password, 10)
             const newUser = new User({
                 email,
                 username,
                 password: hashedPw
             })
             await newUser.save()
+            res.status(200).json({msg: 'User has been created and added to DB'})
         }
     }
 }
