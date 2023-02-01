@@ -34,7 +34,7 @@ function Login() {
             </div>
         </section>
         <section className='login-register-section login-register-img'>
-            <img src={LoginPhoto}/>
+            <img src={LoginPhoto} alt='kids playing sports'/>
         </section>
     </div>
   )

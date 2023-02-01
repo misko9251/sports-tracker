@@ -367,6 +367,9 @@ header{
 		margin: 3%;
 	}
 	/* Login & Register Screen */
+	.login-register-container{
+		justify-content: center;
+	}
 	.login-register-img{
 		display: none;
 	}
@@ -375,7 +378,7 @@ header{
 		margin: 3%;
 	}
 	.login-register-form-section{
-		height: 100vh;
+		height: auto;
 	}
 	.login-register-form-section span:before,
 	.login-register-form-section span:after {
