@@ -1,7 +1,10 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const connectDB = require('./config/database')
 require('dotenv').config({path: './config/.env'})
+
+connectDB()
 
 // Middleware
 app.use(express.urlencoded({limit: '50mb', extended: true }));    // use express to parse the form data
