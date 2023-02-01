@@ -33,7 +33,7 @@ function Login() {
                 <p>Not registered yet? <Link to='/register' style={{textDecoration: 'none', color: '#429488', fontWeight: 'bold'}}>Create an Account</Link></p>
             </div>
         </section>
-        <section className='login-register-section'>
+        <section className='login-register-section login-register-img'>
             <img src={LoginPhoto}/>
         </section>
     </div>

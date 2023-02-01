@@ -40,7 +40,7 @@ function Register() {
             <p>Already registered? <Link to='/login' style={{textDecoration: 'none', color: '#429488', fontWeight: 'bold'}}>Login</Link></p>
         </div>
     </section>
-    <section className='login-register-section'>
+    <section className='login-register-section login-register-img'>
         <img src={RegisterPhoto}/>
     </section>
 </div>

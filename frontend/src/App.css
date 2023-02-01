@@ -351,3 +351,39 @@ header{
 	display: flex;
 	flex-direction: column;
 }
+
+/* Media Queries */
+
+@media screen and (max-width: 650px) {
+	/* Home Screen */
+	.text-overlay h1{
+		width: 80%;
+	}
+	.mission-statement-container{
+		flex-direction: column;
+	}
+	.mission-statement{
+		width: auto;
+		margin: 3%;
+	}
+	/* Login & Register Screen */
+	.login-register-img{
+		display: none;
+	}
+	.login-register-section{
+		width: 100%;
+		margin: 3%;
+	}
+	.login-register-form-section{
+		height: 100vh;
+	}
+	.login-register-form-section span:before,
+	.login-register-form-section span:after {
+	  content: "";
+	  display: inline-block;
+	  height: 2px;
+	  width: 25%;
+	  position: absolute;
+	  top: 50%;
+	}
+}
