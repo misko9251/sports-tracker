@@ -15,8 +15,6 @@ function Register() {
         password2: ''
     })
 
-    const [errors, setErrors] = useState([])
-
     const onChange = (e) => {
         setFormData((prevVal)=> {
             return {
@@ -37,7 +35,6 @@ function Register() {
         const response = await fetch('http://localhost:2121/auth/register', formInfo)
         const data = await response.json()
         if(!response.ok){
-            setErrors(data)
             data.forEach(error => {
                 toast.info(error.msg, {
                   position: "top-right",
