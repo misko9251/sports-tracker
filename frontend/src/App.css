@@ -289,7 +289,8 @@ header{
 	display: flex;
 	flex-direction: column;
 	width: 80%;
-	margin-top: 5%;
+	margin-top: 3%;
+	max-height: 700px;
 }
 
 .login-register-form-section h5{

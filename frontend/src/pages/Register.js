@@ -53,7 +53,7 @@ function Register() {
       <div className='login-register-container'>
       <section className='login-register-section'>
           <div className='login-register-form-section'>
-              <Link to='/'><FcSportsMode size={50} style={{marginBottom: '5%'}}/> </Link>
+              {/* <Link to='/'><FcSportsMode size={50} style={{marginBottom: '5%'}}/> </Link> */}
               <h5>Register</h5>
               <p>Thanks for joining us!</p>
               <button><FcGoogle size={20} style={{marginRight: '3%'}}/>Sign up with Google</button>
