@@ -19,7 +19,7 @@ module.exports = function (passport) {
         });
       })
     );
-    
+
     passport.serializeUser((user, cb) => {
       cb(null, user.id);
     });
