@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import RegisterPhoto from '../assets/register.png'
-import {FcSportsMode} from 'react-icons/fc'
 import {FcGoogle} from 'react-icons/fc'
 import {Link} from 'react-router-dom'
 import { ToastContainer, toast } from "react-toastify";
@@ -34,6 +33,7 @@ function Register() {
         }
         const response = await fetch('http://localhost:2121/auth/register', formInfo)
         const data = await response.json()
+        console.log(data)
         if(!response.ok){
             data.forEach(error => {
                 toast.info(error.msg, {
@@ -53,7 +53,7 @@ function Register() {
       <div className='login-register-container'>
       <section className='login-register-section'>
           <div className='login-register-form-section'>
-              <Link to='/'><FcSportsMode size={50} style={{marginBottom: '5%'}}/> </Link>
+              {/* <Link to='/'><FcSportsMode size={50} style={{marginBottom: '5%'}}/> </Link> */}
               <h5>Register</h5>
               <p>Thanks for joining us!</p>
               <button><FcGoogle size={20} style={{marginRight: '3%'}}/>Sign up with Google</button>
