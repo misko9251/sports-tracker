@@ -3,6 +3,8 @@ import RegisterPhoto from '../assets/register.png'
 import {FcSportsMode} from 'react-icons/fc'
 import {FcGoogle} from 'react-icons/fc'
 import {Link} from 'react-router-dom'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Register() {
 
@@ -13,7 +15,7 @@ function Register() {
         password2: ''
     })
 
-    console.log(formData)
+    const [errors, setErrors] = useState([])
 
     const onChange = (e) => {
         setFormData((prevVal)=> {
@@ -34,7 +36,20 @@ function Register() {
         }
         const response = await fetch('http://localhost:2121/auth/register', formInfo)
         const data = await response.json()
-        console.log(data)
+        if(!response.ok){
+            setErrors(data)
+            data.forEach(error => {
+                toast.info(error.msg, {
+                  position: "top-right",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  theme: 'dark'
+                });
+            });
+        }
     }
 
     return (
@@ -87,6 +102,7 @@ function Register() {
       <section className='login-register-section login-register-img'>
           <img src={RegisterPhoto} alt='kids playing sports'/>
       </section>
+      <ToastContainer />
     </div>
   )
 }
