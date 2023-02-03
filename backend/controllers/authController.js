@@ -5,6 +5,9 @@ module.exports = {
     registerUser: async (req, res) => {
         const {email, username, password, password2} = req.body
         const errors = []
+        const emailTaken = await User.findOne({email: email})
+        const usernameTaken = await User.findOne({username: username})
+        console.log(emailTaken)
         if(!email || !username || !password || !password2){
             errors.push({msg: 'Please fill in all fields'})
         }
@@ -13,6 +16,12 @@ module.exports = {
         }
         if(password.length < 6){
             errors.push({msg: 'Password must be at least 6 characters long'})
+        }
+        if(emailTaken){
+            errors.push({msg: 'This email address is already in use'})
+        }
+        if(usernameTaken){
+            errors.push({msg: 'This username is taken'})
         }
         if(errors.length > 0){
             res.status(400).json(errors)

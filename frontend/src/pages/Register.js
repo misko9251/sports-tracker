@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import RegisterPhoto from '../assets/register.png'
 import {FcGoogle} from 'react-icons/fc'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -23,6 +23,12 @@ function Register() {
         })
     }
 
+    const navigate = useNavigate();
+
+    function redirect(){
+        navigate('/login')
+    }
+
     const onSubmit = async (e) => {
         e.preventDefault()
         const formInfo = {
@@ -33,7 +39,6 @@ function Register() {
         }
         const response = await fetch('http://localhost:2121/auth/register', formInfo)
         const data = await response.json()
-        console.log(data)
         if(!response.ok){
             data.forEach(error => {
                 toast.info(error.msg, {
@@ -46,6 +51,8 @@ function Register() {
                   theme: 'dark'
                 });
             });
+        }else{
+            redirect()
         }
     }
 
