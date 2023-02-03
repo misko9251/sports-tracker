@@ -26,7 +26,7 @@ app.use(
         secret: 'keyboardcat', // set the secret key for the session
         resave: false,  // don't save session if unmodified
         saveUninitialized: false,   // don't create session until something stored
-        store: MongoStore.create({mongoUrl:process.env.MONGO_STRING})
+        store: MongoStore.create({mongoUrl: process.env.MONGO_STRING})
     }))
 
 // Set passport middleware
