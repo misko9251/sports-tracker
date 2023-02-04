@@ -44,7 +44,13 @@ function Login() {
                     draggable: true,
                     theme: 'dark'
                   });
+                //   If login is successful, check if user is already a registered coach/parent, if they are NOT, bring them to the questionnaire
             }
+            else if(json.message == 'Success' ){
+                const userResponse = await fetch('http://localhost:2121/dashboard')
+                console.log(userResponse)
+            }
+            // If user IS already registered, bring them to their dashboard
         } catch (error) {
             console.log(error)
         }

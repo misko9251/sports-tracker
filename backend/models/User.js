@@ -12,6 +12,14 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    registeredParent: {
+        type: Boolean,
+        default: false
+    },
+    registeredCoach: {
+        type: Boolean,
+        default: false
     }
 })
 
