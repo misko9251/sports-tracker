@@ -5,7 +5,7 @@ function GetUser() {
     const [isCoach, setIsCoach] = useState()
     const [isParent, setIsParent] = useState()
     const [loading, setLoading] = useState(true)
-
+    
     useEffect(()=>{
         async function fetchData(){
             try {
@@ -14,7 +14,8 @@ function GetUser() {
                     {credentials: 'include'}
                 );
                 const json = await response.json()
-                console.log(json)
+                setIsParent(json.isRegisteredParent)
+                setIsCoach(json.isRegisteredCoach)
             } catch (error) {
                 
             }
