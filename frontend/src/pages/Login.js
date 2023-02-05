@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import LoginPhoto from '../assets/login.png'
 import {FcSportsMode} from 'react-icons/fc'
 import {FcGoogle} from 'react-icons/fc'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -22,6 +22,12 @@ function Login() {
         })
     }
 
+    const navigate = useNavigate()
+
+    function redirect(){
+        navigate('/getUser')
+    }
+
     const onSubmit = async (e) => {
         e.preventDefault()
         try {
@@ -29,12 +35,12 @@ function Login() {
                 credentials: 'include',
                 method: 'POST',
                 headers: {'Content-Type' : 'application/json'},
-                body: JSON.stringify(formData)
+                body: JSON.stringify({email: formData.email, password: formData.password})
             }
             const response = await fetch('http://localhost:2121/auth/login', formInfo)
             const json = await response.json()
             console.log(json)
-            if(!(json.message == 'Success')){
+            if(!(json.message === 'Success')){
                 toast.info(json.message, {
                     position: "top-right",
                     autoClose: 3000,
@@ -44,6 +50,9 @@ function Login() {
                     draggable: true,
                     theme: 'dark'
                   });
+            }
+            if(json.message === 'Success'){
+                redirect()
             }
         } catch (error) {
             console.log(error)
