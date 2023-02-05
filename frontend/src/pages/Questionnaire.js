@@ -49,7 +49,9 @@ const Questionnaire = () => {
 
   return (
     <div className="main-dark-container questionnaire-container">
-      <img class='dark-mode-logo' src={DarkModeLogo} alt='dark mode logp'/>
+      <div className="dark-mode-logo-container">
+        <img id='dark-mode-logo' src={DarkModeLogo} alt='dark mode logo'/>
+      </div>
       <h3 className="questionnaire-heading">Ready to get started?</h3>
       <span className="question-tracker">Question {currentQuestion+1}/{questions.length}</span>
         <div className="dark-inner-container question-container">
