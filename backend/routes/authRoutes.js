@@ -5,19 +5,36 @@ const passport = require("passport")
 
 
 router.post('/register', authContoller.registerUser)
-router.post('/login', (req, res, next) => {     
-    passport.authenticate('local', (err, user, info) => {       
-      if (err) {
-        return next(err); 
-      }if (!user) { 
-        return res.json(info); 
-      }req.logIn(user, (err) => {         
-        if (err) { 
-          return next(err); 
-        } return res.json({message: 'Success'});       
-      });     
-    })(req, res, next);   
-  });
+
+// router.post('/login', (req, res, next) => {     
+//   passport.authenticate('local', (err, user, info) => {       
+//     if (err) {
+//       return next(err); 
+//     }if (!user) { 
+//       return res.json(info); 
+//     }req.logIn(user, (err) => {         
+//       if (err) { 
+//         return next(err); 
+//       } return res.json({message: 'Success'});       
+//     });     
+//   })(req, res, next);   
+// });
+
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) throw err;
+    if (!user) res.send("No User Exists");
+    else {
+      req.logIn(user, (err) => {
+        if (err) throw err;
+        console.log(req.user);
+        return res.json({message: 'Success'});  
+      });
+    }
+  })(req, res, next);
+});
+
+
 router.get('/logout', (req, res)=>{
   req.logout((err)=>{
       if(err){

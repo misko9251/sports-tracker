@@ -1,15 +1,18 @@
 const express = require('express')
 const app = express()
-const cors = require('cors')
+const cors = require("cors");
+const passport = require("passport");
+const session = require("express-session");
+require('dotenv').config({path: './config/.env'});
+require("./config/passport")(passport);
+const MongoStore = require('connect-mongo');
 const connectDB = require('./config/database')
-const MongoStore = require('connect-mongo')
-const passport = require('passport')
-const session = require('express-session')
-const authRoutes = require('./routes/authRoutes')
-const dashboardRoutes = require('./routes/dashboardRoutes')
 require('dotenv').config({path: './config/.env'})
 require("./config/passport")(passport);
 
+
+const authRoutes = require('./routes/authRoutes')
+const dashboardRoutes = require('./routes/dashboardRoutes')
 
 connectDB()
 
@@ -27,7 +30,7 @@ app.use(
         secret: 'keyboardcat', // set the secret key for the session
         resave: false,  // don't save session if unmodified
         saveUninitialized: false,   // don't create session until something stored
-        store: MongoStore.create({mongoUrl: process.env.MONGO_STRING})
+        store: MongoStore.create({mongoUrl:process.env.MONGO_STRING})
     }))
 
 // Set passport middleware
@@ -37,6 +40,7 @@ app.use(passport.session())
 // Routes
 app.use('/auth', authRoutes)
 app.use('/dashboard', dashboardRoutes)
+
 
 app.listen(process.env.PORT, (req, res)=> {
     console.log(`Server is running on port ${process.env.PORT}`)
