@@ -356,6 +356,77 @@ header{
 	flex-direction: column;
 }
 
+/* Questionnaire */
+
+.questionnaire-container{
+	text-align: center;
+	padding-bottom: 3%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.questionnaire-heading{
+	font-weight: bolder;
+	font-size: 2.5rem;
+	text-align: center;
+	padding: 3% 0 3% 0;
+}
+
+.question-tracker{
+	font-size: 1.5rem;
+	color: rgb(155, 159, 164);
+	margin-bottom: 3%;
+}
+
+.question-container{
+	margin-top: 3%;
+	padding: 3% 0;
+}
+
+.question-container button{
+	color: white;
+	width: 40%;
+	margin: 3% 1% 0 1%;
+	font-size: 1.75rem;
+	padding: 1% 0;
+	border: none;
+	border-radius: 10px;
+	background-color: rgb(62, 66, 71);
+}
+
+.question-container button:hover{
+	background-color: rgb(51, 55, 59);
+}
+
+.question{
+	margin: 0 auto;
+	font-size: 1.75rem;
+	color: white;
+	margin-bottom: 3%;
+}
+
+/* Dark Mode */
+
+.dark-mode-logo{
+	width: 20%;
+}
+
+.main-dark-container{
+	background-color: rgb(14, 19, 22);
+	color: rgb(239, 239, 239);
+	height: 100vh;
+	width: 100%;
+}
+
+.dark-inner-container{
+	background-color: rgb(23, 28, 34);
+	width: 80%;
+	margin: 0 auto;
+	border-radius: 10px;
+}
+
 /* Media Queries */
 
 @media screen and (max-width: 650px) {
