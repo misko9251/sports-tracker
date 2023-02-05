@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react'
+import Questionnaire from '../pages/Questionnaire'
+import Dashboard from '../pages/Dashboard'
 
 function GetUser() {
 
     const [isCoach, setIsCoach] = useState()
     const [isParent, setIsParent] = useState()
-    const [loading, setLoading] = useState(true)
-    
+
     useEffect(()=>{
         async function fetchData(){
             try {
@@ -24,7 +25,9 @@ function GetUser() {
     }, [])
 
     return (
-      <div>GetUser</div>
+      <>
+        {isCoach || isParent ? <Dashboard/> : <Questionnaire/>}
+      </>
     )
 }
 
