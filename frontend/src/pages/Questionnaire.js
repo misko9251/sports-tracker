@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import Dashboard from "./Dashboard";
+import React, {useEffect, useState} from "react";
+import DashboardRouter from "../components/DashboardRouter";
 import DarkModeLogo from '../assets/dark-mode-logo.jpg'
 
 const Questionnaire = () => {
@@ -7,7 +7,24 @@ const Questionnaire = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   // Store answers from client
   const [answers, setAnswers] = useState([]);
-  console.log(answers)
+
+  useEffect(()=> {
+    if(currentQuestion == questions.length){
+      async function fetchData(){
+        try {
+          const response = await fetch('http://localhost:2121/dashboard/questionnaire', {
+            credentials: 'include',
+            method: 'POST',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify({type: answers[0], sport: answers[1], preference: answers[2]})
+          })
+        } catch (error) {
+          console.log(error)
+        }
+      } 
+      fetchData()
+    }
+  }, [currentQuestion])
 
   const questions = [
     {
@@ -17,13 +34,15 @@ const Questionnaire = () => {
     {
       text: "What sport would you like to add?",
       options: [
+        "Hockey",
         "Baseball", 
         "Softball", 
         "Football", 
         "Soccer", 
         "Lacrosse", 
         "Volleyball",
-        "Bowling"
+        "Bowling",
+        "Basketball"
       ],
     },
     {
@@ -41,7 +60,7 @@ const Questionnaire = () => {
 
   // If no more questions remain, load the Dashboard
   if (currentQuestion === questions.length) {
-    return <Dashboard />;
+    return <DashboardRouter />
   }
 
   // Grab current question, this is updated every time we select an answer, onClick

@@ -7,7 +7,6 @@ module.exports = {
         const errors = []
         const emailTaken = await User.findOne({email: email})
         const usernameTaken = await User.findOne({username: username})
-        console.log(emailTaken)
         if(!email || !username || !password || !password2){
             errors.push({msg: 'Please fill in all fields'})
         }

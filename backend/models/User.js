@@ -20,6 +20,12 @@ const UserSchema = new mongoose.Schema({
     registeredCoach: {
         type: Boolean,
         default: false
+    },
+    preference: {
+        type: String
+    },
+    sport: {
+        type: String
     }
 })
 
