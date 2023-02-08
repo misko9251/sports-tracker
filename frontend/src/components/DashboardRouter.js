@@ -26,15 +26,13 @@ function DashboardRouter() {
     <div>
       {isLoading ? (
         <Spinner />
-      ) : (
-        isParent ? (
-          <ParentDashboard />
-        ) : (
-          <CoachDashboard />
-        )
-      )}
+      ) : isParent === true ? (
+        <ParentDashboard />
+      ) : isParent === false ? (
+        <CoachDashboard />
+      ) : null}
     </div>
-  )
+  );
 }
 
 export default DashboardRouter
