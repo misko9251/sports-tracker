@@ -437,10 +437,32 @@ header{
 	border-radius: 10px;
 }
 
-/* Spinner */
+/* Dashboard */
+
+.dashboard-container{
+	height: 100vh;
+}
+
+.dashboard-container nav{
+	background-color: rgb(27, 29, 31);
+	height: 4rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2rem;
+}
+
+.dashboard-container nav h3 {	
+	margin: 0 auto;
+	padding-left: 2rem;
+}
+
+.add-team{
+	margin-right: 2rem;
+	cursor: pointer;
+}
 
 /* Spinner */
-
 
 .loader {
 	width: 80px;
