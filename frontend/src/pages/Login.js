@@ -39,7 +39,7 @@ function Login() {
             }
             const response = await fetch('http://localhost:2121/auth/login', formInfo)
             const json = await response.json()
-            console.log(json)
+            console.log(json.message)
             if(!(json.message === 'Success')){
                 toast.info(json.message, {
                     position: "top-right",

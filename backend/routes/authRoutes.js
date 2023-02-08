@@ -9,7 +9,7 @@ router.post('/register', authContoller.registerUser)
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
-    if (!user) res.send("No User Exists");
+    if (!user) res.json({message: "Email not found"});
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
