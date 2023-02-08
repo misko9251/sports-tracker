@@ -16,7 +16,7 @@ const Questionnaire = () => {
             credentials: 'include',
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
-            body: JSON.stringify({type: answers[0], sport: answers[1], preference: answers[2]})
+            body: JSON.stringify({type: answers[0], sport: answers[1], league: answers[2], preference: answers[3]})
           })
         } catch (error) {
           console.log(error)
@@ -44,6 +44,14 @@ const Questionnaire = () => {
         "Bowling",
         "Basketball"
       ],
+    },
+    {
+      text: "Select your team type.",
+      options: [
+        "Travel",
+        "Rec/Local",
+        "School"
+      ]
     },
     {
       text: "Do you prefer dark mode or light mode? Don't worry, you can change this later.",

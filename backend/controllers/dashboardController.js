@@ -18,7 +18,8 @@ module.exports = {
             registeredParent: isParent,
             registeredCoach: isCoach,
             preference: req.body.preference,
-            sport: req.body.sport
+            sport: req.body.sport,
+            leagueType: req.body.league
         })
     }
 }

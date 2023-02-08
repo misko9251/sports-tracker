@@ -26,6 +26,9 @@ const UserSchema = new mongoose.Schema({
     },
     sport: {
         type: String
+    },
+    leagueType: {
+        type: String
     }
 })
 
