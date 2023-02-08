@@ -16,7 +16,7 @@ const Questionnaire = () => {
             credentials: 'include',
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
-            body: JSON.stringify({type: answers[0], sport: answers[1], league: answers[2], preference: answers[3]})
+            body: JSON.stringify({type: answers[0], sport: answers[1], league: answers[2], age: answers[3], preference: answers[4]})
           })
         } catch (error) {
           console.log(error)
@@ -54,9 +54,21 @@ const Questionnaire = () => {
       ]
     },
     {
+      text: "How old are your players?",
+      options: [
+        "Under 13",
+        "Between 13-18",
+        "Over 18"
+      ]
+    },
+    {
       text: "Do you prefer dark mode or light mode? Don't worry, you can change this later.",
       options: ["Dark", "Light"]
     },
+    {
+      text: "Great! ",
+      options:[""]
+    }
   ];
 
   // When btn is clicked, pass answer as param so we can update our answers array

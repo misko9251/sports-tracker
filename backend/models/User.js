@@ -23,12 +23,6 @@ const UserSchema = new mongoose.Schema({
     },
     preference: {
         type: String
-    },
-    sport: {
-        type: String
-    },
-    leagueType: {
-        type: String
     }
 })
 

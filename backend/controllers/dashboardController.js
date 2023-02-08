@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const Team = require('../models/Team')
 
 module.exports = {
     getDash: async (req, res) => {
@@ -18,8 +19,12 @@ module.exports = {
             registeredParent: isParent,
             registeredCoach: isCoach,
             preference: req.body.preference,
+        })
+        await Team.create({
             sport: req.body.sport,
-            leagueType: req.body.league
+            sportType: req.body.league,
+            age: req.body.age,
+            managedBy: req.user._id
         })
     }
 }
