@@ -23,8 +23,10 @@ function ParentDashboard() {
 
   const teams = myTeams.map((item)=> {
     return (
-      <section>
-        {item.sport}
+      <section className='mySportTeam'>
+        <span>{item.sport}</span>
+        <span>{item.sportType}</span>
+        <span>{item.age}</span>
       </section>
     )
   })
