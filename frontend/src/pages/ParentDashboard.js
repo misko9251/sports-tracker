@@ -1,11 +1,19 @@
 import React, {useEffect, useState} from 'react'
 import Spinner from '../components/Spinner'
+import {GiHockey} from 'react-icons/gi'
+import {GiBaseballGlove} from 'react-icons/gi'
+import {TbBallBaseball} from 'react-icons/tb'
+import {GiAmericanFootballPlayer} from 'react-icons/gi'
+import {GiSoccerField} from 'react-icons/gi'
+import {GiBasketballJersey} from 'react-icons/gi'
+import {MdSportsKabaddi} from 'react-icons/md'
+import {TbBallVolleyball} from 'react-icons/tb'
+import {GiBowlingStrike} from 'react-icons/gi'
 
 function ParentDashboard() {
 
   const [myTeams, setMyTeams] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  console.log(myTeams)
 
   useEffect(()=> {
     async function fetchData(){
@@ -19,16 +27,29 @@ function ParentDashboard() {
       }
     }
     fetchData()
-  }, [])
+  }, [myTeams])
+
+  function addTeam(){
+    console.log('hey')
+  }
 
   const teams = myTeams.map((item)=> {
+    let sport;
+    if(item.sport == 'Hockey'){
+      sport = <GiHockey size={50}/>
+    }if(item.sport == 'Baseball'){
+      sport = <GiBaseballGlove />
+    }
     return (
-      <section className='my-sport-team main-dark-container'>
-        <span>{item.sport}</span>
-        <span>{item.sportType}</span>
-        <span>{item.age}</span>
-        <span>{item.record}</span>
+      <div className='team-container'>
+      <span className='league-date'>Fall 2022</span>
+      <section className='my-sport-team dark-inner-container '>
+          <span>{sport}</span>
+          <span>League: {item.sportType}</span>
+          <span>Age: {item.age}</span>
+          <span>Record: {item.record}</span>
       </section>
+      </div>
     )
   })
 
@@ -38,8 +59,12 @@ function ParentDashboard() {
         <div className="main-dark-container dashboard-container">
           <nav>
             <h3>Home</h3>
-            <span className="add-team">+</span>
+            <span 
+            className="add-team"
+            onClick={addTeam}
+            >+</span>
           </nav>
+          {/* <h3>My Teams</h3> */}
           <section className='my-sport-team-container'>
             {teams}
           </section>

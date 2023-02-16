@@ -396,11 +396,11 @@ header{
 	padding: 1% 0;
 	border: none;
 	border-radius: 10px;
-	background-color: rgb(62, 66, 71);
+	background-color: rgb(94, 97, 101);
 }
 
 .question-container button:hover{
-	background-color: rgb(51, 55, 59);
+	background-color: rgb(149, 152, 156);
 }
 
 .question{
@@ -432,6 +432,7 @@ header{
 
 .dark-inner-container{
 	background-color: rgb(23, 28, 34);
+	background-color: rgb(53, 55, 57);
 	width: 80%;
 	margin: 0 auto;
 	border-radius: 10px;
@@ -441,20 +442,23 @@ header{
 
 .dashboard-container{
 	height: 100vh;
+	background: linear-gradient(169.29deg, #262B2F -0.68%, #16191D 74.03%);
 }
 
 .dashboard-container nav{
-	background-color: rgb(27, 29, 31);
 	height: 4rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size: 2rem;
+	margin-bottom: 5%;
+	background: linear-gradient(94.6deg, #32383E -60.81%, #17191C 185.78%);
 }
 
-.dashboard-container nav h3 {	
+.dashboard-container h3 {	
 	margin: 0 auto;
 	padding-left: 2rem;
+	font-size: 2rem;
 }
 
 .add-team{
@@ -467,13 +471,29 @@ header{
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-	background-color: rgb(53, 55, 57);
-	box-shadow: rgba(233, 225, 225, 0.2) 0px 2px 8px 0px;
-	border-radius: 10px;
+	background: linear-gradient(210.55deg, #3b3e43 -3.02%, #16181a 93.08%);
+	box-shadow: 36px 12px 64px rgba(2, 3, 3, 0.7), -12px -20px 56px rgba(232, 237, 243, 0.05), inset -16px -6px 80px rgba(248, 249, 249, 0.03);
+	border-radius: 24px;
 	width: 250px;
 	height: 250px;
-	margin: 3% 0;
+	margin: 3%;
 	cursor: pointer;
+	transition: transform 0.2s;
+} 
+
+.my-sport-team:hover {
+    transform: scale(1.03);
+}
+
+.team-container {
+	position: relative;
+}
+
+.league-date{
+	position: absolute;
+	top: -30px;
+	margin-left: 3%;
+	font-size: 1.2rem;
 }
 
 /* Spinner */

@@ -66,8 +66,8 @@ const Questionnaire = () => {
       options: ["Dark", "Light"]
     },
     {
-      text: "Great! ",
-      options:[""]
+      text: "Ready to get started?",
+      options:["Yes!"]
     }
   ];
 
