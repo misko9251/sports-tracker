@@ -15,6 +15,9 @@ const TeamSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    record: {
+        type: String
+    }
 })
 
 module.exports = mongoose.model("Team", TeamSchema)

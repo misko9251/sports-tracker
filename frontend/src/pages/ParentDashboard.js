@@ -23,10 +23,11 @@ function ParentDashboard() {
 
   const teams = myTeams.map((item)=> {
     return (
-      <section className='mySportTeam'>
+      <section className='my-sport-team main-dark-container'>
         <span>{item.sport}</span>
         <span>{item.sportType}</span>
         <span>{item.age}</span>
+        <span>{item.record}</span>
       </section>
     )
   })
@@ -39,7 +40,7 @@ function ParentDashboard() {
             <h3>Home</h3>
             <span className="add-team">+</span>
           </nav>
-          <section>
+          <section className='my-sport-team-container'>
             {teams}
           </section>
         </div>

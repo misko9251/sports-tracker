@@ -462,10 +462,18 @@ header{
 	cursor: pointer;
 }
 
-.mySportTeam{
-	border: 1px solid red;
+.my-sport-team{
 	display: flex;
 	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	background-color: rgb(53, 55, 57);
+	box-shadow: rgba(233, 225, 225, 0.2) 0px 2px 8px 0px;
+	border-radius: 10px;
+	width: 250px;
+	height: 250px;
+	margin: 3% 0;
+	cursor: pointer;
 }
 
 /* Spinner */
