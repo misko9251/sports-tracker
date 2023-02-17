@@ -9,11 +9,13 @@ import {GiBasketballJersey} from 'react-icons/gi'
 import {MdSportsKabaddi} from 'react-icons/md'
 import {TbBallVolleyball} from 'react-icons/tb'
 import {GiBowlingStrike} from 'react-icons/gi'
+import AddTeam from '../components/AddTeam'
 
 function ParentDashboard() {
 
   const [myTeams, setMyTeams] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [isSettingTeam, setIsSettingTeam] = useState(false)
 
   useEffect(()=> {
     async function fetchData(){
@@ -30,7 +32,11 @@ function ParentDashboard() {
   }, [myTeams])
 
   function addTeam(){
-    console.log('hey')
+    setIsSettingTeam(true)
+  }
+
+  function closeAddTeam(){
+    setIsSettingTeam(false)
   }
 
   const teams = myTeams.map((item)=> {
@@ -42,7 +48,7 @@ function ParentDashboard() {
     }
     return (
       <div className='team-container'>
-      <span className='league-date'>Fall 2022</span>
+      {/* <span className='league-date'>Fall 2022</span> */}
       <section className='my-sport-team dark-inner-container '>
           <span>{sport}</span>
           <span>League: {item.sportType}</span>
@@ -64,10 +70,15 @@ function ParentDashboard() {
             onClick={addTeam}
             >+</span>
           </nav>
-          {/* <h3>My Teams</h3> */}
           <section className='my-sport-team-container'>
             {teams}
           </section>
+
+              <AddTeam 
+              onClose={closeAddTeam} 
+              isActive={isSettingTeam}
+              />
+
         </div>
       )}
     </div>
