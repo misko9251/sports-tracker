@@ -452,7 +452,8 @@ header{
 	align-items: center;
 	font-size: 2rem;
 	margin-bottom: 5%;
-	background: linear-gradient(94.6deg, #32383E -60.81%, #17191C 185.78%);
+
+	background-color: rgb(100, 110, 205);
 }
 
 .dashboard-container h3 {	
@@ -500,19 +501,20 @@ header{
 
 .add-team-container {
 	position: absolute;
+	width: 100%;
 	top: 0;
 	z-index: 1;
-	width: 100%;
 	display: flex;
 	flex-direction: column;
-	background-color: rgb(79, 76, 75);
-	align-items: center;
-	justify-content: center;
-	position: absolute;
 	opacity: 0;
 	visibility: hidden;
 	height: 1px;
-	transition: opacity 0.75s, visibility 0.75s, height 0.75s;
+	transition: opacity 0.5s, visibility 0.5s, height 0.5s;
+	background-color: rgb(100, 110, 205);
+}
+
+.add-team-container span{
+	margin: 3%;
 }
 
 .add-team-container.active {
@@ -521,9 +523,42 @@ header{
 	height: 100vh;
 	display: flex;
 	font-size: 2rem;
+	/* padding: 3%;
+	width: 97%; */
+}
 
+.add-team-form{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 35%;
+	margin: 0 auto;
+	height: 60vh;
+	border-radius: 10px;
+	padding: 4%;
+	background-color: rgb(25, 30, 45);
+	background: linear-gradient(94.6deg, #32383E -60.81%, #17191C 185.78%);
+	box-shadow: 36px 12px 64px rgba(2, 3, 3, 0.7), -12px -20px 56px rgba(232, 237, 243, 0.05), inset -16px -6px 80px rgba(248, 249, 249, 0.03);
+}
+
+.close-or-submit-form{
+	width: 35%;
+	border: 1px solid red;
+	margin: 0 auto;
+	padding: 4%;
+	height: 1px;
+}
+
+.add-team-form input, .add-team-form select{
+	background-color: rgb(50, 56, 66);
+	border: none;
+	height: 40px;
+	color: white;
 }
  
+.add-team-form label{
+	font-size: 1rem;
+}
 
 
 /* Spinner */

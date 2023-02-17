@@ -73,12 +73,10 @@ function ParentDashboard() {
           <section className='my-sport-team-container'>
             {teams}
           </section>
-
-              <AddTeam 
+          <AddTeam 
               onClose={closeAddTeam} 
               isActive={isSettingTeam}
               />
-
         </div>
       )}
     </div>
