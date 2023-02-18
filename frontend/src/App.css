@@ -549,17 +549,55 @@ header{
 	height: 1px;
 }
 
-.add-team-form input, .add-team-form select{
+.add-team-form input, .add-team-form select, button{
 	background-color: rgb(50, 56, 66);
 	border: none;
 	height: 40px;
 	color: white;
+	text-indent: 15px;
+}
+
+button:hover{
+	background-color: rgb(64, 66, 76);
 }
  
 .add-team-form label{
 	font-size: 1rem;
 }
 
+hr {
+    height: 0px;
+    border: none;
+	width: 100%;
+    border-top: 1px solid rgb(90, 88, 88);
+	margin: 0;
+}
+
+.sport-select-container1, .sport-select-container2{
+	display: flex;
+	flex-direction: column;
+}
+
+.sport-select-container1 label, .sport-select-container2 label{
+	padding-bottom: 25px;
+}
+
+.sport-select-container1{
+	width: 30%;
+	margin-right: 5%;
+}
+
+.sport-select-container2{
+	width: 70%;
+}
+
+.sport-select-container{
+	margin-right: 5px;
+}
+
+.sport-form-details{
+	display: flex;
+}
 
 /* Spinner */
 
@@ -618,6 +656,27 @@ header{
 } 
 
 /* Media Queries */
+
+@media screen and (max-width: 850px){
+	.sport-select-container1, .sport-select-container2{
+		width: 100%;
+	}
+	.sport-form-details{
+		flex-direction: column;
+	}
+	.sport-select-container1 label, .sport-select-container2 label{
+		padding: 0;
+		padding-bottom: 15px;
+	}
+	.sport-select-container2 label{
+		padding-top: 15px;
+	}
+	.add-team-form{
+		width: 70%;
+		height: 70vh;
+		justify-content: space-around;
+	}
+}
 
 @media screen and (max-width: 650px) {
 	/* Home Screen */
@@ -686,5 +745,20 @@ header{
 	}
 	.question{
 		width: 70%;
+	}
+}
+
+@media screen and (max-width: 650px){
+	.sport-select-container1 label, .sport-select-container2 label{
+		padding: 0;
+		padding-bottom: 35px;
+	}
+	.sport-select-container2 label{
+		padding-top: 35px;
+	}
+	.add-team-form{
+		width: 80%;
+		height: 80vh;
+		justify-content: space-around;
 	}
 }
