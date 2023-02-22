@@ -44,7 +44,7 @@ function AddTeam(props) {
                     <option>Between 13-18</option>
                     <option>Over 18</option>
                 </select>
-                <button>Submit</button>
+                <button className='submit-new-team-btn'>Submit</button>
             </form>
         </section>
     </div>
