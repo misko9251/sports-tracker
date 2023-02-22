@@ -388,6 +388,35 @@ header{
 	padding: 3% 0;
 }
 
+
+.questionnaire-input{
+	background-color: rgb(100, 110, 205);
+	width: 40%;
+	margin: 0 auto;
+	border: none;
+	border-radius: 10px;
+	height: 40px;
+	color: white;
+	text-indent: 15px;
+	display: block;
+	margin-bottom: 2%;
+}
+
+.questionnaire-input::placeholder{
+	color: white;
+}
+
+#enter-team-name-btn{
+	height: 30px;
+	font-size: 1rem;
+	color: white;
+	width: 40%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+}
+
 .question-container button{
 	color: white;
 	width: 40%;
@@ -443,6 +472,12 @@ header{
 .dashboard-container{
 	height: 100vh;
 	background: linear-gradient(169.29deg, #262B2F -0.68%, #16191D 74.03%);
+}
+
+.my-sport-team-container{
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
 }
 
 .dashboard-container nav{
@@ -549,7 +584,7 @@ header{
 	height: 1px;
 }
 
-.add-team-form input, .add-team-form select, button{
+.add-team-form input, .add-team-form select, .submit-new-team-btn{
 	background-color: rgb(50, 56, 66);
 	border: none;
 	height: 40px;
@@ -557,7 +592,7 @@ header{
 	text-indent: 15px;
 }
 
-button:hover{
+.submit-new-team-btn:hover{
 	background-color: rgb(64, 66, 76);
 }
  
@@ -740,12 +775,39 @@ hr {
 		font-size: 1.75rem;
 		padding: 1% 0;
 		border: none;
-		border-radius: 10px;
-		background-color: rgb(62, 66, 71);
+		border-radius: 10px;	
 	}
 	.question{
 		width: 70%;
 	}
+	.questionnaire-input{
+		background-color: rgb(100, 110, 205);
+		width: 60%;
+		margin: 0 auto;
+		border: none;
+		border-radius: 10px;
+		height: 40px;
+		color: white;
+		text-indent: 15px;
+		display: block;
+		margin-bottom: 2%;
+	}
+	
+	.questionnaire-input::placeholder{
+		color: white;
+	}
+	
+	#enter-team-name-btn{
+		height: 30px;
+		font-size: 1rem;
+		color: white;
+		width: 60%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto;
+	}
+	
 }
 
 @media screen and (max-width: 650px){

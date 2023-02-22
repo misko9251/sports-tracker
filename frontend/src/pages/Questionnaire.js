@@ -7,6 +7,9 @@ const Questionnaire = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   // Store answers from client
   const [answers, setAnswers] = useState([]);
+  // Store input text of team name
+  const [teamName, setTeamName] = useState('')
+  console.log(answers)
 
   useEffect(()=> {
     if(currentQuestion == questions.length){
@@ -16,7 +19,7 @@ const Questionnaire = () => {
             credentials: 'include',
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
-            body: JSON.stringify({type: answers[0], sport: answers[1], league: answers[2], age: answers[3], preference: answers[4]})
+            body: JSON.stringify({type: answers[0], sport: answers[1], league: answers[2], age: answers[3], teamName: answers[4], preference: answers[5]})
           })
         } catch (error) {
           console.log(error)
@@ -62,6 +65,10 @@ const Questionnaire = () => {
       ]
     },
     {
+      text: "What is your team's name?",
+      options: "Enter your team name"
+    },
+    {
       text: "Do you prefer dark mode or light mode? Don't worry, you can change this later.",
       options: ["Dark", "Light"]
     },
@@ -93,14 +100,25 @@ const Questionnaire = () => {
       </div>
       <h3 className="questionnaire-heading">Ready to get started?</h3>
       <span className="question-tracker">Question {currentQuestion+1}/{questions.length}</span>
-        <div className="dark-inner-container question-container">
-          <p className="question">{current.text}</p>
-          {current.options.map((option) => (
-            <>
-              <button onClick={() => handleAnswer(option)}>{option}</button>
-            </>
-          ))}
-        </div>
+      <div className="dark-inner-container question-container">
+        <p className="question">{current.text}</p>
+        {typeof current.options === "string" ? (
+          <>
+            <input
+            type="text"
+            value={answers[currentQuestion]}
+            onChange={(e) => setTeamName(e.target.value)}
+            className='questionnaire-input'
+            placeholder="Enter Team Name"
+            />
+            <button id="enter-team-name-btn" onClick={() => handleAnswer(teamName)}>Next</button>
+          </>
+        ) : (
+          current.options.map((option) => (
+            <button onClick={() => handleAnswer(option)}>{option}</button>
+          ))
+        )}
+</div>
     </div>
   );
 };

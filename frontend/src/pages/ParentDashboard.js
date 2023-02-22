@@ -44,16 +44,30 @@ function ParentDashboard() {
     if(item.sport == 'Hockey'){
       sport = <GiHockey size={50}/>
     }if(item.sport == 'Baseball'){
-      sport = <GiBaseballGlove />
+      sport = <GiBaseballGlove size={50}/>
+    }if(item.sport == 'Softball'){
+      sport = <TbBallBaseball size={50}/>
+    }if(item.sport == 'Football'){
+      sport = <GiAmericanFootballPlayer size={50}/>
+    }if(item.sport == 'Soccer'){
+      sport = <GiSoccerField size={50}/>
+    }if(item.sport == 'Basketball'){
+      sport = <GiBasketballJersey size={50}/>
+    }if(item.sport == 'Lacrosse'){
+      sport = <MdSportsKabaddi size={50}/>
+    }if(item.sport == 'Volleyball'){
+      sport = <TbBallVolleyball size={50}/>
+    }if(item.sport == 'Bowling'){
+      sport = <GiBowlingStrike size={50}/>
     }
     return (
       <div className='team-container'>
-      {/* <span className='league-date'>Fall 2022</span> */}
       <section className='my-sport-team dark-inner-container '>
           <span>{sport}</span>
-          <span>League: {item.sportType}</span>
-          <span>Age: {item.age}</span>
-          <span>Record: {item.record}</span>
+          <span>{item.teamName}</span>
+          <span>{item.sportType} League</span>
+          <span>{item.age}</span>
+          <span>{item.record}</span>
       </section>
       </div>
     )
