@@ -474,6 +474,12 @@ header{
 	background: linear-gradient(169.29deg, #262B2F -0.68%, #16191D 74.03%);
 }
 
+.my-sport-team-container{
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
 .dashboard-container nav{
 	height: 4rem;
 	display: flex;

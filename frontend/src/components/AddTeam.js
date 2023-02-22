@@ -4,9 +4,9 @@ function AddTeam(props) {
 
     const [formData, setFormData] = useState({
         teamName: '',
-        sport: '',
-        sportType: '',
-        age: ''
+        sport: 'Hockey',
+        sportType: 'Travel',
+        age: 'Under 13'
     })
     
 
@@ -18,7 +18,6 @@ function AddTeam(props) {
     }
 
     const onSubmit = async (e) => {
-        e.preventDefault()
         const response = await fetch('http://localhost:2121/dashboard/addTeam', {
             credentials: 'include',
             method: 'POST',
