@@ -29,6 +29,16 @@ module.exports = {
             teamName: req.body.teamName
         })
     },
+    addTeam: async (req, res) => {
+        await Team.create({
+            sport: req.body.sport,
+            sportType: req.body.sportType,
+            age: req.body.age,
+            managedBy: req.user._id,
+            record: '0-0',
+            teamName: req.body.teamName
+        })
+    },
     getTeams: async (req, res) => {
         const teams = await Team.find({managedBy: req.user._id})
         res.status(200).json({teams})
