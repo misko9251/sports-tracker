@@ -7,6 +7,7 @@ function DashboardRouter() {
 
   const [isParent, setIsParent] = useState()
   const [isLoading, setIsLoading] = useState(true)
+  console.log(isParent)
 
   useEffect(()=> {
     async function fetchData(){

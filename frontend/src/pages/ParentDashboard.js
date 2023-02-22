@@ -51,9 +51,10 @@ function ParentDashboard() {
       {/* <span className='league-date'>Fall 2022</span> */}
       <section className='my-sport-team dark-inner-container '>
           <span>{sport}</span>
-          <span>League: {item.sportType}</span>
-          <span>Age: {item.age}</span>
-          <span>Record: {item.record}</span>
+          <span>{item.teamName}</span>
+          <span>{item.sportType} League</span>
+          <span>{item.age}</span>
+          <span>{item.record}</span>
       </section>
       </div>
     )

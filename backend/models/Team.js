@@ -17,6 +17,9 @@ const TeamSchema = new mongoose.Schema({
     },
     record: {
         type: String
+    },
+    teamName: {
+        type: String
     }
 })
 

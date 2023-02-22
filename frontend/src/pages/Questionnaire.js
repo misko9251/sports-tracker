@@ -19,7 +19,7 @@ const Questionnaire = () => {
             credentials: 'include',
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
-            body: JSON.stringify({type: answers[0], sport: answers[1], league: answers[2], age: answers[3], preference: answers[4]})
+            body: JSON.stringify({type: answers[0], sport: answers[1], league: answers[2], age: answers[3], teamName: answers[4], preference: answers[5]})
           })
         } catch (error) {
           console.log(error)
@@ -30,10 +30,6 @@ const Questionnaire = () => {
   }, [currentQuestion])
 
   const questions = [
-    {
-      text: "What is your team's name?",
-      options: "Enter your team name"
-    },
     {
       text: "Are you a coach or parent?",
       options: ["Coach", "Parent"],
@@ -67,6 +63,10 @@ const Questionnaire = () => {
         "Between 13-18",
         "Over 18"
       ]
+    },
+    {
+      text: "What is your team's name?",
+      options: "Enter your team name"
     },
     {
       text: "Do you prefer dark mode or light mode? Don't worry, you can change this later.",
@@ -108,8 +108,10 @@ const Questionnaire = () => {
             type="text"
             value={answers[currentQuestion]}
             onChange={(e) => setTeamName(e.target.value)}
+            className='questionnaire-input'
+            placeholder="Enter Team Name"
             />
-            <button onClick={() => handleAnswer(teamName)}>Next</button>
+            <button id="enter-team-name-btn" onClick={() => handleAnswer(teamName)}>Next</button>
           </>
         ) : (
           current.options.map((option) => (

@@ -25,7 +25,8 @@ module.exports = {
             sportType: req.body.league,
             age: req.body.age,
             managedBy: req.user._id,
-            record: '0-0'
+            record: '0-0',
+            teamName: req.body.teamName
         })
     },
     getTeams: async (req, res) => {
