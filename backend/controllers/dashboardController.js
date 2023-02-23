@@ -42,5 +42,8 @@ module.exports = {
     getTeams: async (req, res) => {
         const teams = await Team.find({managedBy: req.user._id})
         res.status(200).json({teams})
+    },
+    teamProfile: async (req, res) => {
+        console.log(req.params)
     }
 }
