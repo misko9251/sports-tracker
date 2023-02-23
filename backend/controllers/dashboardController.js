@@ -44,6 +44,7 @@ module.exports = {
         res.status(200).json({teams})
     },
     teamProfile: async (req, res) => {
-        console.log(req.params)
+        const team = await Team.findOne({_id: req.params.id})
+        res.status(200).json({team})
     }
 }

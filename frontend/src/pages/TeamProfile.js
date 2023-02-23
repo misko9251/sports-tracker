@@ -6,6 +6,7 @@ function TeamProfile() {
     const {teamId} = useParams()
     const [team, setTeam] = useState({})
     const [isLoading, setIsLoading] = useState(true)
+    console.log(team.team)
 
    useEffect(()=> {
     async function fetchData(){
@@ -22,9 +23,21 @@ function TeamProfile() {
   }, [])
 
     return (
-      <section className='dashboard-container'>
-        <h1>TEST</h1>
-      </section>
+      <>
+      {isLoading ? <Spinner /> : (
+        <section className='dashboard-container'>
+            <header className='team-profile-header'>
+              <h2>{team.team.teamName}</h2>
+              <ul className='team-profile-list'>
+                <li>Schedule</li>
+                <li>Team</li>
+                <li>Video</li>
+                <li>Stats</li>
+              </ul>
+            </header>
+        </section>
+      )}
+      </>
     )
 }
 

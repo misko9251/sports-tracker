@@ -19,7 +19,7 @@ import {GiBowlingStrike} from 'react-icons/gi'
 function Home() {
   return (
     <>
-        <header>
+        <header className='main-header'>
             <div className='video-text-container'>
                 <video className='videoTag' autoPlay loop muted>
                     <source src={headerVideo} type='video/mp4' />
