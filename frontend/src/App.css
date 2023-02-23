@@ -646,6 +646,14 @@ hr {
 	flex-direction: column;
 }
 
+.team-profile-info{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
 .team-profile-list{
 	display: flex;
 	justify-content: space-around;
