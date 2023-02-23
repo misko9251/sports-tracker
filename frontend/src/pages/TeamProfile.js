@@ -25,23 +25,23 @@ function TeamProfile() {
         const data = await response.json()
         setTeam(data)
         if(data.team.sport == 'Hockey'){
-          setSportLogo(<GiHockey size={80}/>)
+          setSportLogo(<GiHockey className='sport-type' size={80}/>)
         }if(data.team.sport == 'Baseball'){
-          setSportLogo(<GiBaseballGlove size={80}/>)
+          setSportLogo(<GiBaseballGlove className='sport-type' size={80}/>)
         }if(data.team.sport == 'Softball'){
-          setSportLogo(<TbBallBaseball size={80}/>)
+          setSportLogo(<TbBallBaseball className='sport-type' size={80}/>)
         }if(data.team.sport == 'Football'){
-          setSportLogo(<GiAmericanFootballPlayer size={80}/>)
+          setSportLogo(<GiAmericanFootballPlayer className='sport-type' size={80}/>)
         }if(data.team.sport == 'Soccer'){
-          setSportLogo(<GiSoccerField size={80}/>)
+          setSportLogo(<GiSoccerField className='sport-type' size={80}/>)
         }if(data.team.sport == 'Basketball'){
-          setSportLogo(<GiBasketballJersey size={80}/>)
+          setSportLogo(<GiBasketballJersey className='sport-type' size={80}/>)
         }if(data.team.sport == 'Lacrosse'){
-          setSportLogo(<MdSportsKabaddi size={80}/>)
+          setSportLogo(<MdSportsKabaddi className='sport-type' size={80}/>)
         }if(data.team.sport == 'Volleyball'){
-          setSportLogo(<TbBallVolleyball size={80}/>)
+          setSportLogo(<TbBallVolleyball className='sport-type' size={80}/>)
         }if(data.team.sport == 'Bowling'){
-          setSportLogo(<GiBowlingStrike size={80}/>)
+          setSportLogo(<GiBowlingStrike className='sport-type' size={80}/>)
         }
         setIsLoading(false)
       } catch (error) {
@@ -58,7 +58,7 @@ function TeamProfile() {
             <header className='team-profile-header'>
               <div className='team-profile-info'>
                 <h2>{sportLogo}</h2>
-                <h2>{team.team.teamName}</h2>
+                <span className='team-profile-name'>{team.team.teamName}</span>
                 <span>{team.team.record}</span>
               </div>
               <ul className='team-profile-list'>
