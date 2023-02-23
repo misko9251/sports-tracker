@@ -10,6 +10,7 @@ import {MdSportsKabaddi} from 'react-icons/md'
 import {TbBallVolleyball} from 'react-icons/tb'
 import {GiBowlingStrike} from 'react-icons/gi'
 import AddTeam from '../components/AddTeam'
+import {Link} from 'react-router-dom'
 
 function ParentDashboard() {
 
@@ -61,15 +62,17 @@ function ParentDashboard() {
       sport = <GiBowlingStrike size={50}/>
     }
     return (
-      <div className='team-container'>
-      <section className='my-sport-team dark-inner-container '>
-          <span>{sport}</span>
-          <span>{item.teamName}</span>
-          <span>{item.sportType} League</span>
-          <span>{item.age}</span>
-          <span>{item.record}</span>
-      </section>
-      </div>
+      <Link to={`/dashboard/${item._id}`} className='custom-link-class'>
+        <div key={item._id} className='team-container'>
+          <section className='my-sport-team dark-inner-container '>
+              <span>{sport}</span>
+              <span>{item.teamName}</span>
+              <span>{item.sportType} League</span>
+              <span>{item.age}</span>
+              <span>{item.record}</span>
+          </section>
+        </div>
+      </Link >
     )
   })
 
