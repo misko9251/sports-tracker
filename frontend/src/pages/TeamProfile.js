@@ -11,12 +11,14 @@ import {MdSportsKabaddi} from 'react-icons/md'
 import {TbBallVolleyball} from 'react-icons/tb'
 import {GiBowlingStrike} from 'react-icons/gi'
 import AddTeam from '../components/AddTeam'
+import Schedule from '../components/Schedule'
 
 function TeamProfile() {
     const {teamId} = useParams()
     const [team, setTeam] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [sportLogo, setSportLogo] = useState('')
+    const [currentTab, setCurrentTab] = useState('schedule')
 
    useEffect(()=> {
     async function fetchData(){
@@ -62,12 +64,13 @@ function TeamProfile() {
                 <span>{team.team.record}</span>
               </div>
               <ul className='team-profile-list'>
-                <li>Schedule</li>
+                <li onClick={() => setCurrentTab('schedule')}>Schedule</li>
                 <li>Team</li>
                 <li>Video</li>
                 <li>Stats</li>
               </ul>
             </header>
+            <Schedule />
         </section>
       )}
       </>
