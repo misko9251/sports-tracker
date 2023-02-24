@@ -679,6 +679,10 @@ hr {
 	cursor: pointer;
 }
 
+.dashboard-tabs{
+	color: white;
+}
+
 /* Schedule Component */
 
 .schedule-container{
@@ -700,6 +704,45 @@ hr {
 	border-radius: 10px;
 	border: none;
 }
+
+/* Team Component */
+
+.team-tab{
+	margin-top: 5%;
+	background-color: rgb(23, 28, 34);
+}
+
+.staff-container, .team-container{
+	margin: 0 auto;
+	margin-top: 7%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.team-tab-btn{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+	font-size: 1.3rem;
+	height: 3rem;
+}
+
+.staff-container span{
+	color: black;
+	height: 3rem;
+	width: 100%;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(244, 242, 242);
+}
+
 
 /* Spinner */
 
@@ -889,5 +932,8 @@ hr {
 		width: 80%;
 		height: 80vh;
 		justify-content: space-around;
+	}
+	.team-tab{
+		margin-top: 15%;
 	}
 }
