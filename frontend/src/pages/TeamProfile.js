@@ -10,14 +10,16 @@ import {GiBasketballJersey} from 'react-icons/gi'
 import {MdSportsKabaddi} from 'react-icons/md'
 import {TbBallVolleyball} from 'react-icons/tb'
 import {GiBowlingStrike} from 'react-icons/gi'
-import AddTeam from '../components/AddTeam'
+import Schedule from '../components/Schedule'
+import Team from '../components/Team'
 
 function TeamProfile() {
     const {teamId} = useParams()
     const [team, setTeam] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [sportLogo, setSportLogo] = useState('')
-
+    const [currentTab, setCurrentTab] = useState('schedule')
+    
    useEffect(()=> {
     async function fetchData(){
       try {
@@ -62,12 +64,17 @@ function TeamProfile() {
                 <span>{team.team.record}</span>
               </div>
               <ul className='team-profile-list'>
-                <li>Schedule</li>
-                <li>Team</li>
-                <li>Video</li>
-                <li>Stats</li>
+                <li onClick={() => setCurrentTab('schedule')}>Schedule</li>
+                <li onClick={() => setCurrentTab('team')}>Team</li>
+                <li onClick={() => setCurrentTab('video')}>Video</li>
+                <li onClick={() => setCurrentTab('stats')}>Stats</li>
               </ul>
             </header>
+            <section className='tab-container'>
+             {currentTab === 'schedule' ? <Schedule /> :
+              currentTab === 'team' ? <Team /> : null
+            }
+            </section>
         </section>
       )}
       </>

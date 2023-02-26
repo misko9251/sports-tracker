@@ -96,7 +96,6 @@ button {
 	background-color: white;
 	color: black;
 	border-radius: 10px;
-	border: 1px solid green;
 }
 
 .sports-drop-down:before {
@@ -561,8 +560,6 @@ button {
 	height: 100vh;
 	display: flex;
 	font-size: 2rem;
-	/* padding: 3%;
-	width: 97%; */
 }
 
 .add-team-form{
@@ -581,7 +578,6 @@ button {
 
 .close-or-submit-form{
 	width: 35%;
-	border: 1px solid red;
 	margin: 0 auto;
 	padding: 4%;
 	height: 1px;
@@ -644,6 +640,7 @@ hr {
 	height: 40vh;
 	display: flex;
 	flex-direction: column;
+	box-sizing: border-box;
 }
 
 .team-profile-info{
@@ -679,6 +676,103 @@ hr {
 	cursor: pointer;
 }
 
+.tab-container{
+	height: 60vh;
+	box-sizing: border-box;
+}
+
+/* Schedule Component */
+
+.schedule-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 40vh;
+	color: white;
+}
+
+.schedule-container h4{
+	font-size: 2rem;
+}
+
+.schedule-container button{
+	width: 30%;
+	height: 3rem;
+	border-radius: 10px;
+	border: none;
+}
+
+/* Team Component */
+
+.team-tab{
+	background-color: rgb(23, 28, 34);
+}
+
+.staff-container, .team-container{
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.staff-container, .team-container{
+	padding-top: 5%;
+}
+
+.team-tab-btn{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+	font-size: 1.3rem;
+	height: 3rem;
+}
+
+.staff-container span{
+	color: black;
+	height: 3rem;
+	width: 100%;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(244, 242, 242);
+}
+
+.add-staff-container {
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	opacity: 0;
+	visibility: hidden;
+	height: 0px;
+	transition: opacity 0.5s, visibility 0.5s, height 0.5s;
+	background-color: rgb(105, 227, 130)
+}
+
+.add-staff-container.active {
+	opacity: 1;
+	visibility: visible;
+	height: 60vh;
+	display: flex;
+	font-size: 2rem;
+}
+
+.add-staff-form{
+	display: flex;
+	flex-direction: column;
+	width: 40%;
+	height: 50vh;
+	margin: 0 auto;
+	border-radius: 10px;
+	/* background: linear-gradient(169.29deg, #262B2F -0.68%, #16191D 74.03%); */
+}
 
 /* Spinner */
 
@@ -869,4 +963,8 @@ hr {
 		height: 80vh;
 		justify-content: space-around;
 	}
+	.staff-container, .team-container{
+		padding-top: 15%;
+	}
+	
 }
