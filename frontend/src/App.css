@@ -96,7 +96,6 @@ button {
 	background-color: white;
 	color: black;
 	border-radius: 10px;
-	border: 1px solid green;
 }
 
 .sports-drop-down:before {
@@ -579,7 +578,6 @@ button {
 
 .close-or-submit-form{
 	width: 35%;
-	border: 1px solid red;
 	margin: 0 auto;
 	padding: 4%;
 	height: 1px;
@@ -642,6 +640,7 @@ hr {
 	height: 40vh;
 	display: flex;
 	flex-direction: column;
+	box-sizing: border-box;
 }
 
 .team-profile-info{
@@ -677,8 +676,9 @@ hr {
 	cursor: pointer;
 }
 
-.dashboard-tabs{
-	color: white;
+.tab-container{
+	height: 60vh;
+	box-sizing: border-box;
 }
 
 /* Schedule Component */
@@ -706,17 +706,19 @@ hr {
 /* Team Component */
 
 .team-tab{
-	margin-top: 5%;
 	background-color: rgb(23, 28, 34);
 }
 
 .staff-container, .team-container{
 	margin: 0 auto;
-	margin-top: 7%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+.staff-container, .team-container{
+	padding-top: 5%;
 }
 
 .team-tab-btn{
@@ -744,29 +746,33 @@ hr {
 .add-staff-container {
 	position: absolute;
 	width: 100%;
-	bottom: 0;
 	z-index: 1;
 	display: flex;
 	flex-direction: column;
 	opacity: 0;
 	visibility: hidden;
-	height: 1px;
+	height: 0px;
 	transition: opacity 0.5s, visibility 0.5s, height 0.5s;
-	background-color: rgb(100, 110, 205);
+	background-color: rgb(105, 227, 130)
 }
-
-/* .add-team-container span{
-	margin: 3%;
-} */
 
 .add-staff-container.active {
 	opacity: 1;
 	visibility: visible;
-	height: 100vh;
+	height: 60vh;
 	display: flex;
 	font-size: 2rem;
 }
 
+.add-staff-form{
+	display: flex;
+	flex-direction: column;
+	width: 40%;
+	height: 50vh;
+	margin: 0 auto;
+	border-radius: 10px;
+	/* background: linear-gradient(169.29deg, #262B2F -0.68%, #16191D 74.03%); */
+}
 
 /* Spinner */
 
@@ -957,7 +963,8 @@ hr {
 		height: 80vh;
 		justify-content: space-around;
 	}
-	.team-tab{
-		margin-top: 15%;
+	.staff-container, .team-container{
+		padding-top: 15%;
 	}
+	
 }

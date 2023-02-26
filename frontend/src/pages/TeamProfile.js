@@ -70,9 +70,11 @@ function TeamProfile() {
                 <li onClick={() => setCurrentTab('stats')}>Stats</li>
               </ul>
             </header>
-            {currentTab === 'schedule' ? <Schedule /> :
-             currentTab === 'team' ? <Team /> : null
-           }
+            <section className='tab-container'>
+             {currentTab === 'schedule' ? <Schedule /> :
+              currentTab === 'team' ? <Team /> : null
+            }
+            </section>
         </section>
       )}
       </>
