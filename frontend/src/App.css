@@ -583,7 +583,7 @@ button {
 	height: 1px;
 }
 
-.add-team-form input, .add-team-form select, .submit-new-team-btn{
+.add-team-form input, .add-team-form select, .submit-new-team-btn, .submit-new-staff-btn, .add-staff-form{
 	background-color: rgb(50, 56, 66);
 	border: none;
 	height: 40px;
@@ -753,7 +753,7 @@ hr {
 	visibility: hidden;
 	height: 0px;
 	transition: opacity 0.5s, visibility 0.5s, height 0.5s;
-	background-color: rgb(105, 227, 130)
+	background-color: rgb(105, 227, 130);
 }
 
 .add-staff-container.active {
@@ -765,13 +765,31 @@ hr {
 }
 
 .add-staff-form{
+	color: white;
 	display: flex;
 	flex-direction: column;
-	width: 40%;
-	height: 50vh;
+	justify-content: space-between;
+	width: 35%;
 	margin: 0 auto;
+	margin-bottom: 3%;
+	height: 100%;
 	border-radius: 10px;
-	/* background: linear-gradient(169.29deg, #262B2F -0.68%, #16191D 74.03%); */
+	padding: 4%;
+	background-color: rgb(25, 30, 45);
+	background: linear-gradient(94.6deg, #32383E -60.81%, #17191C 185.78%);
+	box-shadow: 36px 12px 64px rgba(2, 3, 3, 0.7), -12px -20px 56px rgba(232, 237, 243, 0.05), inset -16px -6px 80px rgba(248, 249, 249, 0.03);
+}
+
+
+.add-staff-form label{
+	font-size: 1.4rem;
+	margin: 3% 0;
+}
+
+.add-staff-input{
+	height: 2rem;
+	border: none;
+	border-radius: 5px;
 }
 
 /* Spinner */
