@@ -1,10 +1,11 @@
 import React from 'react'
+import {AiOutlineCloseSquare} from 'react-icons/ai'
 
 function AddStaff(props) {
   return (
     <div className={`add-staff-container ${props.isActive ? 'active show' : ''}` }>
-        <span onClick={props.onClose}>X</span>
         <form className='add-staff-form add-team-form'>
+            <span className='close-staff-form' onClick={props.onClose}>{<AiOutlineCloseSquare/>}</span>
             <label>Add Staff Member</label>
             <input
             placeholder='Enter name'
