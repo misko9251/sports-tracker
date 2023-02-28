@@ -583,7 +583,7 @@ button {
 	height: 1px;
 }
 
-.add-team-form input, .add-team-form select, .submit-new-team-btn, .submit-new-staff-btn, .add-staff-form{
+.add-team-form input, .add-team-form select, .submit-new-team-btn, .submit-new-staff-btn, .add-staff-form, .submit-new-player-btn{
 	background-color: rgb(50, 56, 66);
 	border: none;
 	height: 40px;
@@ -743,7 +743,7 @@ hr {
 	background-color: rgb(244, 242, 242);
 }
 
-.add-staff-container {
+.add-staff-container, .add-player-container {
 	position: absolute;
 	display: flex;
 	width: 100%;
@@ -757,7 +757,7 @@ hr {
 	background-color: rgb(105, 227, 130);
 }
 
-.add-staff-container.active {
+.add-staff-container.active, .add-player-container.active {
 	opacity: 1;
 	visibility: visible;
 	height: 60vh;

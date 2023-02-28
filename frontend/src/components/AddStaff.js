@@ -2,6 +2,7 @@ import React from 'react'
 import {AiOutlineCloseSquare} from 'react-icons/ai'
 
 function AddStaff(props) {
+    console.log(props)
   return (
     <div className={`add-staff-container ${props.isActive ? 'active show' : ''}` }>
         <form className='add-staff-form add-team-form'>
