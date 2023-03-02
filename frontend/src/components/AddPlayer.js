@@ -1,7 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {AiOutlineCloseSquare} from 'react-icons/ai'
 
 function AddPlayer(props) {
+
+  const [formData, setFormData] = useState({
+    name: '',
+    position: '',
+  })  
+
   return (
     <div className={`add-player-container ${props.isActive ? 'active show' : ''}` }>
     <form className='add-staff-form add-team-form'>
