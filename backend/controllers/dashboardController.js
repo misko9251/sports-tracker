@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const Team = require('../models/Team')
+const cloudinary = require('../middleware/cloudinary')
 
 module.exports = {
     getDash: async (req, res) => {
@@ -46,5 +47,32 @@ module.exports = {
     teamProfile: async (req, res) => {
         const team = await Team.findOne({_id: req.params.id})
         res.status(200).json({team})
+    },
+    addPlayer: async (req, res) => {
+        try {
+            const fileStr = req.body.previewSource
+            const result = await cloudinary.uploader.upload(fileStr);
+            const currentTeam = await Team.findById({_id: req.params.id})
+            const teamName = currentTeam.teamName
+            let profileImg
+            if(req.body.previewSource){
+                profileImg = result.secure_url
+            }else{
+                profileImg = '/src/assets/default-athlete.png'
+            }
+            await Team.findByIdAndUpdate({_id: req.params.id}, {
+                $push: {
+                    roster: {
+                        player: req.body.name,
+                        position: req.body.position,
+                        team: teamName,
+                        image: profileImg
+                    }
+                }
+            })
+            res.status(200).json({msg: 'Player added'})
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
