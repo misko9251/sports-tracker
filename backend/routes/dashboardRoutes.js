@@ -7,5 +7,6 @@ router.post('/questionnaire', dashboardController.addQuestionnaire)
 router.post('/addTeam', dashboardController.addTeam)
 router.get('/getTeams', dashboardController.getTeams)
 router.get('/team/:id', dashboardController.teamProfile)
+router.post('/addPlayer/:id', dashboardController.addPlayer)
 
 module.exports = router

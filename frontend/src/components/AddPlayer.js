@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
+import {useParams} from 'react-router-dom'
 import {AiOutlineCloseSquare} from 'react-icons/ai'
 
 function AddPlayer(props) {
+
+  const {teamId} = useParams()
 
   const [formData, setFormData] = useState({
     name: '',
@@ -20,6 +23,7 @@ function AddPlayer(props) {
     })
     const file = e.target.files[0];
     previewFile(file);
+    console.log(e.target.file)
   }
 
   const previewFile = (file) => {
@@ -32,7 +36,12 @@ function AddPlayer(props) {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    const response = await fetch('http://localhost:2121/dashboard/addPlayer')
+    const response = await fetch(`http://localhost:2121/dashboard/addPlayer/${teamId}`, {
+        credentials: 'include',
+        method: 'POST',
+        headers: {'Content-Type' : 'application/json'},
+        body: JSON.stringify({...formData, previewSource})
+    })
   } 
 
   return (
@@ -61,9 +70,11 @@ function AddPlayer(props) {
         <input
         id='fileInput'
         type='file'
+        name='image'
         onChange={onChange}
-        value={fileInputState}
+        className='form-input'
         />
+        
         <button style={{marginTop: '2%'}}className='submit-new-player-btn'>Submit</button>
     </form>
 </div>
