@@ -8,5 +8,6 @@ router.post('/addTeam', dashboardController.addTeam)
 router.get('/getTeams', dashboardController.getTeams)
 router.get('/team/:id', dashboardController.teamProfile)
 router.post('/addPlayer/:id', dashboardController.addPlayer)
+router.post('/addStaff/:id', dashboardController.addStaff)
 
 module.exports = router

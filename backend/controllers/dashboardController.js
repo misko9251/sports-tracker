@@ -74,5 +74,8 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
+    },
+    addStaff: async (req, res) => {
+        console.log(req)
     }
 }

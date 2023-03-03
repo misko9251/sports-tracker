@@ -22,20 +22,14 @@ const TeamSchema = new mongoose.Schema({
         type: String
     },
     roster: [{
-        player: {
-            type: String
-        },
-        position: {
-            type: String
-        },
-        team: {
-            type: String
-        },
-        image: {
-            type: String,
-            default: 'frontend/src/assets/default-athlete.png'
-        },
-
+        player: { type: String },
+        position: { type: String },
+        team: { type: String },
+        image: { type: String, default: 'frontend/src/assets/default-athlete.png'},
+    }],
+    staff: [{
+        name: { type: String },
+        title: { type: String }
     }]
 })
 
