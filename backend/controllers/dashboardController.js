@@ -31,14 +31,18 @@ module.exports = {
         })
     },
     addTeam: async (req, res) => {
-        await Team.create({
-            sport: req.body.sport,
-            sportType: req.body.sportType,
-            age: req.body.age,
-            managedBy: req.user._id,
-            record: '0-0',
-            teamName: req.body.teamName
-        })
+        try {
+            await Team.create({
+                sport: req.body.sport,
+                sportType: req.body.sportType,
+                age: req.body.age,
+                managedBy: req.user._id,
+                record: '0-0',
+                teamName: req.body.teamName
+            })
+        } catch (error) {
+            console.log(error)
+        }
     },
     getTeams: async (req, res) => {
         const teams = await Team.find({managedBy: req.user._id})
@@ -76,6 +80,17 @@ module.exports = {
         }
     },
     addStaff: async (req, res) => {
-        console.log(req)
+        try {
+            await Team.findByIdAndUpdate({_id: req.params.id}, {
+                $push: {
+                    staff: {
+                        name: req.body.name,
+                        title: req.body.title
+                    }
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
