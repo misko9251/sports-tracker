@@ -92,5 +92,15 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
+    },
+    getTeamInfo: async (req, res) => {
+        try {
+            const team = await Team.findOne({_id: req.params.id})
+            const staffMembers = team.staff
+            const roster = team.roster
+            res.status(200).json({staffMembers, roster})
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

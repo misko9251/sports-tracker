@@ -563,14 +563,15 @@ button {
 }
 
 .add-team-form{
+	color: white;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	width: 35%;
-	margin: 0 auto;
-	height: 60vh;
+	margin: 3% auto;
+	max-height: 60vh;
 	border-radius: 10px;
-	padding: 4%;
+	padding: 1% 2% 2% 2%;
 	background-color: rgb(25, 30, 45);
 	background: linear-gradient(94.6deg, #32383E -60.81%, #17191C 185.78%);
 	box-shadow: 36px 12px 64px rgba(2, 3, 3, 0.7), -12px -20px 56px rgba(232, 237, 243, 0.05), inset -16px -6px 80px rgba(248, 249, 249, 0.03);
@@ -721,6 +722,10 @@ hr {
 	padding-top: 5%;
 }
 
+.team-container{
+	padding-bottom: 5%;
+}
+
 .team-tab-btn{
 	display: flex;
 	align-items: center;
@@ -732,7 +737,7 @@ hr {
 	height: 3rem;
 }
 
-.staff-container span{
+.staff-container span, .team-container span{
 	color: black;
 	height: 3rem;
 	width: 100%;
@@ -781,7 +786,7 @@ hr {
 }
 
 
-.add-staff-form label{
+.add-staff-form label, .add-team-form label{
 	font-size: 1.4rem;
 	margin: 3% 0;
 }
@@ -856,6 +861,12 @@ hr {
 } 
 
 /* Media Queries */
+
+@media screen and (min-width: 1200px){
+	.add-team-form{
+		max-height: 325px;
+	}
+}
 
 @media screen and (max-width: 850px){
 	.sport-select-container1, .sport-select-container2{

@@ -46,7 +46,7 @@ function AddPlayer(props) {
 
   return (
     <div className={`add-player-container ${props.isActive ? 'active show' : ''}` }>
-    <form onSubmit={onSubmit} className='add-staff-form add-team-form'>
+    <form onSubmit={onSubmit} className='add-team-form'>
         <span className='close-staff-form' onClick={props.onClose}>{<AiOutlineCloseSquare/>}</span>
         <label>Add Player</label>
         <input
@@ -59,7 +59,7 @@ function AddPlayer(props) {
         />
         <label>Position</label>
         <input
-        placeholder='e.g. Coach'
+        placeholder='e.g. Pitcher'
         className='add-staff-input'
         type='text'
         onChange={onChange}
