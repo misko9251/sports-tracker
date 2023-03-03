@@ -722,10 +722,6 @@ hr {
 	padding-top: 5%;
 }
 
-.team-container{
-	padding-bottom: 5%;
-}
-
 .team-tab-btn{
 	display: flex;
 	align-items: center;
@@ -737,7 +733,7 @@ hr {
 	height: 3rem;
 }
 
-.staff-container span, .team-container span{
+.staff-container span{
 	color: black;
 	height: 3rem;
 	width: 100%;
@@ -862,9 +858,9 @@ hr {
 
 /* Media Queries */
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1100px){
 	.add-team-form{
-		max-height: 325px;
+		max-height: 325px;;
 	}
 }
 
