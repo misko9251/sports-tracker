@@ -102,5 +102,18 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
+    },
+    deleteStaff: async (req, res) => {
+        try {
+            const staffId = req.body 
+            const currentTeamId = req.params.id
+            await Team.findByIdAndUpdate({_id: currentTeamId},{
+                $pull: {staff: {_id: staffId}}
+            })
+            res.status(200).json({msg: 'Staff member deleted'})
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({msg: 'Error deleting staff member'})
+        }
     }
 }

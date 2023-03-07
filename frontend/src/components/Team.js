@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom'
+import {json, useParams} from 'react-router-dom'
 import {HiOutlineUserAdd} from 'react-icons/hi'
 import {CiCircleRemove} from 'react-icons/ci'
 import AddStaff from './AddStaff'
@@ -41,6 +41,21 @@ function Team() {
         setAddPlayer(false)
     }
 
+    const deleteStaffMember = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:2121/dashboard/deleteStaff/${teamId}`, {
+                credentials: 'include',
+                method: 'DELETE',
+                headers: {'Content-Type' : 'application/json'},
+                body: JSON.stringify({_id: id})
+            })
+            const json = await response.json()
+            setPlayers((prevVal)=> prevVal.filter((item)=> item._id !== id))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const allStaffMembers = staffMembers.map((item)=> {
         return (
             <div className='staff-members'>
@@ -48,7 +63,10 @@ function Team() {
                     <span>{item.name}</span>
                     <span className='staff-title'>{item.title}</span>
                 </div>
-                <div className='delete-staff'>
+                <div 
+                className='delete-staff'
+                onClick={()=> deleteStaffMember(item._id)}
+                >
                     <CiCircleRemove/>
                 </div>
             </div>

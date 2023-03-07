@@ -10,6 +10,7 @@ router.get('/team/:id', dashboardController.teamProfile)
 router.post('/addPlayer/:id', dashboardController.addPlayer)
 router.post('/addStaff/:id', dashboardController.addStaff)
 router.get('/getTeamInfo/:id', dashboardController.getTeamInfo)
+router.delete('/deleteStaff/:id', dashboardController.deleteStaff)
 
 
 module.exports = router
