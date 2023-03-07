@@ -4,6 +4,7 @@ import {HiOutlineUserAdd} from 'react-icons/hi'
 import {CiCircleRemove} from 'react-icons/ci'
 import AddStaff from './AddStaff'
 import AddPlayer from './AddPlayer'
+import TabSpinner from './TabSpinner'
 
 
 function Team() {
@@ -15,6 +16,7 @@ function Team() {
     const [staffMembers, setStaffMembers] = useState([])
     const [players, setPlayers] = useState([])
     const [shouldDisplay, setShouldDisplay] = useState('block')
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         setShouldDisplay(addStaff || addPlayer ? "none" : "block");
@@ -29,6 +31,7 @@ function Team() {
             const json = await response.json()
             setStaffMembers(json.staffMembers)
             setPlayers(json.roster)
+            setIsLoading(false)
         }
         fetchData()
     }, [staffMembers, players])
@@ -80,34 +83,38 @@ function Team() {
     })
 
     return (
-      <section className='team-tab dashboard-tabs'>
+        <>
+        {isLoading ? <TabSpinner /> : (
+                  <section className='team-tab dashboard-tabs'>
 
-        <AddStaff
-        onClose={closeAddStaff}
-        isActive={addStaff}
-        />
-
-        <AddPlayer 
-        onClose={closeAddPlayer}
-        isActive={addPlayer}
-        />
-
-            <div style={{display: shouldDisplay}} className='staff-container'>
-                <span>
-                    <button onClick={()=> setAddStaff(true)}className='team-tab-btn'><HiOutlineUserAdd style={{marginRight: '10px'}} size={30}/>Add Staff</button>
-                </span>
-                {allStaffMembers}
-            </div>
-
-            <div style={{display: shouldDisplay}} className='team-container'>
-                <span>
-                    <button onClick={()=> setAddPlayer(true)}className='team-tab-btn'><HiOutlineUserAdd style={{marginRight: '10px'}} size={30}/>Add Player</button>
-                </span>
-                {myRoster}
-            </div>
-
-
-      </section>
+                  <AddStaff
+                  onClose={closeAddStaff}
+                  isActive={addStaff}
+                  />
+          
+                  <AddPlayer 
+                  onClose={closeAddPlayer}
+                  isActive={addPlayer}
+                  />
+          
+                      <div style={{display: shouldDisplay}} className='staff-container'>
+                          <span>
+                              <button onClick={()=> setAddStaff(true)}className='team-tab-btn'><HiOutlineUserAdd style={{marginRight: '10px'}} size={30}/>Add Staff</button>
+                          </span>
+                          {allStaffMembers}
+                      </div>
+          
+                      <div style={{display: shouldDisplay}} className='team-container'>
+                          <span>
+                              <button onClick={()=> setAddPlayer(true)}className='team-tab-btn'><HiOutlineUserAdd style={{marginRight: '10px'}} size={30}/>Add Player</button>
+                          </span>
+                          {myRoster}
+                      </div>
+          
+          
+                </section>
+        )}
+        </>
     )
 }
 
