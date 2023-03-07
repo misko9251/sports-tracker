@@ -525,6 +525,7 @@ button {
 
 .team-container {
 	position: relative;
+	padding-bottom: 3%;
 }
 
 .league-date{
@@ -733,7 +734,7 @@ hr {
 	height: 3rem;
 }
 
-.staff-container span{
+.staff-members, .roster-players{
 	color: black;
 	height: 3rem;
 	width: 100%;
@@ -742,6 +743,22 @@ hr {
 	justify-content: center;
 	align-items: center;
 	background-color: rgb(244, 242, 242);
+	border-bottom: 1px solid rgb(233, 230, 230);
+	cursor: pointer;
+}
+
+.staff-information{
+	display: flex;
+	flex-direction: column;
+}
+
+.staff-title{
+	font-size: .7rem;
+}
+
+.delete-staff{
+	position: relative;
+	left: .6rem;
 }
 
 .add-staff-container, .add-player-container {

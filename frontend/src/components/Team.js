@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import {HiOutlineUserAdd} from 'react-icons/hi'
+import {CiCircleRemove} from 'react-icons/ci'
 import AddStaff from './AddStaff'
 import AddPlayer from './AddPlayer'
+
 
 function Team() {
 
@@ -13,7 +15,6 @@ function Team() {
     const [staffMembers, setStaffMembers] = useState([])
     const [players, setPlayers] = useState([])
     const [shouldDisplay, setShouldDisplay] = useState('block')
-    console.log(addPlayer)
 
     useEffect(() => {
         setShouldDisplay(addStaff || addPlayer ? "none" : "block");
@@ -42,13 +43,21 @@ function Team() {
 
     const allStaffMembers = staffMembers.map((item)=> {
         return (
-            <span>{item.name}</span>
+            <div className='staff-members'>
+                <div className='staff-information'>
+                    <span>{item.name}</span>
+                    <span className='staff-title'>{item.title}</span>
+                </div>
+                <div className='delete-staff'>
+                    <CiCircleRemove/>
+                </div>
+            </div>
         )
     })
 
     const myRoster = players.map((item)=> {
         return (
-            <span>{item.player}</span>
+            <div className='roster-players'>{item.player}</div>
         )
     })
 

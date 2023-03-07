@@ -36,6 +36,7 @@ function AddPlayer(props) {
 
   const onSubmit = async (e) => {
     e.preventDefault()
+    console.log('clicked')
     const response = await fetch(`http://localhost:2121/dashboard/addPlayer/${teamId}`, {
         credentials: 'include',
         method: 'POST',
