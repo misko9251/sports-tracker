@@ -17,6 +17,11 @@ function ParentDashboard() {
   const [myTeams, setMyTeams] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [isSettingTeam, setIsSettingTeam] = useState(false)
+  const [shouldDisplay, setShouldDisplay] = useState('block')
+
+  useEffect(()=> {
+    setShouldDisplay(isSettingTeam ? 'none' : 'block')
+  }, [isSettingTeam])
 
   useEffect(()=> {
     async function fetchData(){
@@ -87,7 +92,7 @@ function ParentDashboard() {
             onClick={addTeam}
             >+</span>
           </nav>
-          <section className='my-sport-team-container'>
+          <section style={{display: shouldDisplay}} className='my-sport-team-container'>
             {teams}
           </section>
           <AddTeam 
