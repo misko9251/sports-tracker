@@ -17,10 +17,10 @@ function ParentDashboard() {
   const [myTeams, setMyTeams] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [isSettingTeam, setIsSettingTeam] = useState(false)
-  const [shouldDisplay, setShouldDisplay] = useState('block')
+  const [shouldDisplay, setShouldDisplay] = useState('flex')
 
   useEffect(()=> {
-    setShouldDisplay(isSettingTeam ? 'none' : 'block')
+    setShouldDisplay(isSettingTeam ? 'none' : 'flex')
   }, [isSettingTeam])
 
   useEffect(()=> {
