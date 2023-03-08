@@ -34,16 +34,47 @@ function Schedule() {
               <option value='Practice'>Practice</option>
             </select>
             {type == 'Game' ? (
-              <h1>Game selected</h1>
+                <>
+                <label>Home/Away</label>
+                <select>
+                    <option value='Home'>Home</option>
+                    <option value='Away'>Away</option>
+                </select>
+                <label>Opponent</label>
+                <input
+                type='text'
+                placeholder='Add opponent'
+                />
+                <label>Date</label>
+                <input
+                type='date'
+                style={{textIndent: '10px'}}
+                />
+                <label>Time</label>
+                <input
+                type='time'
+                style={{textIndent: '10px'}}
+                />
+                </>
             ) : (
-              <h1>Practice!!</h1>
+              <>
+                <label>Date</label>
+                <input
+                type='date'
+                style={{textIndent: '10px'}}
+                />
+                <label>Time</label>
+                <input
+                type='time'
+                style={{textIndent: '10px'}}
+                />
+                <label>Location</label>
+                <input
+                type='text'
+                placeholder='Enter an address'
+                />
+              </>
             )}
-            <label>Title</label>
-            <input
-            placeholder='e.g. Coach'
-            className='add-staff-input'
-            name='title'
-            />
             <button className='submit-new-staff-btn'>Submit</button>
         </form>
     </>
