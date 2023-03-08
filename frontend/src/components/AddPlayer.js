@@ -47,7 +47,7 @@ function AddPlayer(props) {
 
   return (
     <div className={`add-player-container ${props.isActive ? 'active show' : ''}` }>
-    <form onSubmit={onSubmit} className='add-team-form'>
+    <form onSubmit={onSubmit} className='add-player-form add-team-form'>
         <span className='close-staff-form' onClick={props.onClose}>{<AiOutlineCloseSquare/>}</span>
         <label>Add Player</label>
         <input

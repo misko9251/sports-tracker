@@ -573,8 +573,8 @@ button {
 	flex-direction: column;
 	justify-content: space-between;
 	width: 35%;
-	margin: 0 auto;
-	height: 500px;
+	margin: 3% auto;
+	height: 100%;
 	border-radius: 10px;
 	padding: 1% 2% 2% 2%;
 	padding: 5%;
@@ -590,7 +590,7 @@ button {
 	height: 1px;
 }
 
-.add-team-form input, .add-team-form select, .submit-new-team-btn, .submit-new-staff-btn, .add-staff-form, .submit-new-player-btn{
+.add-team-form input, .add-team-form select, .submit-new-team-btn, .submit-new-staff-btn, .add-staff-form, .add-player-form, .submit-new-player-btn{
 	background-color: rgb(50, 56, 66);
 	border: none;
 	height: 40px;
@@ -789,7 +789,7 @@ hr {
 	font-size: 2rem;
 }
 
-.add-staff-form{
+.add-staff-form, .add-player-form{
 	color: white;
 	display: flex;
 	flex-direction: column;
@@ -805,7 +805,7 @@ hr {
 }
 
 
-.add-staff-form label, .add-team-form label{
+.add-staff-form label, .add-team-form label, .add-player-form{
 	font-size: 1.4rem;
 	/* margin: 3% 0; */
 }
