@@ -12,6 +12,7 @@ router.post('/addStaff/:id', dashboardController.addStaff)
 router.get('/getTeamInfo/:id', dashboardController.getTeamInfo)
 router.delete('/deleteStaff/:id', dashboardController.deleteStaff)
 router.post('/addToSchedule/:id', dashboardController.addToSchedule)
+router.get('/getSchedule/:id', dashboardController.getSchedule)
 
 
 module.exports = router

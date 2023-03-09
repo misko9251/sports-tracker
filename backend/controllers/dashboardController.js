@@ -147,5 +147,14 @@ module.exports = {
         } catch (error) {
             console(error)
         }
+    },
+    getSchedule: async (req, res) => {
+        try {
+            const team = await Team.findOne({_id: req.params.id})
+            const schedule = team.schedule
+            res.status(200).json({schedule})
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

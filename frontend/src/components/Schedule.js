@@ -1,11 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {AiOutlineCloseSquare} from 'react-icons/ai'
 import {useParams} from 'react-router-dom'
+import TabSpinner from './TabSpinner'
 
 function Schedule() {
 
   const [hasEventsScheduled, setHasEventsScheduled] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [eventType, setEventType] = useState('Game')
+  const [schedule, setSchedule] = useState([])
   const [gameType, setGameType] = useState({
     eventType: 'Game'
   })
@@ -22,7 +25,20 @@ function Schedule() {
   })
   const {teamId} = useParams()
 
-  console.log(practiceForm)
+  useEffect(()=> {
+    async function fetchData(){
+      const response = await fetch(`http://localhost:2121/dashboard/getSchedule/${teamId}`,{
+        credentials: 'include'
+      })
+      const json = await response.json()
+      setSchedule(json.schedule)
+      if(json.schedule.length > 0){
+        setHasEventsScheduled(true)
+      }
+      setIsLoading(false)
+    }
+    fetchData()
+  }, [])
 
   const handleChange = (e) => {
     const {name, value} = e.target
@@ -73,6 +89,8 @@ function Schedule() {
 
   return (
     <>
+    {isLoading ? <TabSpinner /> : (
+      <>
       <section className='schedule-container dashboard-tabs'>
           <h4>No Events Scheduled</h4>
           <button>Add Event</button>
@@ -140,6 +158,8 @@ function Schedule() {
             )}
             <button className='submit-new-staff-btn'>Submit</button>
         </form>
+      </>
+    )}
     </>
   )
 }
