@@ -4,9 +4,9 @@ import {AiOutlineCloseSquare} from 'react-icons/ai'
 function Schedule() {
 
   const [hasEventsScheduled, setHasEventsScheduled] = useState(false)
-  const [type, setType] = useState('Game')
+  const [eventType, setEventType] = useState('Game')
   const [gameType, setGameType] = useState({
-    type: 'Game'
+    eventType: 'Game'
   })
   const [gameForm, setGameForm] = useState({
     homeOrAway: 'Home',
@@ -30,7 +30,7 @@ function Schedule() {
         [e.target.name]: e.target.value,
       }
     })
-    e.target.value == 'Game' ? setType('Game') : setType('Practice')
+    e.target.value == 'Game' ? setEventType('Game') : setEventType('Practice')
   }
 
   const handleGameChange = (e) => {
@@ -54,7 +54,7 @@ function Schedule() {
   const onSubmit = async (e) => {
     e.preventDefault()
     let form;
-    if(type == 'Game'){
+    if(eventType == 'Game'){
       form = gameForm
     }else{
       form = practiceForm
@@ -82,7 +82,7 @@ function Schedule() {
               <option value='Game'>Game</option>
               <option value='Practice'>Practice</option>
             </select>
-            {type == 'Game' ? (
+            {eventType == 'Game' ? (
                 <>
                 <label>Home/Away</label>
                 <select name='homeOrAway' onChange={handleGameChange}>

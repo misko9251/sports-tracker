@@ -30,6 +30,15 @@ const TeamSchema = new mongoose.Schema({
     staff: [{
         name: { type: String },
         title: { type: String }
+    }],
+    schedule: [{
+        eventType: { type: String },
+        homeOrAway: { type: String },
+        opponent: { type: String },
+        date: {type: Date},
+        time: { type: String },
+        location: { type: String }
+
     }]
 })
 
