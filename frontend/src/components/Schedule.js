@@ -5,19 +5,68 @@ function Schedule() {
 
   const [hasEventsScheduled, setHasEventsScheduled] = useState(false)
   const [type, setType] = useState('Game')
-  const [formData, setFormData] = useState({
+  const [gameType, setGameType] = useState({
     type: 'Game'
   })
-  console.log(formData)
+  const [gameForm, setGameForm] = useState({
+    homeOrAway: 'Home',
+    opponent: '',
+    date: '',
+    time: '',
+  })
+  const [practiceForm, setPracticeForm] = useState({
+    date: '',
+    time: '',
+    location: ''
+  })
+
+  console.log(practiceForm)
 
   const handleChange = (e) => {
-    setFormData((prevVal)=> {
+    const {name, value} = e.target
+    setGameType((prevVal)=> {
+      return {
+        ...prevVal,
+        [e.target.name]: e.target.value,
+      }
+    })
+    e.target.value == 'Game' ? setType('Game') : setType('Practice')
+  }
+
+  const handleGameChange = (e) => {
+    setGameForm((prevVal)=> {
       return {
         ...prevVal,
         [e.target.name]: e.target.value
       }
     })
-    e.target.value == 'Game' ? setType('Game') : setType('Practice')
+  }
+  
+  const handlePracticeChange = (e) => {
+    setPracticeForm((prevVal)=> {
+      return {
+        ...prevVal,
+        [e.target.name]: e.target.value
+      }
+    })
+  }
+
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    let form;
+    if(type == 'Game'){
+      form = gameForm
+    }else{
+      form = practiceForm
+    }
+    const response = await fetch('http://localhost:2121/dashboard/addToSchedule', {
+      credentials: 'include',
+      method: 'POST',
+      headers: {'Content-Type' : 'application/json'},
+      body: JSON.stringify({...gameType, ...form})
+    })
+    const json = await response.json()
+    console.log(json)
   }
 
   return (
@@ -26,17 +75,17 @@ function Schedule() {
           <h4>No Events Scheduled</h4>
           <button>Add Event</button>
       </section>
-      <form className='add-staff-form add-team-form'>
+      <form onSubmit={onSubmit} className='add-staff-form add-team-form'>
             <span className='close-staff-form'>{<AiOutlineCloseSquare/>}</span>
             <label>Event Type</label>
-            <select value={formData.type} onChange={handleChange} name='type'>
+            <select value={gameType.type} onChange={handleChange} name='type'>
               <option value='Game'>Game</option>
               <option value='Practice'>Practice</option>
             </select>
             {type == 'Game' ? (
                 <>
                 <label>Home/Away</label>
-                <select>
+                <select name='homeOrAway' onChange={handleGameChange}>
                     <option value='Home'>Home</option>
                     <option value='Away'>Away</option>
                 </select>
@@ -44,16 +93,22 @@ function Schedule() {
                 <input
                 type='text'
                 placeholder='Add opponent'
+                name='opponent'
+                onChange={handleGameChange}
                 />
                 <label>Date</label>
                 <input
                 type='date'
                 style={{textIndent: '10px'}}
+                name='date'
+                onChange={handleGameChange}
                 />
                 <label>Time</label>
                 <input
                 type='time'
                 style={{textIndent: '10px'}}
+                name='time'
+                onChange={handleGameChange}
                 />
                 </>
             ) : (
@@ -62,16 +117,22 @@ function Schedule() {
                 <input
                 type='date'
                 style={{textIndent: '10px'}}
+                name='date'
+                onChange={handlePracticeChange}
                 />
                 <label>Time</label>
                 <input
                 type='time'
                 style={{textIndent: '10px'}}
+                name='time'
+                onChange={handlePracticeChange}
                 />
                 <label>Location</label>
                 <input
                 type='text'
                 placeholder='Enter an address'
+                name='location'
+                onChange={handlePracticeChange}
                 />
               </>
             )}
