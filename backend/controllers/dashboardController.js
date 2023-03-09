@@ -117,6 +117,35 @@ module.exports = {
         }
     },
     addToSchedule: async (req, res) => {
-        console.log(req.body)
+        try {
+            const currentTeamId = req.params.id
+            if(req.body.eventType === 'Game'){
+                await Team.findByIdAndUpdate({_id: currentTeamId}, {
+                    $push: {
+                        schedule: {
+                            eventType: req.body.eventType,
+                            homeOrAway: req.body.homeOrAway,
+                            opponent: req.body.opponent,
+                            date: req.body.date,
+                            time: req.body.time
+                        }
+                    }
+                })
+            }else{
+                await Team.findByIdAndUpdate({_id: currentTeamId}, {
+                    $push: {
+                        schedule: {
+                            eventType: req.body.eventType,
+                            date: req.body.date,
+                            time: req.body.time,
+                            location: req.body.location
+                        }
+                    }
+                })
+            }
+            res.status(200).json({msg: 'Added to db'})
+        } catch (error) {
+            console(error)
+        }
     }
 }

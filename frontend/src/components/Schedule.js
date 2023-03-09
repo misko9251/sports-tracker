@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {AiOutlineCloseSquare} from 'react-icons/ai'
+import {useParams} from 'react-router-dom'
 
 function Schedule() {
 
@@ -19,6 +20,7 @@ function Schedule() {
     time: '',
     location: ''
   })
+  const {teamId} = useParams()
 
   console.log(practiceForm)
 
@@ -59,11 +61,11 @@ function Schedule() {
     }else{
       form = practiceForm
     }
-    const response = await fetch('http://localhost:2121/dashboard/addToSchedule', {
+    const response = await fetch(`http://localhost:2121/dashboard/addToSchedule/${teamId}`, {
       credentials: 'include',
       method: 'POST',
       headers: {'Content-Type' : 'application/json'},
-      body: JSON.stringify({...gameType, ...form})
+      body: JSON.stringify({eventType, ...form})
     })
     const json = await response.json()
     console.log(json)
