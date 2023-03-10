@@ -711,6 +711,65 @@ hr {
 	border: none;
 }
 
+.scheduled-events {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+  }
+  
+.scheduled-events button {
+	align-self: center;
+	margin-top: auto;
+	margin-bottom: 5%;
+	display: flex;
+	align-items: center;
+	border: none;
+	padding: 1%;
+	border-radius: 10px;
+	font-weight: bold;
+	background-color: rgb(105, 227, 130);
+}
+
+.add-event-container{
+	position: absolute;
+	display: flex;
+	width: 100%;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	opacity: 0;
+	visibility: hidden;
+	height: 0px;
+	transition: opacity 0.5s, visibility 0.5s, height 0.5s;
+	background-color: rgb(105, 227, 130);
+}
+
+.add-event-container.active{
+	opacity: 1;
+	visibility: visible;
+	height: 60vh;
+	display: flex;
+	font-size: 2rem;
+}
+
+.add-event-form{
+	background-color: rgb(50, 56, 66);
+	border: none;
+	height: 40px;
+	color: white;
+}
+
+.add-event-form button{
+	margin-top: 2%;
+}
+
+.add-event-form input, .add-event-form select{
+	background-color: rgb(50, 56, 66);
+	border: none;
+	color: white;
+	text-indent: 20px;
+}
+
 /* Team Component */
 
 .team-tab{
@@ -789,7 +848,7 @@ hr {
 	font-size: 2rem;
 }
 
-.add-staff-form, .add-player-form{
+.add-staff-form, .add-player-form, .add-event-form{
 	color: white;
 	display: flex;
 	flex-direction: column;
@@ -805,7 +864,7 @@ hr {
 }
 
 
-.add-staff-form label, .add-team-form label, .add-player-form{
+.add-staff-form label, .add-team-form label, .add-player-form, .add-event-form label{
 	font-size: 1.4rem;
 	/* margin: 3% 0; */
 }
