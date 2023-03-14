@@ -40,6 +40,7 @@ const TeamSchema = new mongoose.Schema({
         month: { type: String },
         day: { type: String },
         year: { type: String },
+        dayOfWeek: { type: String },
         location: { type: String }
 
     }]

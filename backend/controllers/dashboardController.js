@@ -121,11 +121,12 @@ module.exports = {
         try {
             const regularTime = moment(req.body.time, 'HH:mm').format('h:mm A')
             const currentTeamId = req.params.id
-            const date = moment(req.body.date).utc().format('MMMM D YYYY');
-            const dateArray =date.split(' ')
+            const date = moment(req.body.date).utc().format('MMMM D YYYY dddd');
+            const dateArray = date.split(' ')
             const month = dateArray[0]
             const day = dateArray[1]
             const year = dateArray[2]
+            const dayOfWeek = dateArray[3].split('').slice(0, 3).join('').toUpperCase()
             if(req.body.eventType === 'Game'){
                 await Team.findByIdAndUpdate({_id: currentTeamId}, {
                     $push: {
@@ -137,7 +138,8 @@ module.exports = {
                             time: regularTime,
                             month: month,
                             day: day,
-                            year: year
+                            year: year,
+                            dayOfWeek: dayOfWeek
                         }
                     }
                 })
@@ -151,6 +153,7 @@ module.exports = {
                             month: month,
                             day: day,
                             year: year,
+                            dayOfWeek: dayOfWeek,
                             location: req.body.location
                         }
                     }
