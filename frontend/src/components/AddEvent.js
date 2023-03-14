@@ -63,7 +63,7 @@ function AddEvent(props) {
         body: JSON.stringify({eventType, ...form})
       })
       const json = await response.json()
-      console.log(json)
+      props.onClose()
     }
 
 

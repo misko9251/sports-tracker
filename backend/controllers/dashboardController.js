@@ -90,6 +90,7 @@ module.exports = {
                     }
                 }
             })
+            res.status(200).json({msg: 'Staff added'})
         } catch (error) {
             console.log(error)
         }

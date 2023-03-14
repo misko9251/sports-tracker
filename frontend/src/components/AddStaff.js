@@ -3,7 +3,6 @@ import {AiOutlineCloseSquare} from 'react-icons/ai'
 import {useParams} from 'react-router-dom'
 
 function AddStaff(props) {
-
   const {teamId} = useParams()
   
   const [formData, setFormData] = useState({
@@ -21,6 +20,7 @@ function AddStaff(props) {
   }
 
   const onSubmit = async (e) => {
+    console.log('onSubmit called')
     e.preventDefault()
     const response = await fetch(`http://localhost:2121/dashboard/addStaff/${teamId}`, {
       credentials: 'include',
@@ -28,6 +28,8 @@ function AddStaff(props) {
       headers: {'Content-Type' : 'application/json'},
       body: JSON.stringify({...formData})
     })
+    const json = await response.json()
+    props.onClose()
   }
 
   return (

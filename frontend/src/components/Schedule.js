@@ -36,7 +36,7 @@ function Schedule() {
       <section className='individual-events'>
         <div className='event-date'>
           <span>{item.dayOfWeek}</span>
-          <span style={{fontWeight: 'bolder'}}>{item.day}</span>
+          <span style={{fontWeight: 'bolder'}}>{item.month} {item.day}</span>
         </div>
         <div className='event-type'>
           <span>{item.opponent ? ` vs. ${item.opponent}` : 'Practice'}</span>

@@ -719,7 +719,7 @@ hr {
 
 .individual-events{
 	color: black;
-	height: 3rem;
+	height: 4rem;
 	width: 100%;
 	text-align: center;
 	display: flex;
@@ -727,23 +727,29 @@ hr {
 	background-color: rgb(244, 242, 242);
 	border-bottom: 1px solid rgb(233, 230, 230);
 	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .event-date{
 	display: flex;
 	flex-direction: column;
-	margin-left: 4.5rem;
-	width: 50px;
+	margin-left: 2.5rem;
+	width: 100px;
 }
 
 .event-time{
 	margin-left: auto;
-	margin-right: 4.5rem;
+	margin-right: 2.5rem;
 }
 
 .event-type{
-	width: 100%;
-}
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
   
 .scheduled-events button {
 	align-self: center;
