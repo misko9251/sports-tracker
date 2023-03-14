@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const Team = require('../models/Team')
 const cloudinary = require('../middleware/cloudinary')
+const moment = require('moment')
 
 module.exports = {
     getDash: async (req, res) => {
@@ -118,6 +119,7 @@ module.exports = {
     },
     addToSchedule: async (req, res) => {
         try {
+            const regularTime = moment(req.body.time, 'HH:mm').format('h:mm A');
             const currentTeamId = req.params.id
             if(req.body.eventType === 'Game'){
                 await Team.findByIdAndUpdate({_id: currentTeamId}, {
@@ -127,7 +129,7 @@ module.exports = {
                             homeOrAway: req.body.homeOrAway,
                             opponent: req.body.opponent,
                             date: req.body.date,
-                            time: req.body.time
+                            time: regularTime
                         }
                     }
                 })
@@ -137,7 +139,7 @@ module.exports = {
                         schedule: {
                             eventType: req.body.eventType,
                             date: req.body.date,
-                            time: req.body.time,
+                            time: regularTime,
                             location: req.body.location
                         }
                     }

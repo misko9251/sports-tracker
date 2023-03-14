@@ -767,7 +767,8 @@ hr {
 	background-color: rgb(50, 56, 66);
 	border: none;
 	color: white;
-	text-indent: 20px;
+	text-indent: 5px;
+	height: 1.5rem;
 }
 
 /* Team Component */
@@ -969,7 +970,7 @@ hr {
 	.sport-select-container2 label{
 		padding-top: 15px;
 	}
-	.add-team-form{
+	.add-team-form, .add-event-form{
 		width: 70%;
 		height: 70vh;
 		justify-content: space-around;
