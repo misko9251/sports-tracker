@@ -119,8 +119,13 @@ module.exports = {
     },
     addToSchedule: async (req, res) => {
         try {
-            const regularTime = moment(req.body.time, 'HH:mm').format('h:mm A');
+            const regularTime = moment(req.body.time, 'HH:mm').format('h:mm A')
             const currentTeamId = req.params.id
+            const date = moment(req.body.date).utc().format('MMMM D YYYY');
+            const dateArray =date.split(' ')
+            const month = dateArray[0]
+            const day = dateArray[1]
+            const year = dateArray[2]
             if(req.body.eventType === 'Game'){
                 await Team.findByIdAndUpdate({_id: currentTeamId}, {
                     $push: {
@@ -129,7 +134,10 @@ module.exports = {
                             homeOrAway: req.body.homeOrAway,
                             opponent: req.body.opponent,
                             date: req.body.date,
-                            time: regularTime
+                            time: regularTime,
+                            month: month,
+                            day: day,
+                            year: year
                         }
                     }
                 })
@@ -140,6 +148,9 @@ module.exports = {
                             eventType: req.body.eventType,
                             date: req.body.date,
                             time: regularTime,
+                            month: month,
+                            day: day,
+                            year: year,
                             location: req.body.location
                         }
                     }

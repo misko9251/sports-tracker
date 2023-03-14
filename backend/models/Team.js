@@ -37,6 +37,9 @@ const TeamSchema = new mongoose.Schema({
         opponent: { type: String },
         date: {type: Date},
         time: { type: String },
+        month: { type: String },
+        day: { type: String },
+        year: { type: String },
         location: { type: String }
 
     }]

@@ -25,7 +25,7 @@ function Schedule() {
       setIsLoading(false)
     }
     fetchData()
-  }, [])
+  }, [schedule])
 
   const closeAddEvent = () => {
     setAddEvent(false)
