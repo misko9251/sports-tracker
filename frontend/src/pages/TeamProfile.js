@@ -12,6 +12,7 @@ import {TbBallVolleyball} from 'react-icons/tb'
 import {GiBowlingStrike} from 'react-icons/gi'
 import Schedule from '../components/Schedule'
 import Team from '../components/Team'
+import Video from '../components/Video'
 
 function TeamProfile() {
     const {teamId} = useParams()
@@ -72,7 +73,8 @@ function TeamProfile() {
             </header>
             <section className='tab-container'>
              {currentTab === 'schedule' ? <Schedule /> :
-              currentTab === 'team' ? <Team /> : null
+              currentTab === 'team' ? <Team /> : 
+              currentTab === 'video' ? <Video /> : null
             }
             </section>
         </section>

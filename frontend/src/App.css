@@ -691,7 +691,7 @@ hr {
 
 /* Schedule Component */
 
-.schedule-container{
+.no-data-added-container{
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
@@ -700,11 +700,11 @@ hr {
 	color: white;
 }
 
-.schedule-container h4{
+.no-data-added-container h4{
 	font-size: 2rem;
 }
 
-.schedule-container button{
+.no-data-added-container button{
 	width: 30%;
 	height: 3rem;
 	border-radius: 10px;

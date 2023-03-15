@@ -62,7 +62,7 @@ function Schedule() {
         <button onClick={() => setAddEvent(true)}><IoMdAdd />Add Event</button>
       </section> 
       )  : (
-        <section className='schedule-container dashboard-tabs'>
+        <section className='no-data-added-container dashboard-tabs'>
             <h4>No Events Scheduled</h4>
             <button onClick={() => setAddEvent(true)}>Add Event</button>
         </section>    
