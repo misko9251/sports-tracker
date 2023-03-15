@@ -43,7 +43,8 @@ const TeamSchema = new mongoose.Schema({
         dayOfWeek: { type: String },
         location: { type: String }
 
-    }]
+    }],
+    videos: [ { type: String } ]
 })
 
 module.exports = mongoose.model("Team", TeamSchema)

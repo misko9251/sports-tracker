@@ -23,7 +23,6 @@ function AddPlayer(props) {
     })
     const file = e.target.files[0];
     previewFile(file);
-    console.log(e.target.file)
   }
 
   const previewFile = (file) => {

@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {useParams} from 'react-router-dom'
 import AddVideo from './AddVideo'
 
 export default function Video() {

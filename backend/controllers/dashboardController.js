@@ -173,5 +173,16 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
+    },
+    addVideo: async (req, res) => {
+        try {
+            const fileStr = req.body.previewSource
+            const result = await cloudinary.uploader.upload(fileStr, {
+                resource_type: 'video'
+            });
+            console.log(result.secure_url)
+        } catch (error) {
+            console.log(error)   
+        }
     }
 }
