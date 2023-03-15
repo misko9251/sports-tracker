@@ -20,7 +20,6 @@ function AddStaff(props) {
   }
 
   const onSubmit = async (e) => {
-    console.log('onSubmit called')
     e.preventDefault()
     const response = await fetch(`http://localhost:2121/dashboard/addStaff/${teamId}`, {
       credentials: 'include',
@@ -30,6 +29,7 @@ function AddStaff(props) {
     })
     const json = await response.json()
     props.onClose()
+    e.target.reset()
   }
 
   return (

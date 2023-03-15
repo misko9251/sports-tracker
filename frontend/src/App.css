@@ -753,7 +753,7 @@ hr {
   
 .scheduled-events button {
 	align-self: center;
-	margin-top: auto;
+	margin-top: 2%;
 	margin-bottom: 5%;
 	display: flex;
 	align-items: center;

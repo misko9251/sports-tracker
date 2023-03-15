@@ -64,6 +64,7 @@ function AddEvent(props) {
       })
       const json = await response.json()
       props.onClose()
+      e.target.reset()
     }
 
 

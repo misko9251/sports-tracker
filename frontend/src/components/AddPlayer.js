@@ -44,7 +44,9 @@ function AddPlayer(props) {
     })
     const json = await response.json()
     props.onClose()
-    console.log(props.onClose())
+    setFormData({name: '', position: ''})
+    e.target.reset()
+
   } 
 
   return (
