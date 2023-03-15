@@ -863,7 +863,7 @@ hr {
 	left: .4rem;
 }
 
-.add-staff-container, .add-player-container {
+.add-staff-container, .add-player-container, .add-video-container {
 	position: absolute;
 	display: flex;
 	width: 100%;
@@ -877,7 +877,7 @@ hr {
 	background-color: rgb(105, 227, 130);
 }
 
-.add-staff-container.active, .add-player-container.active {
+.add-staff-container.active, .add-player-container.active, .add-video-container.active {
 	opacity: 1;
 	visibility: visible;
 	height: 60vh;
