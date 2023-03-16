@@ -11,7 +11,11 @@ export default function Video() {
     const [hasVideos, setHasVideos] = useState(false)
     const [videos, setVideos] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    console.log(videos)
+    const [shouldDisplay, setShouldDisplay] = useState('block')
+    
+    useEffect(()=> {
+        setShouldDisplay(addVideo ? 'none' : 'block')
+    }, [addVideo])
 
     useEffect(()=> {
         async function fetchData(){
@@ -54,7 +58,7 @@ export default function Video() {
             {isLoading ? <TabSpinner /> : (
                 hasVideos ? (
                     <>
-                        <section className='team-videos-container'>
+                        <section style={{display: shouldDisplay}} className='team-videos-container'>
                             <div className='team-videos'>
                                 {teamVideos}
                             </div>
