@@ -689,6 +689,11 @@ hr {
 	box-sizing: border-box;
 }
 
+.team-videos{
+	background-color: rgb(23, 28, 34);
+	padding-bottom: 3%;
+}
+
 /* Schedule Component */
 
 .no-data-added-container{
@@ -923,7 +928,6 @@ hr {
 
 .team-videos{
 	padding-top: 3%;
-	border: 1px solid red;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
@@ -931,7 +935,13 @@ hr {
 
 .team-videos video {
     flex-basis: 50%;
-	max-width: 550px;
+	max-width: 500px;
+}
+
+.individual-team-video h4{
+	text-align: center;
+	margin-bottom: 3%;
+	color: white;
 }
 
 /* Spinner */
@@ -1132,6 +1142,11 @@ hr {
 	.event-type{
 		font-size: .9rem;
 	}
+	/* Videos */
+	.team-videos video {
+		flex-basis: 50%;
+		max-width: 400px;
+	}
 }
 
 @media screen and (max-width: 650px){
@@ -1160,5 +1175,9 @@ hr {
 	.dashboard-container{
 		height: 100%;
 		padding-bottom: 5%;
+	}
+	.team-videos video {
+		flex-basis: 50%;
+		max-width: 350px;
 	}
 }
