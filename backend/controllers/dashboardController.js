@@ -180,7 +180,13 @@ module.exports = {
             const result = await cloudinary.uploader.upload(fileStr, {
                 resource_type: 'video'
             });
-            console.log(result.secure_url)
+            const videoUrl = result.secure_url
+            await Team.findByIdAndUpdate({_id: req.params.id}, {
+                $push: {
+                    videos: videoUrl
+                }
+            })
+            res.status(200).json({msg: 'Added video url to db'})
         } catch (error) {
             console.log(error)   
         }
