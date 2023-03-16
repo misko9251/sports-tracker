@@ -183,12 +183,24 @@ module.exports = {
             const videoUrl = result.secure_url
             await Team.findByIdAndUpdate({_id: req.params.id}, {
                 $push: {
-                    videos: videoUrl
+                    videos: {
+                        url: videoUrl,
+                        description: req.body.description
+                    }
                 }
             })
             res.status(200).json({msg: 'Added video url to db'})
         } catch (error) {
             console.log(error)   
         }
+    },
+    getVideos: async (req, res) => {
+        try {
+            const team = await Team.findOne({_id: req.params.id})
+            const videos = team.videos
+            res.status(200).json({videos: videos})
+        } catch (error) {
+            console.log(error)
+        }        
     }
 }

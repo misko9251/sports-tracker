@@ -919,6 +919,21 @@ hr {
 	cursor: pointer;
 }
 
+/* Videos */
+
+.team-videos{
+	padding-top: 3%;
+	border: 1px solid red;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.team-videos video {
+    flex-basis: 50%;
+	max-width: 550px;
+}
+
 /* Spinner */
 
 .loader {

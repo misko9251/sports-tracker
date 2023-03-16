@@ -44,7 +44,10 @@ const TeamSchema = new mongoose.Schema({
         location: { type: String }
 
     }],
-    videos: [ { type: String } ]
+    videos: [{
+        url: { type: String }, 
+        description: { type: String }
+    }]
 })
 
 module.exports = mongoose.model("Team", TeamSchema)
