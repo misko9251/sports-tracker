@@ -689,10 +689,7 @@ hr {
 	box-sizing: border-box;
 }
 
-.team-videos{
-	background-color: rgb(23, 28, 34);
-	padding-bottom: 3%;
-}
+
 
 /* Schedule Component */
 
@@ -756,7 +753,7 @@ hr {
 	justify-content: center;
   }
   
-.scheduled-events button {
+.scheduled-events button, .team-videos-container button {
 	align-self: center;
 	margin-top: 2%;
 	margin-bottom: 5%;
@@ -926,12 +923,17 @@ hr {
 
 /* Videos */
 
+.team-videos-container{
+	background-color: rgb(23, 28, 34);
+}
+
 .team-videos{
-	padding-top: 3%;
+	padding: 3% 0;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
 }
+
 
 .team-videos video {
     flex-basis: 50%;
@@ -943,6 +945,18 @@ hr {
 	margin-bottom: 3%;
 	color: white;
 }
+
+.team-videos-btn-container{
+	padding-bottom: 3%;
+}
+
+.team-videos-container button{
+	margin: 0 auto;
+	display: block;
+}
+
+
+
 
 /* Spinner */
 

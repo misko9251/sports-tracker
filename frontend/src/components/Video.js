@@ -53,10 +53,16 @@ export default function Video() {
 
             {isLoading ? <TabSpinner /> : (
                 hasVideos ? (
-                    <section className='team-videos'>
-                        {teamVideos}
-                        {/* <button onClick={() => setAddVideo(true)}>Add Video</button> */}
-                    </section>
+                    <>
+                        <section className='team-videos-container'>
+                            <div className='team-videos'>
+                                {teamVideos}
+                            </div>
+                            <div className='team-videos-btn-container'>
+                                <button onClick={() => setAddVideo(true)}>Add Video</button>
+                            </div>
+                        </section>
+                    </>
                 ) : (
                     <section className='no-data-added-container dashboard-tabs'>
                         <h4>No Team Videos</h4>
