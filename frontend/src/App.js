@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import TeamProfile from './pages/TeamProfile'
 import GetUser from './components/GetUser'
+import PlayerProfile from './pages/PlayerProfile';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       location.pathname !== '/register' && 
       location.pathname !== '/getUser' && 
       !location.pathname.startsWith('/dashboard') &&
+      !location.pathname.startsWith('/profile') &&
       <Navbar />
       }
       <Routes>
@@ -25,6 +27,7 @@ function App() {
         <Route path='register' element={<Register/>}/>
         <Route path='/getUser' element={<GetUser/>}/>
         <Route path="/dashboard/:teamId" element={<TeamProfile />} />
+        <Route path='/profile' element={<PlayerProfile />} />
       </Routes>
     </div>
   );
