@@ -680,7 +680,7 @@ hr {
 	font-weight: bolder;
 }
 
-.team-profile-list li{
+.team-profile-list li, .profile-list li{
 	cursor: pointer;
 }
 
@@ -688,8 +688,6 @@ hr {
 	height: 60vh;
 	box-sizing: border-box;
 }
-
-
 
 /* Schedule Component */
 
@@ -956,7 +954,57 @@ hr {
 }
 
 
+/* Player Profile */
 
+.profile-header{
+	background-color: rgb(100, 110, 205);
+	height: 40vh;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	align-items: center;
+}
+
+.profile-pic-container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	margin-bottom: 1%;
+}
+  
+.profile-pic-container img {
+	border-radius: 50%;
+	height: 150px;
+	width: 150px;
+}
+
+.player-info{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.player-name{
+	font-size: 1.3rem;
+	font-weight: bold;
+}
+
+.profile-list{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin-top: auto;
+	padding-bottom: 20px;
+	font-weight: bold;
+}
+
+.player-videos-container{
+	background-color: rgb(23, 28, 34);
+	height: 100%;
+}
 
 /* Spinner */
 
