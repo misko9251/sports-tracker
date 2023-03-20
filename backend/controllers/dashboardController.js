@@ -225,5 +225,16 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
+    },
+    getPlayerVideos: async (req, res) => {
+        try {
+            const {teamId, playerId} = req.params
+            const team = await Team.findOne({_id: teamId})
+            const playerIndex = team.roster.findIndex((player) => player._id == playerId)
+            const videos = team.roster[playerIndex].videos
+            res.status(200).json({videos: videos})
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
