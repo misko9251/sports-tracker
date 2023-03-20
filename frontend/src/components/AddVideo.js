@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom'
 
 function AddVideo(props) {
   
-  const {teamId} = useParams()
+  const {teamId, playerId} = useParams()
 
   const [formData, setFormData] = useState({
     description: '',
@@ -34,13 +34,22 @@ function AddVideo(props) {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    const response = await fetch(`http://localhost:2121/dashboard/addVideo/${teamId}`, {
+    if(props.page == 'team-profile'){
+      const response = await fetch(`http://localhost:2121/dashboard/addVideo/${teamId}`, {
         credentials: 'include',
         method: 'POST',
         headers: {'Content-Type' : 'application/json'},
         body: JSON.stringify({...formData, previewSource})
     })
     const json = await response.json()
+    }else{
+      const response = await fetch(`http://localhost:2121/dashboard/team/${teamId}/player/${playerId}/addPlayerVideo`, {
+        credentials: 'include',
+        method: 'POST',
+        headers: {'Content-Type' : 'application/json'},
+        body: JSON.stringify({...formData, previewSource})
+      })
+    }
   }
     
   return (

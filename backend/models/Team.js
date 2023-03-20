@@ -25,7 +25,12 @@ const TeamSchema = new mongoose.Schema({
         player: { type: String },
         position: { type: String },
         team: { type: String },
+        teamId: {type: String},
         image: { type: String, default: 'frontend/src/assets/default-athlete.png'},
+        videos: [{
+            url: { type: String },
+            description: { type: String }
+        }]
     }],
     staff: [{
         name: { type: String },

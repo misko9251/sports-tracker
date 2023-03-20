@@ -53,6 +53,7 @@ export default function Video() {
             <AddVideo
             onClose={closeAddVideo}
             isActive={addVideo}
+            page='team-profile'
             />
 
             {isLoading ? <TabSpinner /> : (
