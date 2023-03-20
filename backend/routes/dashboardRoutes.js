@@ -16,6 +16,7 @@ router.get('/getSchedule/:id', dashboardController.getSchedule)
 router.post('/addVideo/:id', dashboardController.addVideo)
 router.post('/team/:teamId/player/:playerId/addPlayerVideo', dashboardController.addPlayerVideo)
 router.get('/team/:teamId/player/:playerId/getPlayerVideos', dashboardController.getPlayerVideos)
+router.get('/team/:teamId/player/:playerId/getPlayer', dashboardController.getPlayer)
 
 
 router.get('/getVideos/:id', dashboardController.getVideos)
