@@ -31,7 +31,7 @@ function PlayerProfile() {
         <section className='profile-container'>
             <header className='profile-header'>
                 <div className='profile-pic-container'>
-                    <img src={ProfilePic}/>
+                    <img src={currentPlayer.image}/>
                 </div>
                 <div className='player-info'>
                     <span className='player-name'>{currentPlayer.player}</span>
