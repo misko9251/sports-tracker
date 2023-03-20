@@ -71,6 +71,7 @@ module.exports = {
                         player: req.body.name,
                         position: req.body.position,
                         team: teamName,
+                        teamId: req.params.id,
                         image: profileImg
                     }
                 }

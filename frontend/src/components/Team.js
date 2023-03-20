@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {json, useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 import {HiOutlineUserAdd} from 'react-icons/hi'
 import {CiCircleRemove} from 'react-icons/ci'
 import AddStaff from './AddStaff'
@@ -78,7 +78,9 @@ function Team() {
 
     const myRoster = players.map((item)=> {
         return (
-            <div className='roster-players'>{item.player}</div>
+            <Link to={`/profile/${item.teamId}`} className='custom-link-class'>
+                <div className='roster-players'>{item.player}</div>
+            </Link >
         )
     })
 
