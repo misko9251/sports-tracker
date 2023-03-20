@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import AddVideo from './AddVideo'
+import TabSpinner from './TabSpinner'
 
 function PlayerVideos() {
 
@@ -15,6 +16,7 @@ function PlayerVideos() {
     <AddVideo
     onClose={closeAddVideo}
     isActive={addVideo}
+    page='player-profile'
     />
 
     <div className='player-videos-container'>

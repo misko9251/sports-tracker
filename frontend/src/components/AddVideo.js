@@ -34,13 +34,22 @@ function AddVideo(props) {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    const response = await fetch(`http://localhost:2121/dashboard/addVideo/${teamId}`, {
+    if(props.page == 'team-profile'){
+      const response = await fetch(`http://localhost:2121/dashboard/addVideo/${teamId}`, {
         credentials: 'include',
         method: 'POST',
         headers: {'Content-Type' : 'application/json'},
         body: JSON.stringify({...formData, previewSource})
     })
     const json = await response.json()
+    }else{
+      const response = await fetch('', {
+        credentials: 'include',
+        method: 'POST',
+        headers: {'Content-Type' : 'application/json'},
+        body: JSON.stringify({...formData, previewSource})
+      })
+    }
   }
     
   return (
