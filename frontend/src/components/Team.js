@@ -78,7 +78,7 @@ function Team() {
 
     const myRoster = players.map((item)=> {
         return (
-            <Link to={`/profile/${item.teamId}`} className='custom-link-class'>
+            <Link to={`/dashboard/team/${item.teamId}/profile/${item._id}`} className='custom-link-class'>
                 <div className='roster-players'>{item.player}</div>
             </Link >
         )

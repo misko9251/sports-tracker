@@ -203,5 +203,27 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }        
+    },
+    addPlayerVideo: async (req, res) => {
+        try {
+            const {teamId, playerId} = req.params
+            const team = await Team.findOne({_id: teamId})
+            const fileStr = req.body.previewSource
+            const result = await cloudinary.uploader.upload(fileStr, {
+                resource_type: 'video'
+            });
+            const videoUrl = result.secure_url
+            const playerIndex = team.roster.findIndex((player) => player._id == playerId)
+            
+            team.roster[playerIndex].videos.push({
+                url: videoUrl,
+                description: req.body.description
+            
+            });
+            await team.save()
+            res.status(200).json({msg: 'Player video uploaded'})
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
