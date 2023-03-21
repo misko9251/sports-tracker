@@ -10,6 +10,7 @@ function Schedule() {
   const [isLoading, setIsLoading] = useState(true)
   const [schedule, setSchedule] = useState([])
   const [addEvent, setAddEvent] = useState(false)
+  const [currentSport, setCurrentSport] = useState('')
   const {teamId} = useParams()
 
   useEffect(()=> {
@@ -19,6 +20,7 @@ function Schedule() {
       })
       const json = await response.json()
       setSchedule(json.schedule)
+      setCurrentSport(json.schedule[0].sport)
       if(json.schedule.length > 0){
         setHasEventsScheduled(true)
       }
@@ -32,30 +34,10 @@ function Schedule() {
   }
   
   const scheduledEvents = schedule.map((item)=> {
-    let sport;
-    if(item.sport == 'Hockey'){
-      sport =  'hockey'
-    }if(item.sport == 'Baseball'){
-      sport = 'baseball'
-    }if(item.sport == 'Softball'){
-      sport = 'softball'
-    }if(item.sport == 'Football'){
-      sport = 'football'
-    }if(item.sport == 'Soccer'){
-      sport = 'soccer'
-    }if(item.sport == 'Basketball'){
-      sport = 'basketball'
-    }if(item.sport == 'Lacrosse'){
-      sport = 'lacrosse'
-    }if(item.sport == 'Volleyball'){
-      sport = 'volleyball'
-    }if(item.sport == 'Bowling'){
-      sport = 'bowling'
-    }
     return (
       <Link
       className='custom-link-class'
-      to={`/dashboard/team/${item.team}/sport/${sport}`}
+      to={`/dashboard/team/${item.teamId}/sport/${currentSport}`}
       >
         <section className='individual-events'>
           <div className='event-date'>

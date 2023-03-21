@@ -38,6 +38,7 @@ const TeamSchema = new mongoose.Schema({
     }],
     schedule: [{
         teamId: { type: String },
+        sport: { type: String },
         eventType: { type: String },
         homeOrAway: { type: String },
         opponent: { type: String },
@@ -48,7 +49,6 @@ const TeamSchema = new mongoose.Schema({
         year: { type: String },
         dayOfWeek: { type: String },
         location: { type: String }
-
     }],
     videos: [{
         url: { type: String }, 

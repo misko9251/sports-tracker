@@ -7,6 +7,7 @@ import Register from './pages/Register'
 import TeamProfile from './pages/TeamProfile'
 import GetUser from './components/GetUser'
 import PlayerProfile from './pages/PlayerProfile';
+import SportsLogger from './components/sports-logging/SportsLogger';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path='/getUser' element={<GetUser/>}/>
         <Route path='/dashboard/:teamId' element={<TeamProfile />} />
         <Route path='/dashboard/team/:teamId/profile/:playerId' element={<PlayerProfile />} />
+        <Route path='/dashboard/team/:teamId/sport/:sportId' element={<SportsLogger />} />
       </Routes>
     </div>
   );

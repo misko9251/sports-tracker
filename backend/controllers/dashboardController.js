@@ -123,6 +123,8 @@ module.exports = {
         try {
             const regularTime = moment(req.body.time, 'HH:mm').format('h:mm A')
             const currentTeamId = req.params.id
+            const team = await Team.findById({_id: currentTeamId})
+            const sport = team.sport.toLowerCase()
             const date = moment(req.body.date).utc().format('MMMM D YYYY dddd');
             const dateArray = date.split(' ')
             const month = dateArray[0]
@@ -134,6 +136,7 @@ module.exports = {
                     $push: {
                         schedule: {
                             teamId: currentTeamId,
+                            sport: sport,
                             eventType: req.body.eventType,
                             homeOrAway: req.body.homeOrAway,
                             opponent: req.body.opponent,
