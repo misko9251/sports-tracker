@@ -8,9 +8,6 @@ function SportsLogger() {
 
     return (
       <section>
-        <section>
-            <h4>Sports</h4>
-        </section>
         {sportType == 'hockey' ? <Hockey /> : ''}
       </section>
     )

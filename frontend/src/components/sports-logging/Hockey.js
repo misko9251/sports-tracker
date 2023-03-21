@@ -8,11 +8,11 @@ function Hockey() {
 
     return (
         <>
-            <header>
-                <span>Period {currentPeriod}</span>
-                <div>
+            <header className='logger-header'>
+                <span className='logger-current-time'>Period {currentPeriod}</span>
+                <div className='logger-scores'>
                   <span>Lia's Ladies</span>
-                  <span>{opponentScore} - {myScore}</span>
+                  <span className='logger-current-score'>{opponentScore} - {myScore}</span>
                   <span>Misko's Madmen</span>
                 </div>
             </header>
