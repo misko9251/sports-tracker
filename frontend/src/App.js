@@ -29,7 +29,7 @@ function App() {
         <Route path='/getUser' element={<GetUser/>}/>
         <Route path='/dashboard/:teamId' element={<TeamProfile />} />
         <Route path='/dashboard/team/:teamId/profile/:playerId' element={<PlayerProfile />} />
-        <Route path='/dashboard/team/:teamId/sport/:sportId' element={<SportsLogger />} />
+        <Route path='/dashboard/team/:teamId/sport/:sportType' element={<SportsLogger />} />
       </Routes>
     </div>
   );
