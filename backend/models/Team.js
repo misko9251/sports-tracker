@@ -37,6 +37,7 @@ const TeamSchema = new mongoose.Schema({
         title: { type: String }
     }],
     schedule: [{
+        teamId: { type: String },
         eventType: { type: String },
         homeOrAway: { type: String },
         opponent: { type: String },

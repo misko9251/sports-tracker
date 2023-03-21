@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {IoMdAdd} from 'react-icons/io'
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 import TabSpinner from './TabSpinner'
 import AddEvent from './AddEvent'
 
@@ -32,19 +32,44 @@ function Schedule() {
   }
   
   const scheduledEvents = schedule.map((item)=> {
+    let sport;
+    if(item.sport == 'Hockey'){
+      sport =  'hockey'
+    }if(item.sport == 'Baseball'){
+      sport = 'baseball'
+    }if(item.sport == 'Softball'){
+      sport = 'softball'
+    }if(item.sport == 'Football'){
+      sport = 'football'
+    }if(item.sport == 'Soccer'){
+      sport = 'soccer'
+    }if(item.sport == 'Basketball'){
+      sport = 'basketball'
+    }if(item.sport == 'Lacrosse'){
+      sport = 'lacrosse'
+    }if(item.sport == 'Volleyball'){
+      sport = 'volleyball'
+    }if(item.sport == 'Bowling'){
+      sport = 'bowling'
+    }
     return (
-      <section className='individual-events'>
-        <div className='event-date'>
-          <span>{item.dayOfWeek}</span>
-          <span style={{fontWeight: 'bolder'}}>{item.month} {item.day}</span>
-        </div>
-        <div className='event-type'>
-          <span>{item.opponent ? ` vs. ${item.opponent}` : 'Practice'}</span>
-        </div>
-        <div className='event-time'>
-          <span>{item.time}</span>
-        </div>
-      </section>
+      <Link
+      className='custom-link-class'
+      to={`/dashboard/team/${item.team}/sport/${sport}`}
+      >
+        <section className='individual-events'>
+          <div className='event-date'>
+            <span>{item.dayOfWeek}</span>
+            <span style={{fontWeight: 'bolder'}}>{item.month} {item.day}</span>
+          </div>
+          <div className='event-type'>
+            <span>{item.opponent ? ` vs. ${item.opponent}` : 'Practice'}</span>
+          </div>
+          <div className='event-time'>
+            <span>{item.time}</span>
+          </div>
+        </section>
+      </Link>
     )
   })
 

@@ -133,6 +133,7 @@ module.exports = {
                 await Team.findByIdAndUpdate({_id: currentTeamId}, {
                     $push: {
                         schedule: {
+                            teamId: currentTeamId,
                             eventType: req.body.eventType,
                             homeOrAway: req.body.homeOrAway,
                             opponent: req.body.opponent,
