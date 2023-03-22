@@ -1,10 +1,30 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import {useParams} from 'react-router-dom'
+import Spinner from '../Spinner'
 
 function Hockey() {
+
+    const {teamId} = useParams()
+    console.log(teamId)
 
     const [currentPeriod, serCurrentPeriod] = useState(1)
     const [myScore, setMyScore] = useState(0)
     const [opponentScore, setOpponentScore] = useState(0)
+    const [isLoading, setIsLoading] = useState(true)
+    const [roster, setRoster] = useState([])
+    const [scheduledEvent, setScheduledEvent] = useState([])
+
+    useEffect(() => {
+        async function fetchData(){
+            const response = await fetch(
+                `http://localhost:2121/dashboard/getTeamInfo/${teamId}`,
+                {credentials: 'include'}
+            )
+            const json = await response.json()
+            setRoster(json.roster)
+        }
+        fetchData()
+    }, [])
 
     return (
         <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>

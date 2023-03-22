@@ -56,14 +56,15 @@ module.exports = {
     addPlayer: async (req, res) => {
         try {
             const fileStr = req.body.previewSource
-            const result = await cloudinary.uploader.upload(fileStr);
             const currentTeam = await Team.findById({_id: req.params.id})
             const teamName = currentTeam.teamName
             let profileImg
             if(req.body.previewSource){
+                const result = await cloudinary.uploader.upload(fileStr);
                 profileImg = result.secure_url
             }else{
-                profileImg = '/src/assets/default-athlete.png'
+                profileImg = '../assets/default-athlete.png'
+                
             }
             await Team.findByIdAndUpdate({_id: req.params.id}, {
                 $push: {

@@ -29,7 +29,7 @@ function Schedule() {
       setIsLoading(false)
     }
     fetchData()
-  }, [schedule])
+  }, [schedule, addEvent])
 
   const closeAddEvent = () => {
     setAddEvent(false)
@@ -39,7 +39,7 @@ function Schedule() {
     return (
       <Link
       className='custom-link-class'
-      to={`/dashboard/team/${item.teamId}/sport/${currentSport}`}
+      to={`/dashboard/team/${item.teamId}/sport/${currentSport}/event/${item._id}`}
       >
         <section className='individual-events'>
           <div className='event-date'>

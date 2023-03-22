@@ -34,7 +34,7 @@ function Team() {
             setIsLoading(false)
         }
         fetchData()
-    }, [staffMembers, players])
+    }, [staffMembers, players, shouldDisplay])
 
     const closeAddStaff = () => {
         setAddStaff(false)
