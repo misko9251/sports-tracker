@@ -7,7 +7,7 @@ function Hockey() {
     const [opponentScore, setOpponentScore] = useState(0)
 
     return (
-        <>
+        <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
             <header className='logger-header'>
                 <span className='logger-current-time'>Period {currentPeriod}</span>
                 <div className='logger-scores'>
@@ -16,30 +16,33 @@ function Hockey() {
                   <span>Misko's Madmen</span>
                 </div>
             </header>
-            <section>
-                <div>
+            <section style={{flexGrow: 1, backgroundColor: 'rgb(47, 47, 47)'}}>
+                <div className='opponent-goal'>
                     <button>Lia's Ladies Goal</button>
                 </div>
-                <div>
-                    <span>Misko's Madmen</span>
-                    <div>
-                        <div>
+                <div className='team-scoring-container'>
+                    <span className='hockey-my-team-name'>Misko's Madmen</span>
+                    <div className='score-button-container'>
+                        <div className='goal-scored'>
                             <button>Goal</button>
                         </div>
-                        <div>
+                        <div className='save-assist-container'>
                             <button>Save</button>
                             <button>Assist</button>
                         </div>
-                        <div>
+                        <div className='shot-missed'>
                             <button>Shot Missed</button>
                         </div>
                     </div>
-                    <div>
+                    <div className='next-period'>
                         <button>End Period</button>
                     </div>
                 </div>
+                <section className='play-by-play'>
+                    <h3>Play by Play</h3>
+                </section>
             </section>
-        </>
+        </div>
     )
 }
 

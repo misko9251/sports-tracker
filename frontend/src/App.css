@@ -1036,6 +1036,94 @@ hr {
 
 /* Hockey Logger */
 
+.opponent-goal{
+	display: flex;
+	justify-content: center;
+	height: 100px;
+	background-color: rgb(100, 110, 205);
+}
+
+.opponent-goal button{
+	margin: 20px 0;
+	border-radius: 10px;
+	border: none;
+}
+
+.team-scoring-container{
+	background-color: rgb(47, 47, 47);
+	color: white;
+}
+
+.hockey-my-team-name{
+	text-align: center;
+	width: 100%;
+	display: block;
+	padding-top: 20px;
+}
+
+.score-button-container{
+	display: flex;
+	justify-content: space-around;
+}
+
+.save-assist-container{
+	display: flex;
+	flex-direction: column;
+	height: 100px;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.save-assist-container button{
+	height: 30px;
+	width: 80px;
+}
+
+.goal-scored button, .shot-missed button{
+	height: 100px;
+	width: 100px;
+	border-radius: 10px;
+	border: none;
+	font-size: 1.3rem;
+	font-weight: bold;
+}
+
+.goal-scored button{
+	background-color: rgb(105, 227, 130);
+}
+
+.shot-missed button{
+	background-color: red;
+	color: white;
+}
+
+.next-period{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+}
+
+.next-period button{
+	height: 30px;
+	width: 150px;
+	border-radius: 30px;
+	background-color: white;
+	color: black;
+	border: none;
+}
+
+.play-by-play{
+	border-top: 1px solid white;
+	background-color: rgb(47, 47, 47);
+	height: auto;
+	color: white;
+	text-align: center;
+	padding-top: 30px;
+	margin-top: 30px;
+	text-decoration: underline;
+}
+
 /* Spinner */
 
 .loader {
