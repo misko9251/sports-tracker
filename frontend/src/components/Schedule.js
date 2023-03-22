@@ -13,6 +13,8 @@ function Schedule() {
   const [currentSport, setCurrentSport] = useState('')
   const {teamId} = useParams()
 
+  console.log(hasEventsScheduled)
+
   useEffect(()=> {
     async function fetchData(){
       const response = await fetch(`http://localhost:2121/dashboard/getSchedule/${teamId}`,{
@@ -20,9 +22,9 @@ function Schedule() {
       })
       const json = await response.json()
       setSchedule(json.schedule)
-      setCurrentSport(json.schedule[0].sport)
       if(json.schedule.length > 0){
         setHasEventsScheduled(true)
+        setCurrentSport(json.schedule[0].sport)
       }
       setIsLoading(false)
     }
