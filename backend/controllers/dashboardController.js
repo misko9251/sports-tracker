@@ -252,5 +252,15 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
+    },
+    getScheduledEvent: async (req, res) => {
+        try {
+            const {teamId, eventId} = req.params
+            const currentTeam = await Team.findById({_id: teamId})
+            const scheduledEvent = currentTeam.schedule.find((event)=> event._id == eventId)
+            res.status(200).json({scheduledEvent: scheduledEvent})
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

@@ -4,8 +4,7 @@ import Spinner from '../Spinner'
 
 function Hockey() {
 
-    const {teamId} = useParams()
-    console.log(teamId)
+    const {teamId, eventId} = useParams()
 
     const [currentPeriod, serCurrentPeriod] = useState(1)
     const [myScore, setMyScore] = useState(0)
@@ -13,56 +12,68 @@ function Hockey() {
     const [isLoading, setIsLoading] = useState(true)
     const [roster, setRoster] = useState([])
     const [scheduledEvent, setScheduledEvent] = useState([])
+    console.log(roster)
 
     useEffect(() => {
         async function fetchData(){
-            const response = await fetch(
+            const responseRoster = await fetch(
                 `http://localhost:2121/dashboard/getTeamInfo/${teamId}`,
                 {credentials: 'include'}
             )
-            const json = await response.json()
-            setRoster(json.roster)
+            const jsonRoster = await responseRoster.json()
+            setRoster(jsonRoster.roster)
+            const responseEvent = await fetch(
+                `http://localhost:2121/dashboard/team/${teamId}/getScheduledEvent/${eventId}`,
+                {credentials: 'include'}
+            )
+            const jsonEvent = await responseEvent.json()
+            setScheduledEvent(jsonEvent.scheduledEvent)
+            setIsLoading(false)
         }
         fetchData()
     }, [])
 
     return (
-        <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
-            <header className='logger-header'>
-                <span className='logger-current-time'>Period {currentPeriod}</span>
-                <div className='logger-scores'>
-                  <span>Lia's Ladies</span>
-                  <span className='logger-current-score'>{opponentScore} - {myScore}</span>
-                  <span>Misko's Madmen</span>
-                </div>
-            </header>
-            <section style={{flexGrow: 1, backgroundColor: 'rgb(47, 47, 47)'}}>
-                <div className='opponent-goal'>
-                    <button>Lia's Ladies Goal</button>
-                </div>
-                <div className='team-scoring-container'>
-                    <span className='hockey-my-team-name'>Misko's Madmen</span>
-                    <div className='score-button-container'>
-                        <div className='goal-scored'>
-                            <button>Goal</button>
+        <>
+        {isLoading ? <Spinner /> : (
+            <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
+                <header className='logger-header'>
+                    <span className='logger-current-time'>Period {currentPeriod}</span>
+                    <div className='logger-scores'>
+                      <span>{scheduledEvent.opponent}</span>
+                      <span className='logger-current-score'>{opponentScore} - {myScore}</span>
+                      <span>{roster[0].team}</span>
+                    </div>
+                </header>
+                <section style={{flexGrow: 1, backgroundColor: 'rgb(47, 47, 47)'}}>
+                    <div className='opponent-goal'>
+                        <button>{scheduledEvent.opponent} Goal</button>
+                    </div>
+                    <div className='team-scoring-container'>
+                        <span className='hockey-my-team-name'>{roster[0].team}</span>
+                        <div className='score-button-container'>
+                            <div className='goal-scored'>
+                                <button>Goal</button>
+                            </div>
+                            <div className='save-assist-container'>
+                                <button>Save</button>
+                                <button>Assist</button>
+                            </div>
+                            <div className='shot-missed'>
+                                <button>Shot Missed</button>
+                            </div>
                         </div>
-                        <div className='save-assist-container'>
-                            <button>Save</button>
-                            <button>Assist</button>
-                        </div>
-                        <div className='shot-missed'>
-                            <button>Shot Missed</button>
+                        <div className='next-period'>
+                            <button>End Period</button>
                         </div>
                     </div>
-                    <div className='next-period'>
-                        <button>End Period</button>
-                    </div>
-                </div>
-                <section className='play-by-play'>
-                    <h3>Play by Play</h3>
+                    <section className='play-by-play'>
+                        <h3>Play by Play</h3>
+                    </section>
                 </section>
-            </section>
-        </div>
+            </div>
+        )}
+        </>
     )
 }
 
