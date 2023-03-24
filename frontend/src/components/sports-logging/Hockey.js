@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import Spinner from '../Spinner'
+import RosterModal from './RosterModal'
 
 function Hockey() {
 
@@ -12,7 +13,8 @@ function Hockey() {
     const [isLoading, setIsLoading] = useState(true)
     const [roster, setRoster] = useState([])
     const [scheduledEvent, setScheduledEvent] = useState([])
-    console.log(roster)
+    const [gameStats, setGameStats] = useState({})
+    const [isActive, setIsActive] = useState(false)
 
     useEffect(() => {
         async function fetchData(){
@@ -33,8 +35,24 @@ function Hockey() {
         fetchData()
     }, [])
 
+    const goalScored = () => {
+        setIsActive(true)
+    }
+    
+    const closeModal = () => {
+        setIsActive(false)
+    }
+
     return (
         <>
+
+        <RosterModal 
+        roster={roster}
+        isActive={isActive}
+        closeModal={closeModal}
+        />
+
+
         {isLoading ? <Spinner /> : (
             <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
                 <header className='logger-header'>
@@ -53,7 +71,7 @@ function Hockey() {
                         <span className='hockey-my-team-name'>{roster[0].team}</span>
                         <div className='score-button-container'>
                             <div className='goal-scored'>
-                                <button>Goal</button>
+                                <button onClick={goalScored}>Goal</button>
                             </div>
                             <div className='save-assist-container'>
                                 <button>Save</button>

@@ -541,7 +541,7 @@ button {
 
 /* Add new team */
 
-.add-team-container {
+.add-team-container, .roster-modal {
 	position: absolute;
 	width: 100%;
 	top: 0;
@@ -559,7 +559,7 @@ button {
 	margin: 3%;
 }
 
-.add-team-container.active {
+.add-team-container.active, .roster-modal.active {
 	opacity: 1;
 	visibility: visible;
 	height: 100vh;
@@ -1031,7 +1031,27 @@ hr {
 .logger-current-score{
 	font-size: 3rem;
 	margin: 0 auto;
-	padding-left: 35px;
+}
+
+/* Logger Modal */
+
+.roster-modal{
+	border: 4px solid green;
+	display: flex;
+	align-items: center;
+}
+
+.select-player{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+}
+
+.close-modal{
+	border: 3px solid red;
+	width: 100%;
+	margin-left: auto;
 }
 
 /* Hockey Logger */
