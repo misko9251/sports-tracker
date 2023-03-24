@@ -13,8 +13,9 @@ function Hockey() {
     const [isLoading, setIsLoading] = useState(true)
     const [roster, setRoster] = useState([])
     const [scheduledEvent, setScheduledEvent] = useState([])
-    const [gameStats, setGameStats] = useState({})
+    const [gameStats, setGameStats] = useState([])
     const [isActive, setIsActive] = useState(false)
+    
 
     useEffect(() => {
         async function fetchData(){
@@ -43,6 +44,9 @@ function Hockey() {
         setIsActive(false)
     }
 
+    const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>{event}</div>))
+    
+
     return (
         <>
 
@@ -50,6 +54,11 @@ function Hockey() {
         roster={roster}
         isActive={isActive}
         closeModal={closeModal}
+        playerScored={(name)=>{
+            setMyScore(myScore + 1)
+            setGameStats([`${name} scored a goal`, ...gameStats])
+            setIsActive(false)
+        }}
         />
 
 
@@ -65,7 +74,7 @@ function Hockey() {
                 </header>
                 <section style={{flexGrow: 1, backgroundColor: 'rgb(47, 47, 47)'}}>
                     <div className='opponent-goal'>
-                        <button>{scheduledEvent.opponent} Goal</button>
+                        <button onClick={()=>setOpponentScore(opponentScore + 1)}>{scheduledEvent.opponent} Goal</button>
                     </div>
                     <div className='team-scoring-container'>
                         <span className='hockey-my-team-name'>{roster[0].team}</span>
@@ -87,6 +96,9 @@ function Hockey() {
                     </div>
                     <section className='play-by-play'>
                         <h3>Play by Play</h3>
+                        <div>
+                            {playByPlay}
+                        </div>
                     </section>
                 </section>
             </div>
