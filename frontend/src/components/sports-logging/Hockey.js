@@ -74,7 +74,12 @@ function Hockey() {
                 </header>
                 <section style={{flexGrow: 1, backgroundColor: 'rgb(47, 47, 47)'}}>
                     <div className='opponent-goal'>
-                        <button onClick={()=>setOpponentScore(opponentScore + 1)}>{scheduledEvent.opponent} Goal</button>
+                        <button onClick={()=>{
+                            setOpponentScore(opponentScore + 1)
+                            setGameStats([`${scheduledEvent.opponent} scored a goal`, ...gameStats])
+                        }}>
+                            {scheduledEvent.opponent} Goal
+                        </button>
                     </div>
                     <div className='team-scoring-container'>
                         <span className='hockey-my-team-name'>{roster[0].team}</span>
