@@ -541,7 +541,7 @@ button {
 
 /* Add new team */
 
-.add-team-container {
+.add-team-container, .roster-modal {
 	position: absolute;
 	width: 100%;
 	top: 0;
@@ -559,7 +559,7 @@ button {
 	margin: 3%;
 }
 
-.add-team-container.active {
+.add-team-container.active, .roster-modal.active {
 	opacity: 1;
 	visibility: visible;
 	height: 100vh;
@@ -836,7 +836,7 @@ hr {
 	height: 3rem;
 }
 
-.staff-members, .roster-players{
+.staff-members, .roster-players, .modal-player, .play-by-play-update{
 	color: black;
 	height: 3rem;
 	width: 100%;
@@ -1031,7 +1031,44 @@ hr {
 .logger-current-score{
 	font-size: 3rem;
 	margin: 0 auto;
-	padding-left: 35px;
+}
+
+/* Logger Modal */
+
+.roster-modal{
+	display: flex;
+	align-items: center;
+}
+
+.select-player{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+	text-align: center;
+}
+
+.close-modal{
+	cursor: pointer;
+	margin-left: auto;
+	margin-right: 30px;
+	margin-top: 20px;
+}
+
+.modal-player-list{
+	margin-top: 30px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.modal-player{
+	display: flex;
+	justify-content: space-around;
+}
+
+.modal-player:hover{
+	background-color: rgb(228, 228, 228);
 }
 
 /* Hockey Logger */
@@ -1121,7 +1158,14 @@ hr {
 	text-align: center;
 	padding-top: 30px;
 	margin-top: 30px;
-	text-decoration: underline;
+}
+
+.play-by-play h3{
+	margin-bottom: 10px;
+}
+
+.play-by-play div > div{
+	text-decoration: none;
 }
 
 /* Spinner */

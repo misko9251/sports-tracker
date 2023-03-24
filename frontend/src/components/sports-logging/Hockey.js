@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import Spinner from '../Spinner'
+import RosterModal from './RosterModal'
 
 function Hockey() {
 
@@ -12,7 +13,12 @@ function Hockey() {
     const [isLoading, setIsLoading] = useState(true)
     const [roster, setRoster] = useState([])
     const [scheduledEvent, setScheduledEvent] = useState([])
-    console.log(roster)
+    const [gameStats, setGameStats] = useState([])
+    const [isActive, setIsActive] = useState(false)
+    const [openModal, setOpenModal] = useState(false)
+    const [goalModal, setGoalModal] = useState(false)
+    const [assistModal, setAssistModal] = useState(false)
+    
 
     useEffect(() => {
         async function fetchData(){
@@ -33,8 +39,48 @@ function Hockey() {
         fetchData()
     }, [])
 
+    const goalScored = () => {
+        setGoalModal(true)
+        setIsActive(true)
+    }
+
+    const logAssist = () => {
+        setAssistModal(true)
+        setIsActive(true)
+    }
+    
+    const closeModal = () => {
+        setIsActive(false)
+        setGoalModal(false)
+        setAssistModal(false)
+    }
+
+    const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>{event}</div>))
+    
+
     return (
         <>
+
+        <RosterModal 
+        roster={roster}
+        isActive={isActive}
+        closeModal={closeModal}
+        playerScored={(name)=>{
+            setMyScore(myScore + 1)
+            setGameStats([`${name} scored a goal`, ...gameStats])
+            setIsActive(false)
+            setGoalModal(false)
+        }}
+        playerAssist={(name)=>{
+            setGameStats([`${name} assisted on a goal`, ...gameStats])
+            setIsActive(false)
+            setAssistModal(false)
+        }}
+        goalModal={goalModal}
+        assistModal={assistModal}
+        />
+
+
         {isLoading ? <Spinner /> : (
             <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
                 <header className='logger-header'>
@@ -47,17 +93,22 @@ function Hockey() {
                 </header>
                 <section style={{flexGrow: 1, backgroundColor: 'rgb(47, 47, 47)'}}>
                     <div className='opponent-goal'>
-                        <button>{scheduledEvent.opponent} Goal</button>
+                        <button onClick={()=>{
+                            setOpponentScore(opponentScore + 1)
+                            setGameStats([`${scheduledEvent.opponent} scored a goal`, ...gameStats])
+                        }}>
+                            {scheduledEvent.opponent} Goal
+                        </button>
                     </div>
                     <div className='team-scoring-container'>
                         <span className='hockey-my-team-name'>{roster[0].team}</span>
                         <div className='score-button-container'>
                             <div className='goal-scored'>
-                                <button>Goal</button>
+                                <button onClick={goalScored}>Goal</button>
                             </div>
                             <div className='save-assist-container'>
                                 <button>Save</button>
-                                <button>Assist</button>
+                                <button onClick={logAssist}>Assist</button>
                             </div>
                             <div className='shot-missed'>
                                 <button>Shot Missed</button>
@@ -69,6 +120,9 @@ function Hockey() {
                     </div>
                     <section className='play-by-play'>
                         <h3>Play by Play</h3>
+                        <div>
+                            {playByPlay}
+                        </div>
                     </section>
                 </section>
             </div>
