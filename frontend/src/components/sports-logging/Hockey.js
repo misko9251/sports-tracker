@@ -15,6 +15,9 @@ function Hockey() {
     const [scheduledEvent, setScheduledEvent] = useState([])
     const [gameStats, setGameStats] = useState([])
     const [isActive, setIsActive] = useState(false)
+    const [openModal, setOpenModal] = useState(false)
+    const [goalModal, setGoalModal] = useState(false)
+    const [assistModal, setAssistModal] = useState(false)
     
 
     useEffect(() => {
@@ -37,11 +40,19 @@ function Hockey() {
     }, [])
 
     const goalScored = () => {
+        setGoalModal(true)
+        setIsActive(true)
+    }
+
+    const logAssist = () => {
+        setAssistModal(true)
         setIsActive(true)
     }
     
     const closeModal = () => {
         setIsActive(false)
+        setGoalModal(false)
+        setAssistModal(false)
     }
 
     const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>{event}</div>))
@@ -58,7 +69,15 @@ function Hockey() {
             setMyScore(myScore + 1)
             setGameStats([`${name} scored a goal`, ...gameStats])
             setIsActive(false)
+            setGoalModal(false)
         }}
+        playerAssist={(name)=>{
+            setGameStats([`${name} assisted on a goal`, ...gameStats])
+            setIsActive(false)
+            setAssistModal(false)
+        }}
+        goalModal={goalModal}
+        assistModal={assistModal}
         />
 
 
@@ -89,7 +108,7 @@ function Hockey() {
                             </div>
                             <div className='save-assist-container'>
                                 <button>Save</button>
-                                <button>Assist</button>
+                                <button onClick={logAssist}>Assist</button>
                             </div>
                             <div className='shot-missed'>
                                 <button>Shot Missed</button>
