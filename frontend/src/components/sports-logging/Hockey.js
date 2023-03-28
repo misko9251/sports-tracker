@@ -15,9 +15,11 @@ function Hockey() {
     const [scheduledEvent, setScheduledEvent] = useState([])
     const [gameStats, setGameStats] = useState([])
     const [isActive, setIsActive] = useState(false)
-    const [openModal, setOpenModal] = useState(false)
+    // const [openModal, setOpenModal] = useState(false)
     const [goalModal, setGoalModal] = useState(false)
     const [assistModal, setAssistModal] = useState(false)
+    const [shotMissedModal, setShotMissedModal] = useState(false)
+    const [saveMade, setSaveMade] = useState(false)
     
 
     useEffect(() => {
@@ -53,6 +55,12 @@ function Hockey() {
         setIsActive(false)
         setGoalModal(false)
         setAssistModal(false)
+        setShotMissedModal(false)
+    }
+
+    const shotMissed = () => {
+        setShotMissedModal(true)
+        setIsActive(true)
     }
 
     const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>{event}</div>))
@@ -76,8 +84,15 @@ function Hockey() {
             setIsActive(false)
             setAssistModal(false)
         }}
+        playerMissedShot={(name)=>{
+            setGameStats([`${name} missed a shot`, ...gameStats])
+            setIsActive(false)
+            setShotMissedModal(false)
+        }}
         goalModal={goalModal}
         assistModal={assistModal}
+        shotMissedModal={shotMissedModal}
+        saveMade={saveMade}
         />
 
 
@@ -111,7 +126,7 @@ function Hockey() {
                                 <button onClick={logAssist}>Assist</button>
                             </div>
                             <div className='shot-missed'>
-                                <button>Shot Missed</button>
+                                <button onClick={shotMissed}>Shot Missed</button>
                             </div>
                         </div>
                         <div className='next-period'>

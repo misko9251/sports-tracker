@@ -4,9 +4,11 @@ function RosterModal({roster,
                       isActive, 
                       closeModal, 
                       playerScored, 
-                      playerAssist, 
+                      playerAssist,
+                      playerMissedShot, 
                       goalModal, 
-                      assistModal}) {
+                      assistModal,
+                      shotMissedModal}) {
 
     console.log(assistModal)
 
@@ -18,6 +20,8 @@ function RosterModal({roster,
                     playerScored(player.player)
                 }else if(assistModal){
                     playerAssist(player.player)
+                }else if(shotMissedModal){
+                    playerMissedShot(player.player)
                 }else{
                     console.log('hey')
                 }}
@@ -33,7 +37,9 @@ function RosterModal({roster,
       <section className={`roster-modal ${isActive ? 'active' : ''} `}>
           <div className='select-player'>
             <span className='close-modal' onClick={closeModal}>X</span>
-            <h3>{goalModal ? 'Select the player who scored:' : 'Assist made by:'}</h3>
+            <h3>{goalModal ? 'Select the player who scored:' : 
+                assistModal ? 'Assist made by:' :
+                shotMissedModal ? 'Who missed the shot?' : ''}</h3>
           </div>
             <ul className='modal-player-list'>
                 {myRoster}
