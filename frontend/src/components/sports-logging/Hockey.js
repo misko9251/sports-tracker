@@ -50,17 +50,22 @@ function Hockey() {
         setAssistModal(true)
         setIsActive(true)
     }
-    
+
+    const shotMissed = () => {
+        setShotMissedModal(true)
+        setIsActive(true)
+    }
+
+    const playerSaveMade = () => {
+        setSaveMade(true)
+        setIsActive(true)
+    }
+
     const closeModal = () => {
         setIsActive(false)
         setGoalModal(false)
         setAssistModal(false)
         setShotMissedModal(false)
-    }
-
-    const shotMissed = () => {
-        setShotMissedModal(true)
-        setIsActive(true)
     }
 
     const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>{event}</div>))
@@ -88,6 +93,11 @@ function Hockey() {
             setGameStats([`${name} missed a shot`, ...gameStats])
             setIsActive(false)
             setShotMissedModal(false)
+        }}
+        playerMadeSave={(name)=>{
+            setGameStats([`${name} made a save`])
+            setIsActive(false)
+            setSaveMade(false)
         }}
         goalModal={goalModal}
         assistModal={assistModal}
@@ -122,7 +132,7 @@ function Hockey() {
                                 <button onClick={goalScored}>Goal</button>
                             </div>
                             <div className='save-assist-container'>
-                                <button>Save</button>
+                                <button onClick={playerSaveMade}>Save</button>
                                 <button onClick={logAssist}>Assist</button>
                             </div>
                             <div className='shot-missed'>
