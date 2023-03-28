@@ -15,7 +15,6 @@ function Hockey() {
     const [scheduledEvent, setScheduledEvent] = useState([])
     const [gameStats, setGameStats] = useState([])
     const [isActive, setIsActive] = useState(false)
-    // const [openModal, setOpenModal] = useState(false)
     const [goalModal, setGoalModal] = useState(false)
     const [assistModal, setAssistModal] = useState(false)
     const [shotMissedModal, setShotMissedModal] = useState(false)

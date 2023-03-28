@@ -23,6 +23,13 @@ const TeamSchema = new mongoose.Schema({
     },
     roster: [{
         player: { type: String },
+        stats: [{
+            gamesPlayed: { type: String },
+            shots: { type: String },
+            goals: { type: String },
+            saves: { type: String },
+            missedShots: { type: String }
+        }],
         position: { type: String },
         team: { type: String },
         teamId: {type: String},

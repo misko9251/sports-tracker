@@ -13,6 +13,7 @@ require("./config/passport")(passport);
 
 const authRoutes = require('./routes/authRoutes')
 const dashboardRoutes = require('./routes/dashboardRoutes')
+const statsRoutes = require('./routes/statsRoutes')
 
 connectDB()
 
@@ -41,6 +42,7 @@ app.use(passport.session())
 // Routes
 app.use('/auth', authRoutes)
 app.use('/dashboard', dashboardRoutes)
+app.use('/stats', statsRoutes)
 
 
 app.listen(process.env.PORT, (req, res)=> {
