@@ -19,7 +19,7 @@ function RosterModal({roster,
             <li 
             onClick={()=>
                 {if(goalModal){
-                    playerScored(player.player)
+                    playerScored(player.player, player._id)
                 }else if(assistModal){
                     playerAssist(player.player)
                 }else if(shotMissedModal){
