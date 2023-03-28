@@ -15,7 +15,6 @@ function Hockey() {
     const [scheduledEvent, setScheduledEvent] = useState([])
     const [gameStats, setGameStats] = useState([])
     const [isActive, setIsActive] = useState(false)
-    // const [openModal, setOpenModal] = useState(false)
     const [goalModal, setGoalModal] = useState(false)
     const [assistModal, setAssistModal] = useState(false)
     const [shotMissedModal, setShotMissedModal] = useState(false)
@@ -83,26 +82,78 @@ function Hockey() {
         roster={roster}
         isActive={isActive}
         closeModal={closeModal}
-        playerScored={(name)=>{
-            setMyScore(myScore + 1)
-            setGameStats([`${name} scored a goal`, ...gameStats])
-            setIsActive(false)
-            setGoalModal(false)
+        playerScored={async (name, playerId)=>{
+            try {
+                const response = await fetch(`http://localhost:2121/stats/addGoal/${teamId}/player/${playerId}`,{
+                    credentials: 'include',
+                    method: 'POST',
+                    headers: {'Content-Type' : 'application/json'},
+                    body: JSON.stringify({teamId, playerId})
+                })
+                const json = await response.json()
+                if(response.ok){
+                    setMyScore(myScore + 1)
+                    setGameStats([`${name} scored a goal`, ...gameStats])
+                    setIsActive(false)
+                    setGoalModal(false)
+                }
+            } catch (error) {
+                console.log(error)
+            }
         }}
-        playerAssist={(name)=>{
-            setGameStats([`${name} assisted on a goal`, ...gameStats])
-            setIsActive(false)
-            setAssistModal(false)
+        playerAssist={async (name, playerId)=>{
+            try {
+                const response = await fetch(`http://localhost:2121/stats/addAssist/${teamId}/player/${playerId}`,{
+                    credentials: 'include',
+                    method: 'POST',
+                    headers: {'Content-Type' : 'application/json'},
+                    body: JSON.stringify({teamId, playerId})
+                })
+                const json = await response.json()
+                if(response.ok){
+                    setGameStats([`${name} assisted on a goal`, ...gameStats])
+                    setIsActive(false)
+                    setAssistModal(false)
+                }
+            } catch (error) {
+                console.log(error)
+            }
         }}
-        playerMissedShot={(name)=>{
-            setGameStats([`${name} missed a shot`, ...gameStats])
-            setIsActive(false)
-            setShotMissedModal(false)
+        playerMissedShot={async (name, playerId)=>{
+            try {
+                const response = await fetch(`http://localhost:2121/stats/addMissedShot/${teamId}/player/${playerId}`,{
+                    credentials: 'include',
+                    method: 'POST',
+                    headers: {'Content-Type' : 'application/json'},
+                    body: JSON.stringify({teamId, playerId})
+                })
+                const json = await response.json()
+                if(response.ok){
+                    setGameStats([`${name} missed a shot`, ...gameStats])
+                    setIsActive(false)
+                    setShotMissedModal(false)
+                }
+            } catch (error) {
+                console.log(error)
+            }
         }}
-        playerMadeSave={(name)=>{
-            setGameStats([`${name} made a save`])
-            setIsActive(false)
-            setSaveMade(false)
+        playerMadeSave={async (name, playerId)=>{
+            try {
+                const response = await fetch(`http://localhost:2121/stats/addSave/${teamId}/player/${playerId}`,{
+                    credentials: 'include',
+                    method: 'POST',
+                    headers: {'Content-Type' : 'application/json'},
+                    body: JSON.stringify({teamId, playerId})
+                })
+                const json = await response.json()
+                if(response.ok){
+                    setGameStats([`${name} made a save`])
+                    setIsActive(false)
+                    setSaveMade(false)
+                }
+            } catch (error) {
+                console.log(error)
+            }
         }}
         goalModal={goalModal}
         assistModal={assistModal}
