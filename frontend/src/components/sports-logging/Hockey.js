@@ -137,10 +137,23 @@ function Hockey() {
                 console.log(error)
             }
         }}
-        playerMadeSave={(name)=>{
-            setGameStats([`${name} made a save`])
-            setIsActive(false)
-            setSaveMade(false)
+        playerMadeSave={async (name, playerId)=>{
+            try {
+                const response = await fetch(`http://localhost:2121/stats/addSave/${teamId}/player/${playerId}`,{
+                    credentials: 'include',
+                    method: 'POST',
+                    headers: {'Content-Type' : 'application/json'},
+                    body: JSON.stringify({teamId, playerId})
+                })
+                const json = await response.json()
+                if(response.ok){
+                    setGameStats([`${name} made a save`])
+                    setIsActive(false)
+                    setSaveMade(false)
+                }
+            } catch (error) {
+                console.log(error)
+            }
         }}
         goalModal={goalModal}
         assistModal={assistModal}
