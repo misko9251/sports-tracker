@@ -25,7 +25,7 @@ const TeamSchema = new mongoose.Schema({
         player: { type: String },
         stats: {
             gamesPlayed: { type: Number, default: 0 },
-            shots: { type: Number, default: 0 },
+            assists: { type: Number, default: 0 },
             goals: { type: Number, default: 0 },
             saves: { type: Number, default: 0 },
             missedShots: { type: Number, default: 0 },

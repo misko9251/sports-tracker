@@ -21,11 +21,11 @@ function RosterModal({roster,
                 {if(goalModal){
                     playerScored(player.player, player._id)
                 }else if(assistModal){
-                    playerAssist(player.player)
+                    playerAssist(player.player, player._id)
                 }else if(shotMissedModal){
-                    playerMissedShot(player.player)
+                    playerMissedShot(player.player, player._id)
                 }else if(saveMade){
-                    playerMadeSave(player.player)
+                    playerMadeSave(player.player, player._id)
                 }else{
                     console.log('hey')
                 }}
