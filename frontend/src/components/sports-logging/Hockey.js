@@ -61,6 +61,11 @@ function Hockey() {
         setIsActive(true)
     }
 
+    const endPeriod = () => {
+        setGameStats([`Period ${currentPeriod} has ended.`, ...gameStats])
+        serCurrentPeriod((prevVal)=> prevVal+1)
+    }
+
     const closeModal = () => {
         setIsActive(false)
         setGoalModal(false)
@@ -140,7 +145,7 @@ function Hockey() {
                             </div>
                         </div>
                         <div className='next-period'>
-                            <button>End Period</button>
+                            <button onClick={endPeriod}>End Period</button>
                         </div>
                     </div>
                     <section className='play-by-play'>
