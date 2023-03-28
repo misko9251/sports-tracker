@@ -119,10 +119,23 @@ function Hockey() {
                 console.log(error)
             }
         }}
-        playerMissedShot={(name)=>{
-            setGameStats([`${name} missed a shot`, ...gameStats])
-            setIsActive(false)
-            setShotMissedModal(false)
+        playerMissedShot={async (name, playerId)=>{
+            try {
+                const response = await fetch(`http://localhost:2121/stats/addMissedShot/${teamId}/player/${playerId}`,{
+                    credentials: 'include',
+                    method: 'POST',
+                    headers: {'Content-Type' : 'application/json'},
+                    body: JSON.stringify({teamId, playerId})
+                })
+                const json = await response.json()
+                if(response.ok){
+                    setGameStats([`${name} missed a shot`, ...gameStats])
+                    setIsActive(false)
+                    setShotMissedModal(false)
+                }
+            } catch (error) {
+                console.log(error)
+            }
         }}
         playerMadeSave={(name)=>{
             setGameStats([`${name} made a save`])
