@@ -19,6 +19,7 @@ function Hockey() {
     const [assistModal, setAssistModal] = useState(false)
     const [shotMissedModal, setShotMissedModal] = useState(false)
     const [saveMade, setSaveMade] = useState(false)
+    console.log(gameStats)
     
 
     useEffect(() => {
@@ -61,7 +62,7 @@ function Hockey() {
     }
 
     const endPeriod = () => {
-        setGameStats([`Period ${currentPeriod} has ended.`, ...gameStats])
+        setGameStats([{event: `Period ${currentPeriod} has ended.`}, ...gameStats])
         serCurrentPeriod((prevVal)=> prevVal+1)
     }
 
@@ -72,7 +73,21 @@ function Hockey() {
         setShotMissedModal(false)
     }
 
-    const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>{event}</div>))
+    const endGame = async () => {
+        try {
+            const response = await fetch(`http://localhost:2121/stats/updateHockeyStats/${teamId}`, {
+                credentials: 'include',
+                method: 'POST',
+                headers: {'Content-Type' : 'application/json'},
+                body: JSON.stringify({gameStats})
+            })
+            const json = await response.json()
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>{event.event}</div>))
     
 
     return (
@@ -82,85 +97,32 @@ function Hockey() {
         roster={roster}
         isActive={isActive}
         closeModal={closeModal}
-        playerScored={async (name, playerId)=>{
-            try {
-                const response = await fetch(`http://localhost:2121/stats/addGoal/${teamId}/player/${playerId}`,{
-                    credentials: 'include',
-                    method: 'POST',
-                    headers: {'Content-Type' : 'application/json'},
-                    body: JSON.stringify({teamId, playerId})
-                })
-                const json = await response.json()
-                if(response.ok){
-                    setMyScore(myScore + 1)
-                    setGameStats([`${name} scored a goal`, ...gameStats])
-                    setIsActive(false)
-                    setGoalModal(false)
-                }
-            } catch (error) {
-                console.log(error)
-            }
+        playerScored={(name, playerId)=>{
+            setMyScore(myScore + 1)
+            setGameStats([{playerId, event: `${name} scored a goal`}, ...gameStats])
+            setIsActive(false)
+            setGoalModal(false)
         }}
         playerAssist={async (name, playerId)=>{
-            try {
-                const response = await fetch(`http://localhost:2121/stats/addAssist/${teamId}/player/${playerId}`,{
-                    credentials: 'include',
-                    method: 'POST',
-                    headers: {'Content-Type' : 'application/json'},
-                    body: JSON.stringify({teamId, playerId})
-                })
-                const json = await response.json()
-                if(response.ok){
-                    setGameStats([`${name} assisted on a goal`, ...gameStats])
-                    setIsActive(false)
-                    setAssistModal(false)
-                }
-            } catch (error) {
-                console.log(error)
-            }
+            setGameStats([{playerId, event: `${name} assisted on a goal`}, ...gameStats])
+            setIsActive(false)
+            setAssistModal(false)
         }}
         playerMissedShot={async (name, playerId)=>{
-            try {
-                const response = await fetch(`http://localhost:2121/stats/addMissedShot/${teamId}/player/${playerId}`,{
-                    credentials: 'include',
-                    method: 'POST',
-                    headers: {'Content-Type' : 'application/json'},
-                    body: JSON.stringify({teamId, playerId})
-                })
-                const json = await response.json()
-                if(response.ok){
-                    setGameStats([`${name} missed a shot`, ...gameStats])
-                    setIsActive(false)
-                    setShotMissedModal(false)
-                }
-            } catch (error) {
-                console.log(error)
-            }
+            setGameStats([{playerId, event: `${name} missed a shot`}, ...gameStats])
+            setIsActive(false)
+            setShotMissedModal(false)
         }}
         playerMadeSave={async (name, playerId)=>{
-            try {
-                const response = await fetch(`http://localhost:2121/stats/addSave/${teamId}/player/${playerId}`,{
-                    credentials: 'include',
-                    method: 'POST',
-                    headers: {'Content-Type' : 'application/json'},
-                    body: JSON.stringify({teamId, playerId})
-                })
-                const json = await response.json()
-                if(response.ok){
-                    setGameStats([`${name} made a save`])
-                    setIsActive(false)
-                    setSaveMade(false)
-                }
-            } catch (error) {
-                console.log(error)
-            }
+            setGameStats([{playerId, event: `${name} made a save`}, ...gameStats])
+            setIsActive(false)
+            setSaveMade(false)
         }}
         goalModal={goalModal}
         assistModal={assistModal}
         shotMissedModal={shotMissedModal}
         saveMade={saveMade}
         />
-
 
         {isLoading ? <Spinner /> : (
             <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
@@ -196,7 +158,8 @@ function Hockey() {
                             </div>
                         </div>
                         <div className='next-period'>
-                            <button onClick={endPeriod}>End Period</button>
+                            {currentPeriod <3 && <button onClick={endPeriod}>End Period</button>}
+                            {currentPeriod >= 3 && <button onClick={endGame}>End Game</button>}
                         </div>
                     </div>
                     <section className='play-by-play'>
