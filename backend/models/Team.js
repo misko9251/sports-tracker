@@ -54,6 +54,7 @@ const TeamSchema = new mongoose.Schema({
         day: { type: String },
         year: { type: String },
         dayOfWeek: { type: String },
+        isComplete: {type: Boolean, default: false},
         location: { type: String }
     }],
     videos: [{
