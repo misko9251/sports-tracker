@@ -2,10 +2,12 @@ import React, {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import Spinner from '../Spinner'
 import RosterModal from './RosterModal'
+import {useNavigate} from 'react-router-dom'
 
 function Hockey() {
 
     const {teamId, eventId} = useParams()
+    const navigate = useNavigate();
 
     const [currentPeriod, serCurrentPeriod] = useState(1)
     const [myScore, setMyScore] = useState(0)
@@ -19,8 +21,6 @@ function Hockey() {
     const [assistModal, setAssistModal] = useState(false)
     const [shotMissedModal, setShotMissedModal] = useState(false)
     const [saveMade, setSaveMade] = useState(false)
-    console.log(gameStats)
-    
 
     useEffect(() => {
         async function fetchData(){
@@ -75,13 +75,14 @@ function Hockey() {
 
     const endGame = async () => {
         try {
-            const response = await fetch(`http://localhost:2121/stats/updateHockeyStats/${teamId}`, {
+            const response = await fetch(`http://localhost:2121/stats/updateHockeyStats/${teamId}/event/${eventId}`, {
                 credentials: 'include',
                 method: 'POST',
                 headers: {'Content-Type' : 'application/json'},
                 body: JSON.stringify({gameStats})
             })
             const json = await response.json()
+            navigate(`/dashboard/${teamId}`);
         } catch (error) {
             console.log(error)
         }
@@ -138,7 +139,7 @@ function Hockey() {
                     <div className='opponent-goal'>
                         <button onClick={()=>{
                             setOpponentScore(opponentScore + 1)
-                            setGameStats([`${scheduledEvent.opponent} scored a goal`, ...gameStats])
+                            setGameStats([{event: `${scheduledEvent.opponent} scored a goal`}, ...gameStats])
                         }}>
                             {scheduledEvent.opponent} Goal
                         </button>
@@ -158,7 +159,7 @@ function Hockey() {
                             </div>
                         </div>
                         <div className='next-period'>
-                            {currentPeriod <3 && <button onClick={endPeriod}>End Period</button>}
+                            {currentPeriod < 3 && <button onClick={endPeriod}>End Period</button>}
                             {currentPeriod >= 3 && <button onClick={endGame}>End Game</button>}
                         </div>
                     </div>

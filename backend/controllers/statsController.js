@@ -3,8 +3,10 @@ const Team = require('../models/Team')
 module.exports = {
     updateHockeyStats: async (req, res) => {
         const {gameStats} = req.body
-        const {teamId} = req.params
+        const {teamId, eventId} = req.params
         const currentTeam = await Team.findById({_id: teamId})
+        const eventIndex = currentTeam.schedule.findIndex((game)=> game._id == eventId)
+        currentTeam.schedule[eventIndex].isComplete = true
         try {
          gameStats.forEach((stat)=>{
             const {event, playerId} = stat
