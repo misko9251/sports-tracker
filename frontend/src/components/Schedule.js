@@ -22,10 +22,12 @@ function Schedule() {
       })
       const json = await response.json()
       setSchedule(json.schedule)
+      const hasEvents = json.schedule.some((event) => !event.isComplete);
+      setHasEventsScheduled(hasEvents);
       if(json.schedule.length > 0){
-        setHasEventsScheduled(true)
         setCurrentSport(json.schedule[0].sport)
       }
+      console.log(json.schedule)
       setIsLoading(false)
     }
     fetchData()
@@ -35,27 +37,30 @@ function Schedule() {
     setAddEvent(false)
   }
   
-  const scheduledEvents = schedule.map((item)=> {
-    return (
-      <Link
-      className='custom-link-class'
-      to={`/dashboard/team/${item.teamId}/sport/${currentSport}/event/${item._id}`}
-      >
-        <section className='individual-events'>
-          <div className='event-date'>
-            <span>{item.dayOfWeek}</span>
-            <span style={{fontWeight: 'bolder'}}>{item.month} {item.day}</span>
-          </div>
-          <div className='event-type'>
-            <span>{item.opponent ? ` vs. ${item.opponent}` : 'Practice'}</span>
-          </div>
-          <div className='event-time'>
-            <span>{item.time}</span>
-          </div>
-        </section>
-      </Link>
-    )
-  })
+  const scheduledEvents = schedule.map((item) => {
+    if (!item.isComplete) {
+      return (
+        <Link
+          className='custom-link-class'
+          to={`/dashboard/team/${item.teamId}/sport/${currentSport}/event/${item._id}`}
+        >
+          <section className='individual-events'>
+            <div className='event-date'>
+              <span>{item.dayOfWeek}</span>
+              <span style={{fontWeight: 'bolder'}}>{item.month} {item.day}</span>
+            </div>
+            <div className='event-type'>
+              <span>{item.opponent ? ` vs. ${item.opponent}` : 'Practice'}</span>
+            </div>
+            <div className='event-time'>
+              <span>{item.time}</span>
+            </div>
+          </section>
+        </Link>
+      );
+    }
+    return null;
+  });
 
   return (
     <>
