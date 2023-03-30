@@ -7,6 +7,7 @@ function PlayerStats() {
     const {teamId, playerId} = useParams()
     const [currentPlayer, setCurrentPlayer] = useState([])
     const [isLoading, setisLoading] = useState(true)
+    const [sport, setSport] = useState('')
 
     useEffect(()=> {
         async function fetchData(){
@@ -15,14 +16,34 @@ function PlayerStats() {
                 {credentials: 'include'}
             )
             const json = await response.json()
+            setSport(json.sportType)
             setCurrentPlayer(json.player)
             setisLoading(false)
         }
         fetchData()
       }, [])
-
-      console.log(currentPlayer.stats)
-    
+      
+      function getStats() {
+        const stats = currentPlayer.stats
+        if (sport === 'Hockey') {
+          // return only hockey stats
+          return {
+            goals: stats.goals,
+            assists: stats.assists,
+            points: stats.goals + stats.assists,
+            saves: stats.saves,
+            missedShots: stats.missedShots,
+          }
+        } else if (sport === 'Basketball') {
+          // return basketball stats plus hockey stats
+          return {
+            rebounds: stats.rebounds,
+            baskets: stats.baskets,
+          }
+        } else {
+          return {}
+        }
+      }
     
     return (
         <>
@@ -38,7 +59,7 @@ function PlayerStats() {
                           </tr>
                         </thead>
                         <tbody>
-                          {Object.entries(currentPlayer.stats).map(([key, value]) => (
+                          {Object.entries(getStats()).map(([key, value]) => (
                             <tr key={key}>
                               <td>{key[0].toUpperCase() + key.slice(1).replace(/([A-Z])/g, " $1")}</td>
                               <td>{value}</td>
