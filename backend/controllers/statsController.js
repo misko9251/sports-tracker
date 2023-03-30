@@ -7,6 +7,8 @@ module.exports = {
         const currentTeam = await Team.findById({_id: teamId})
         const eventIndex = currentTeam.schedule.findIndex((game)=> game._id == eventId)
         currentTeam.schedule[eventIndex].isComplete = true
+        const events = gameStats.map((item)=> (item.event))
+        currentTeam.schedule[eventIndex].gameEvents = events
         try {
          gameStats.forEach((stat)=>{
             const {event, playerId} = stat
