@@ -134,9 +134,9 @@ function Hockey() {
             <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
                 <header className='logger-header'>
                     <span className='logger-current-time'>Period {currentPeriod}</span>
+                    <span className='logger-current-score'>{opponentScore} - {myScore}</span>
                     <div className='logger-scores'>
                       <span>{scheduledEvent.opponent}</span>
-                      <span className='logger-current-score'>{opponentScore} - {myScore}</span>
                       <span>{roster[0].team}</span>
                     </div>
                 </header>
