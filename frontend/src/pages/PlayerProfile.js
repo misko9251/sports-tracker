@@ -3,6 +3,7 @@ import ProfilePic from '../assets/default-athlete.png'
 import PlayerVideos from '../components/PlayerVideos'
 import {useParams} from 'react-router-dom'
 import Spinner from '../components/Spinner'
+import PlayerStats from '../components/PlayerStats'
 
 function PlayerProfile() {
 
@@ -45,7 +46,8 @@ function PlayerProfile() {
                 </ul>
             </header>
             <section className='tab-container'>
-                 {currentTab === 'video' ? <PlayerVideos /> : null
+                 {currentTab === 'video' ? <PlayerVideos /> :
+                  currentTab === 'stats' ? <PlayerStats /> : null
                 }
             </section>
         </section>
