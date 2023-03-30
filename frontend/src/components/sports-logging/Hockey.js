@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom'
 import Spinner from '../Spinner'
 import RosterModal from './RosterModal'
 import {useNavigate} from 'react-router-dom'
+import GameComplete from './GameComplete'
 
 function Hockey() {
 
@@ -21,6 +22,7 @@ function Hockey() {
     const [assistModal, setAssistModal] = useState(false)
     const [shotMissedModal, setShotMissedModal] = useState(false)
     const [saveMade, setSaveMade] = useState(false)
+    console.log(scheduledEvent.isComplete)
 
     useEffect(() => {
         async function fetchData(){
@@ -74,6 +76,7 @@ function Hockey() {
     }
 
     const endGame = async () => {
+        setGameStats([{event: `Period 3 has ended.`}, ...gameStats])
         try {
             const response = await fetch(`http://localhost:2121/stats/updateHockeyStats/${teamId}/event/${eventId}`, {
                 credentials: 'include',
@@ -93,6 +96,8 @@ function Hockey() {
 
     return (
         <>
+
+        {scheduledEvent.isComplete && <GameComplete />}
 
         <RosterModal 
         roster={roster}

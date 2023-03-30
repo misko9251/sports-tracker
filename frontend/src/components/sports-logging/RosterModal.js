@@ -12,8 +12,6 @@ function RosterModal({roster,
                       shotMissedModal,
                       saveMade}) {
 
-    console.log(assistModal)
-
     const myRoster = roster.map((player)=> {
         return (
             <li 
@@ -27,7 +25,7 @@ function RosterModal({roster,
                 }else if(saveMade){
                     playerMadeSave(player.player, player._id)
                 }else{
-                    console.log('hey')
+                    console.log('Error')
                 }}
             }
             className='modal-player'>
