@@ -1233,6 +1233,50 @@ td{
 	text-decoration: none;
 }
 
+/* Basketball logger */
+
+.opponent-basket{
+	display: flex;
+	justify-content: space-around;
+	background-color: rgb(100, 110, 205);
+}
+
+.opponent-basket button{
+	width: 100px;
+}
+
+.basketball-pts-made{
+	height: 250px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.basketball-other-stats-container{
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.free-throw-made{
+	height: 40px;
+	background-color: rgb(129, 255, 167);
+	border: none;
+	border-radius: 5px;
+}
+
+.basketball-stats{
+	display: flex;
+	justify-content: space-around;
+}
+
+.basketball-stats button{
+	width: 40%;
+	height: 50px;
+}
+
 /* Spinner */
 
 .loader {

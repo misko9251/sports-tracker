@@ -10,7 +10,25 @@ function RosterModal({roster,
                       goalModal, 
                       assistModal,
                       shotMissedModal,
-                      saveMade}) {
+                      saveMade,
+                      twoPointsModal,
+                      twoPointsScored,
+                      twoPointsMissedModal,
+                      missedTwoPoints,
+                      threePointsModal,
+                      threePointsScored,
+                      threePointsMissedModal,
+                      missedThreePoints,
+                      freeThrowMadeModal,
+                      freeThrowMade,
+                      reboundModal,
+                      reboundMade,
+                      assistBasketballModal,
+                      assistMade,
+                      blockModal,
+                      blockMade,
+                      stealModal,
+                      stealMade}) {
 
     const myRoster = roster.map((player)=> {
         return (
@@ -24,6 +42,24 @@ function RosterModal({roster,
                     playerMissedShot(player.player, player._id)
                 }else if(saveMade){
                     playerMadeSave(player.player, player._id)
+                }else if(twoPointsModal){
+                    twoPointsScored(player.player, player._id)
+                }else if(twoPointsMissedModal){
+                    missedTwoPoints(player.player, player._id)
+                }else if(freeThrowMadeModal){
+                    freeThrowMade(player.player, player._id)
+                }else if(reboundModal){
+                    reboundMade(player.player, player._id)
+                }else if(assistBasketballModal){
+                    assistMade(player.player, player._id)
+                }else if(blockModal){
+                    blockMade(player.player, player._id)
+                }else if(stealModal){
+                    stealMade(player.player, player._id)
+                }else if(threePointsModal){
+                    threePointsScored(player.player, player._id)
+                }else if(threePointsMissedModal){
+                    missedThreePoints(player.player, player._id)
                 }else{
                     console.log('Error')
                 }}
@@ -42,7 +78,16 @@ function RosterModal({roster,
             <h3>{goalModal ? 'Select the player who scored:' : 
                 assistModal ? 'Assist made by:' :
                 shotMissedModal ? 'Shot missed by:' : 
-                saveMade ? 'Save made by:' : ''}</h3>
+                saveMade ? 'Save made by:' :
+                twoPointsModal ? '2 PT FG made by:' : 
+                twoPointsMissedModal ? '2 PT FG missed by:' : 
+                freeThrowMadeModal ? 'Free throw made by:' : 
+                reboundModal ? 'Rebound made by:' : 
+                assistBasketballModal ? 'Assist made by:' : 
+                blockModal ? 'Block made by:' : 
+                stealModal ? 'Select the player who made the steal:' :
+                threePointsModal ? '3 PT FG made by:' : 
+                threePointsMissedModal ? '3 PT FG missed by:' : ''}</h3>
           </div>
             <ul className='modal-player-list'>
                 {myRoster}
