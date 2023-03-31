@@ -19,6 +19,8 @@ function Basketball() {
     const [scheduledEvent, setScheduledEvent] = useState([])
     const [gameStats, setGameStats] = useState([])
     const [isActive, setIsActive] = useState(false)
+    const [twoPointsModal, setTwoPointsModal] = useState(false)
+    const [twoPointsMissedModal, setTwoPointsMissedModal] = useState(false)
 
     useEffect(() => {
         async function fetchData(){
@@ -40,6 +42,22 @@ function Basketball() {
         fetchData()
     }, [])
 
+    const twoPointsScored = () => {
+        setIsActive(true)
+        setTwoPointsModal(true)
+    }
+
+    const twoPointsMissed = () => {
+        setIsActive(true)
+        setTwoPointsMissedModal(true)
+    }
+
+    const closeModal = () => {
+        setIsActive(false)
+        setTwoPointsMissedModal(false)
+        setTwoPointsModal(false)
+    }
+
     const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>{event.event}</div>))
 
     return (
@@ -47,36 +65,24 @@ function Basketball() {
 
         {scheduledEvent.isComplete && <GameComplete />}
 
-        {/* <RosterModal 
+        <RosterModal 
         roster={roster}
         isActive={isActive}
         closeModal={closeModal}
-        playerScored={(name, playerId)=>{
-            setMyScore(myScore + 1)
-            setGameStats([{playerId, event: `${name} scored a goal`}, ...gameStats])
+        twoPointsModal={twoPointsModal}
+        twoPointsMissedModal={twoPointsMissedModal}
+        twoPointsScored={(name, playerId)=>{
+            setMyScore(myScore + 2)
+            setGameStats([{playerId, event: `${name} scored 2 points`}, ...gameStats])
             setIsActive(false)
-            setGoalModal(false)
+            setTwoPointsModal(false)
         }}
-        playerAssist={async (name, playerId)=>{
-            setGameStats([{playerId, event: `${name} assisted on a goal`}, ...gameStats])
+        missedTwoPoints={(name, playerId)=>{
+            setGameStats([{playerId, event: `${name} missed a 2 PT FG`}, ...gameStats])
             setIsActive(false)
-            setAssistModal(false)
+            setTwoPointsMissedModal(false)
         }}
-        playerMissedShot={async (name, playerId)=>{
-            setGameStats([{playerId, event: `${name} missed a shot`}, ...gameStats])
-            setIsActive(false)
-            setShotMissedModal(false)
-        }}
-        playerMadeSave={async (name, playerId)=>{
-            setGameStats([{playerId, event: `${name} made a save`}, ...gameStats])
-            setIsActive(false)
-            setSaveMade(false)
-        }}
-        goalModal={goalModal}
-        assistModal={assistModal}
-        shotMissedModal={shotMissedModal}
-        saveMade={saveMade}
-        /> */}
+        />
 
 
         {isLoading ? <Spinner /> : (
@@ -115,10 +121,10 @@ function Basketball() {
                         <div className='score-button-container'>
                             <div className='basketball-pts-made'>
                                 <div className='goal-scored'>
-                                    <button onClick=''>2 PT FG</button>
+                                    <button onClick={twoPointsScored}>2 PT FG</button>
                                 </div>
                                 <div className='shot-missed'>
-                                    <button onClick=''>2 PT MISS</button>
+                                    <button onClick={twoPointsMissed}>2 PT MISS</button>
                                 </div>
                             </div>
                             <div className='basketball-other-stats-container'>
