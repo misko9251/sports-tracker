@@ -164,6 +164,7 @@ function Basketball() {
             setStealModal(false)
         }}
         threePointsScored={(playerName, playerId)=> {
+            setMyScore(myScore + 3)
             setGameStats([{playerId, event: `${playerName} scored 3 points`}, ...gameStats])
             setIsActive(false)
             setThreePointsModal(false)
