@@ -14,7 +14,9 @@ function RosterModal({roster,
                       twoPointsModal,
                       twoPointsScored,
                       twoPointsMissedModal,
-                      missedTwoPoints}) {
+                      missedTwoPoints,
+                      freeThrowMadeModal,
+                      freeThrowMade}) {
 
     const myRoster = roster.map((player)=> {
         return (
@@ -32,6 +34,8 @@ function RosterModal({roster,
                     twoPointsScored(player.player, player._id)
                 }else if(twoPointsMissedModal){
                     missedTwoPoints(player.player, player._id)
+                }else if(freeThrowMadeModal){
+                    freeThrowMade(player.player, player._id)
                 }else{
                     console.log('Error')
                 }}
@@ -52,7 +56,8 @@ function RosterModal({roster,
                 shotMissedModal ? 'Shot missed by:' : 
                 saveMade ? 'Save made by:' :
                 twoPointsModal ? '2 PT FG made by:' : 
-                twoPointsMissedModal ? 'Who missed the 2 PT FG?' : ''}</h3>
+                twoPointsMissedModal ? 'Who missed the 2 PT FG?' : 
+                freeThrowMadeModal ? 'Who missed the free throw?' : ''}</h3>
           </div>
             <ul className='modal-player-list'>
                 {myRoster}

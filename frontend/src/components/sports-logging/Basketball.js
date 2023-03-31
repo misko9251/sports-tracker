@@ -21,6 +21,7 @@ function Basketball() {
     const [isActive, setIsActive] = useState(false)
     const [twoPointsModal, setTwoPointsModal] = useState(false)
     const [twoPointsMissedModal, setTwoPointsMissedModal] = useState(false)
+    const [freeThrowMadeModal, setFreeThrowMadeModal] = useState(false)
 
     useEffect(() => {
         async function fetchData(){
@@ -52,6 +53,11 @@ function Basketball() {
         setTwoPointsMissedModal(true)
     }
 
+    const freeThrowMade = () => {
+        setIsActive(true)
+        setFreeThrowMadeModal(true)
+    }
+
     const closeModal = () => {
         setIsActive(false)
         setTwoPointsMissedModal(false)
@@ -71,6 +77,7 @@ function Basketball() {
         closeModal={closeModal}
         twoPointsModal={twoPointsModal}
         twoPointsMissedModal={twoPointsMissedModal}
+        freeThrowMadeModal={freeThrowMadeModal}
         twoPointsScored={(name, playerId)=>{
             setMyScore(myScore + 2)
             setGameStats([{playerId, event: `${name} scored 2 points`}, ...gameStats])
@@ -81,6 +88,11 @@ function Basketball() {
             setGameStats([{playerId, event: `${name} missed a 2 PT FG`}, ...gameStats])
             setIsActive(false)
             setTwoPointsMissedModal(false)
+        }}
+        freeThrowMade={(name, playerId)=>{
+            setGameStats([{playerId, event: `${name} missed a free throw`}, ...gameStats])
+            setIsActive(false)
+            setFreeThrowMadeModal(false)
         }}
         />
 
@@ -128,7 +140,7 @@ function Basketball() {
                                 </div>
                             </div>
                             <div className='basketball-other-stats-container'>
-                                <button className='free-throw-made' onClick=''>Free Throw Made</button>
+                                <button className='free-throw-made' onClick={freeThrowMade}>Free Throw Made</button>
                                 <div className='basketball-stats'>
                                     <button>REB</button>
                                     <button>AST</button>
