@@ -21,7 +21,13 @@ function Basketball() {
     const [isActive, setIsActive] = useState(false)
     const [twoPointsModal, setTwoPointsModal] = useState(false)
     const [twoPointsMissedModal, setTwoPointsMissedModal] = useState(false)
+    const [threePointsModal, setThreePointsModal] = useState(false)
+    const [threePointsMissedModal, setThreePointsMissedModal] = useState(false)
     const [freeThrowMadeModal, setFreeThrowMadeModal] = useState(false)
+    const [reboundModal, setReboundModal] = useState(false)
+    const [assistBasketballModal, setAssistBasketballModal] = useState(false)
+    const [blockModal, setBlockModal] = useState(false)
+    const [stealModal, setStealModal] = useState(false)
 
     useEffect(() => {
         async function fetchData(){
@@ -53,15 +59,52 @@ function Basketball() {
         setTwoPointsMissedModal(true)
     }
 
+    const threePointsScored = () => {
+        setIsActive(true)
+        setThreePointsModal(true)
+    }
+
+    const threePointsMissed = () => {
+        setIsActive(true)
+        setThreePointsMissedModal(true)
+    }
+
     const freeThrowMade = () => {
         setIsActive(true)
         setFreeThrowMadeModal(true)
+    }
+
+    const reboundMade = () => {
+        setIsActive(true)
+        setReboundModal(true)
+    }
+
+    const assistMade = () => {
+        setIsActive(true)
+        setAssistBasketballModal(true)
+    }
+
+    const blockMade = () => {
+        setIsActive(true)
+        setBlockModal(true)
+    }
+
+    const stealMade = () => {
+        setIsActive(true)
+        setStealModal(true)
     }
 
     const closeModal = () => {
         setIsActive(false)
         setTwoPointsMissedModal(false)
         setTwoPointsModal(false)
+        setFreeThrowMadeModal(false)
+        setReboundModal(false)
+        setAssistBasketballModal(false)
+        setBlockModal(false)
+        setStealModal(false)
+        setThreePointsMissedModal(false)
+        setThreePointsModal(false)
     }
 
     const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>{event.event}</div>))
@@ -77,22 +120,58 @@ function Basketball() {
         closeModal={closeModal}
         twoPointsModal={twoPointsModal}
         twoPointsMissedModal={twoPointsMissedModal}
+        threePointsModal={threePointsModal}
+        threePointsMissedModal={threePointsMissedModal}
         freeThrowMadeModal={freeThrowMadeModal}
-        twoPointsScored={(name, playerId)=>{
+        reboundModal={reboundModal}
+        assistBasketballModal={assistBasketballModal}
+        blockModal={blockModal}
+        stealModal={stealModal}
+        twoPointsScored={(playerName, playerId)=>{
             setMyScore(myScore + 2)
-            setGameStats([{playerId, event: `${name} scored 2 points`}, ...gameStats])
+            setGameStats([{playerId, event: `${playerName} scored 2 points`}, ...gameStats])
             setIsActive(false)
             setTwoPointsModal(false)
         }}
-        missedTwoPoints={(name, playerId)=>{
-            setGameStats([{playerId, event: `${name} missed a 2 PT FG`}, ...gameStats])
+        missedTwoPoints={(playerName, playerId)=>{
+            setGameStats([{playerId, event: `${playerName} missed a 2 PT FG`}, ...gameStats])
             setIsActive(false)
             setTwoPointsMissedModal(false)
         }}
-        freeThrowMade={(name, playerId)=>{
-            setGameStats([{playerId, event: `${name} missed a free throw`}, ...gameStats])
+        freeThrowMade={(playerName, playerId)=>{
+            setGameStats([{playerId, event: `${playerName} made a free throw`}, ...gameStats])
             setIsActive(false)
             setFreeThrowMadeModal(false)
+        }}
+        reboundMade={(playerName, playerId)=>{
+            setGameStats([{playerId, event: `${playerName} got the rebound`}, ...gameStats])
+            setIsActive(false)
+            setReboundModal(false)
+        }}
+        assistMade={(playerName, playerId)=>{
+            setGameStats([{playerId, event: `${playerName} got the assist`}, ...gameStats])
+            setIsActive(false)
+            setAssistBasketballModal(false)
+        }}
+        blockMade={(playerName, playerId)=>{
+            setGameStats([{playerId, event: `${playerName} made a block`}, ...gameStats])
+            setIsActive(false)
+            setBlockModal(false)
+        }}
+        stealMade={(playerName, playerId)=>{
+            setGameStats([{playerId, event: `${playerName} stole the ball`}, ...gameStats])
+            setIsActive(false)
+            setStealModal(false)
+        }}
+        threePointsScored={(playerName, playerId)=> {
+            setGameStats([{playerId, event: `${playerName} scored 3 points`}, ...gameStats])
+            setIsActive(false)
+            setThreePointsModal(false)
+        }}
+        missedThreePoints={(playerName, playerId)=> {
+            setGameStats([{playerId, event: `${playerName} missed a 3 PT FG`}, ...gameStats])
+            setIsActive(false)
+            setThreePointsMissedModal(false)
         }}
         />
 
@@ -142,20 +221,20 @@ function Basketball() {
                             <div className='basketball-other-stats-container'>
                                 <button className='free-throw-made' onClick={freeThrowMade}>Free Throw Made</button>
                                 <div className='basketball-stats'>
-                                    <button>REB</button>
-                                    <button>AST</button>
+                                    <button onClick={reboundMade}>REB</button>
+                                    <button onClick={assistMade}>AST</button>
                                 </div>
                                 <div className='basketball-stats'>
-                                    <button>BLK</button>
-                                    <button>STL</button>
+                                    <button onClick={blockMade}>BLK</button>
+                                    <button onClick={stealMade}>STL</button>
                                 </div>
                             </div>
                             <div className='basketball-pts-made'>
                                 <div className='goal-scored'>
-                                    <button onClick=''>3 PT FG</button>
+                                    <button onClick={threePointsScored}>3 PT FG</button>
                                 </div>
                                 <div className='shot-missed'>
-                                    <button onClick=''>3 PT MISS</button>
+                                    <button onClick={threePointsMissed}>3 PT MISS</button>
                                 </div>
                             </div>
                         </div>
