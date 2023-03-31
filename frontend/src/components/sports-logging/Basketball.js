@@ -40,6 +40,8 @@ function Basketball() {
         fetchData()
     }, [])
 
+    const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>{event.event}</div>))
+
     return (
         <>
 
@@ -76,6 +78,7 @@ function Basketball() {
         saveMade={saveMade}
         /> */}
 
+
         {isLoading ? <Spinner /> : (
             <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
                 <header className='logger-header'>
@@ -90,19 +93,19 @@ function Basketball() {
                     <div className='opponent-basket opponent-goal'>
                         <button onClick={()=>{
                             setOpponentScore(opponentScore + 1)
-                            setGameStats([{event: `${scheduledEvent.opponent} scored a goal`}, ...gameStats])
+                            setGameStats([{event: `${scheduledEvent.opponent} scored a free throw.`}, ...gameStats])
                         }}>
                             {scheduledEvent.opponent} Free Throw Made
                         </button>
                         <button onClick={()=>{
                             setOpponentScore(opponentScore + 2)
-                            setGameStats([{event: `${scheduledEvent.opponent} scored a goal`}, ...gameStats])
+                            setGameStats([{event: `${scheduledEvent.opponent} scored 2 points.`}, ...gameStats])
                         }}>
                             {scheduledEvent.opponent} 2 PT FG
                         </button>
                         <button onClick={()=>{
                             setOpponentScore(opponentScore + 3)
-                            setGameStats([{event: `${scheduledEvent.opponent} scored a goal`}, ...gameStats])
+                            setGameStats([{event: `${scheduledEvent.opponent} scored 3 points.`}, ...gameStats])
                         }}>
                             {scheduledEvent.opponent} 3 PT FG
                         </button>
@@ -146,7 +149,7 @@ function Basketball() {
                     <section className='play-by-play'>
                         <h3>Play by Play</h3>
                         <div>
-                            {/* {playByPlay} */}
+                            {playByPlay}
                         </div>
                     </section>
                 </section>
