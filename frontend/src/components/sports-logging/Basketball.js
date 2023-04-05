@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
+import {json, useParams} from 'react-router-dom'
 import Spinner from '../Spinner'
 import RosterModal from './RosterModal'
 import {useNavigate} from 'react-router-dom'
@@ -105,6 +105,26 @@ function Basketball() {
         setStealModal(false)
         setThreePointsMissedModal(false)
         setThreePointsModal(false)
+    }
+
+    const endQuarter = () => {
+        setGameStats([{event: `Quarter ${currentQuarter} has ended.`}, ...gameStats])
+        setCurrentQuarter((prevVal)=>prevVal+1)
+    }
+
+    const endGame = async () => {
+        setGameStats([{event: `Quarter 4 has ended.`}, ...gameStats])
+        try {
+            const response = await fetch (`http://localhost:2121/stats/updateBasketballStats/${teamId}/event/${eventId}`, {
+                method: 'POST',
+                headers: {'Content-Type' : 'application/json'},
+                credentials: 'include',
+                body: JSON.stringify({gameStats})
+            })
+            const json = await response.json()
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>{event.event}</div>))
@@ -240,8 +260,8 @@ function Basketball() {
                             </div>
                         </div>
                         <div className=''>
-                            {/* {currentPeriod < 3 && <button onClick=''>End Period</button>}
-                            {currentPeriod >= 3 && <button onClick=''>End Game</button>} */}
+                            {currentQuarter < 4 && <button onClick={endQuarter}>End Quarter</button>}
+                            {currentQuarter >= 4 && <button onClick={endGame}>End Game</button>}
                         </div>
                     </div>
                     <section className='play-by-play'>

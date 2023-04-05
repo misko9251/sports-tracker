@@ -46,5 +46,62 @@ module.exports = {
         } catch (error) {
          console.log(error)
         }
+    },
+    updateBasketballStats: async (req, res) => {
+        const {gameStats} = req.body
+        const {teamId, eventId} = req.params
+        const currentTeam = await Team.findById({_id: teamId})
+        const eventIndex = currentTeam.schedule.findIndex((event)=> event._id == eventId)
+        currentTeam.schedule[eventIndex].isComplete = true
+        const events = gameStats.map((item)=> (item.event))
+        currentTeam.schedule[eventIndex].gameEvents = events
+        try {
+            gameStats.forEach((stat)=>{
+                const {event, playerId} = stat
+                if(event.includes('scored 2 points')){
+                    const playerIndex = currentTeam.roster.findIndex((player)=> player._id == playerId)
+                    if(playerIndex !== -1){
+                        currentTeam.roster[playerIndex].stats.pointsBB+=2
+                    }
+                }else if(event.includes('scored 3 points')){
+                    const playerIndex = currentTeam.roster.findIndex((player) => player._id == playerId)
+                    if(playerIndex !== -1){
+                        currentTeam.roster[playerIndex].stats.pointsBB+=3
+                    }
+                }else if(event.includes('made a free throw')){
+                    const playerIndex = currentTeam.roster.findIndex((player) => player._id == playerId)
+                    if(playerIndex !== -1){
+                        currentTeam.roster[playerIndex].stats.pointsBB+=1
+                        currentTeam.roster[playerIndex].stats.freeThrowsBB+=1
+                    }
+                }else if(event.includes('got the rebound')){
+                    const playerIndex = currentTeam.roster.findIndex((player) => player._id == playerId)
+                    if(playerIndex !== -1){
+                        currentTeam.roster[playerIndex].stats.reboundsBB++
+                    }
+                }else if(event.includes('got the assist')){
+                    const playerIndex = currentTeam.roster.findIndex((player) => player._id == playerId)
+                    if(playerIndex !== -1){
+                        currentTeam.roster[playerIndex].stats.assistsBB++
+                    }
+                }else if(event.includes('made a block')){
+                    const playerIndex = currentTeam.roster.findIndex((player) => player._id == playerId)
+                    if(playerIndex !== -1){
+                        currentTeam.roster[playerIndex].stats.blockBB++
+                    }
+                }else if(event.includes('stole the ball')){
+                    const playerIndex = currentTeam.roster.findIndex((player) => player._id == playerId)
+                    if(playerIndex !== -1){
+                        currentTeam.roster[playerIndex].stats.stealBB++
+                    }
+                }
+            })
+            await currentTeam.save()
+            res.status(200).json({msg: 'Stats updated'});
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
+
+
