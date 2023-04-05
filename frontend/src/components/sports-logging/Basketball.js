@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {json, useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import Spinner from '../Spinner'
 import RosterModal from './RosterModal'
 import {useNavigate} from 'react-router-dom'
@@ -8,7 +8,6 @@ import GameComplete from './GameComplete'
 function Basketball() {
 
     const {teamId, eventId} = useParams()
-    console.log(eventId)
     const navigate = useNavigate();
 
     const [currentQuarter, setCurrentQuarter] = useState(1)

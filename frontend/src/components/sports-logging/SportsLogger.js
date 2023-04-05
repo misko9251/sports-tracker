@@ -2,6 +2,7 @@ import React from 'react'
 import {useParams} from 'react-router-dom'
 import Hockey from './Hockey'
 import Basketball from './Basketball'
+import Football from './Football'
 
 function SportsLogger() {
 
@@ -10,7 +11,8 @@ function SportsLogger() {
     return (
       <section>
         {sportType == 'hockey' ? <Hockey /> : 
-         sportType == 'basketball' ? <Basketball /> : ''}
+         sportType == 'basketball' ? <Basketball /> : 
+         sportType == 'football' ? <Football /> : ''}
       </section>
     )
 }

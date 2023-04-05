@@ -1280,6 +1280,54 @@ td{
 	height: 50px;
 }
 
+/* Football Logger */
+
+.football-score-button-container{
+	padding-top: 20px;
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+
+}
+
+.td-fg-container{
+	display: flex;
+	justify-content: center;
+	justify-content: space-around;
+}
+
+.td-fg-container button{
+	width: 300px;
+}
+
+.other-fb-scores{
+	padding-top: 20px;
+	display: flex;
+	justify-content: space-around;
+}
+
+.other-fb-scores button{
+	width: 175px;
+}
+
+.opponent-football{
+	display: flex;
+	flex-direction: column;
+	padding: 20px 0;
+}
+
+.opponent-fb-stats{
+	width: 90%;
+	margin: 0 auto;
+}
+
+.opponent-football button{
+	border-radius: 10px;
+	height: 50px;
+	border: none;
+}
+
 /* Spinner */
 
 .loader {
@@ -1371,6 +1419,22 @@ td{
 		width: 70%;
 		height: 70vh;
 		justify-content: space-around;
+	}
+}
+
+@media screen and (max-width: 750px){
+	.td-fg-container button{
+		width: 150px;
+	}
+	.other-fb-scores button{
+	width: 100px;
+	font-size: 1rem;
+	}
+	.opponent-goal{
+		height: 200px;
+	}
+	.opponent-football button{
+		font-size: .6rem;
 	}
 }
 
