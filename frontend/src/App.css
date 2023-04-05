@@ -1059,11 +1059,13 @@ td{
 	height: 20vh;
 	color: white;
 	background-color: rgb(47, 47, 47);
+	padding-bottom: 15px;
 }
 
 .logger-current-time{
 	text-align: center;
 	padding-bottom: 10px;
+	padding-top: 15px;
 }
 
 .logger-scores{
@@ -1075,6 +1077,7 @@ td{
 .logger-current-score{
 	font-size: 3rem;
 	margin: 0 auto;
+	padding: 10px 0;
 }
 
 /* Logger Modal */

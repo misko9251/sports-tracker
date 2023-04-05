@@ -260,7 +260,7 @@ function Basketball() {
                                 </div>
                             </div>
                         </div>
-                        <div className=''>
+                        <div className='next-period'>
                             {currentQuarter < 4 && <button onClick={endQuarter}>End Quarter</button>}
                             {currentQuarter >= 4 && <button onClick={endGame}>End Game</button>}
                         </div>
