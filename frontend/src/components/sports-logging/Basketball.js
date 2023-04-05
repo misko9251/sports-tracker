@@ -9,7 +9,7 @@ function Basketball() {
 
     const {teamId, eventId} = useParams()
     console.log(eventId)
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [currentQuarter, setCurrentQuarter] = useState(1)
     const [myScore, setMyScore] = useState(0)
@@ -122,6 +122,7 @@ function Basketball() {
                 body: JSON.stringify({gameStats})
             })
             const json = await response.json()
+            navigate(`/dashboard/${teamId}`);
         } catch (error) {
             console.log(error)
         }

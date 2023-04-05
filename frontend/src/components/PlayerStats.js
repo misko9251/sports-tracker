@@ -37,8 +37,12 @@ function PlayerStats() {
         } else if (sport === 'Basketball') {
           // return basketball stats plus hockey stats
           return {
-            rebounds: stats.rebounds,
-            baskets: stats.baskets,
+            points: stats.pointsBB,
+            assists: stats.assistsBB,
+            rebounds: stats.reboundsBB,
+            blocks: stats.blockBB,
+            steals: stats.stealBB,
+            freeThrows: stats.freeThrowsBB
           }
         } else {
           return {}
