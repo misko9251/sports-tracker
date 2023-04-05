@@ -17,6 +17,11 @@ function Football() {
     const [roster, setRoster] = useState([])
     const [scheduledEvent, setScheduledEvent] = useState([])
     const [isActive, setIsActive] = useState(false)
+    const [touchdownModal, setTouchdownModal] = useState(false)
+    const [fieldgoalModal, setFieldgoalModal] = useState(false)
+    const [extraPointModal, setExtraPointModal] = useState(false)
+    const [twoPointConversationModal, setTwoPointConversationModal] = useState(false)
+    const [safetyScoredModal, setSafetyScoredModal] = useState(false)
 
     useEffect(() => {
       async function fetchData(){
@@ -38,8 +43,38 @@ function Football() {
       fetchData()
   }, [])
 
+  const touchdownScored = () => {
+    setIsActive(true)
+    setTouchdownModal(true)
+  }
+
+  const fieldgoalScored = () => {
+    setIsActive(true)
+    setFieldgoalModal(true)
+  }
+
+  const extraPoint = () => {
+    setIsActive(true)
+    setExtraPointModal(true)
+  }
+
+  const twoPointConversion = () => {
+    setIsActive(true)
+    setTwoPointConversationModal(true)
+  }
+
+  const safetyScored = () => {
+    setIsActive(true)
+    setSafetyScoredModal(true)
+  }
+
   const closeModal = () => {
     setIsActive(false)
+    setTouchdownModal(false)
+    setFieldgoalModal(false)
+    setExtraPointModal(false)
+    setTwoPointConversationModal(false)
+    setSafetyScoredModal(false)
 }
 
     return (
@@ -51,6 +86,11 @@ function Football() {
       roster={roster}
       isActive={isActive}
       closeModal={closeModal}
+      touchdownModal={touchdownModal}
+      fieldgoalModal={fieldgoalModal}
+      extraPointModal={extraPointModal}
+      twoPointConversationModal={twoPointConversationModal}
+      safetyScoredModal={safetyScoredModal}
       />
 
 
@@ -93,21 +133,21 @@ function Football() {
                       <div className='football-score-button-container'>
                           <div className='td-fg-container'>
                               <div className='goal-scored'>
-                                  <button onClick=''>Touchdown</button>
+                                  <button onClick={touchdownScored}>Touchdown</button>
                               </div>
                               <div className='goal-scored'>
-                                  <button onClick=''>Field Goal</button>
+                                  <button onClick={fieldgoalScored}>Field Goal</button>
                               </div>
                           </div>
                           <div className='other-fb-scores'>
                               <div className='goal-scored'>
-                                  <button onClick=''>PAT</button>
+                                  <button onClick={extraPoint}>PAT</button>
                               </div>
                               <div className='goal-scored'>
-                                  <button onClick=''>2 PT Conversion</button>
+                                  <button onClick={twoPointConversion}>2 PT Conversion</button>
                               </div>
                               <div className='goal-scored'>
-                                  <button onClick=''>Safety</button>
+                                  <button onClick={safetyScored}>Safety</button>
                               </div>
                           </div>
                       </div>

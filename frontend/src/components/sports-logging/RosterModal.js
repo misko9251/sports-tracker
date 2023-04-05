@@ -28,7 +28,12 @@ function RosterModal({roster,
                       blockModal,
                       blockMade,
                       stealModal,
-                      stealMade}) {
+                      stealMade,
+                      touchdownModal,
+                      fieldgoalModal,
+                      extraPointModal,
+                      twoPointConversationModal,
+                      safetyScoredModal}) {
 
     const myRoster = roster.map((player)=> {
         return (
@@ -87,7 +92,12 @@ function RosterModal({roster,
                 blockModal ? 'Block made by:' : 
                 stealModal ? 'Select the player who made the steal:' :
                 threePointsModal ? '3 PT FG made by:' : 
-                threePointsMissedModal ? '3 PT FG missed by:' : ''}</h3>
+                threePointsMissedModal ? '3 PT FG missed by:' : 
+                touchdownModal ? 'Touchdown scored by:' : 
+                fieldgoalModal ? 'Field Goal made by:' : 
+                extraPointModal ? 'PAT made by:' : 
+                twoPointConversationModal ? '2 PT Conversion scored by:' : 
+                safetyScoredModal ? 'Safety scored by:' : ''}</h3>
           </div>
             <ul className='modal-player-list'>
                 {myRoster}
