@@ -151,6 +151,12 @@ function Football() {
                               </div>
                           </div>
                       </div>
+                      <div className='fb-additional-stats'>
+                        <button>TD Pass</button>
+                        <button>Interception</button>
+                        <button>Tackle</button>
+                        <button>Sack</button>
+                      </div>
                       <div className='next-period'>
                           {/* {currentQuarter < 4 && <button onClick={endQuarter}>End Quarter</button>}
                           {currentQuarter >= 4 && <button onClick={endGame}>End Game</button>} */}

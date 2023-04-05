@@ -1328,6 +1328,19 @@ td{
 	border: none;
 }
 
+.fb-additional-stats{
+	padding-top: 30px;
+	display: flex;
+	justify-content: space-around;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.fb-additional-stats button{
+	width: 100px;
+	height: 40px;
+}
+
 /* Spinner */
 
 .loader {
@@ -1546,6 +1559,10 @@ td{
 	.team-videos video {
 		flex-basis: 50%;
 		max-width: 400px;
+	}
+	/* FB Logger */
+	.fb-additional-stats{
+		width: 90%;
 	}
 }
 
