@@ -106,6 +106,16 @@ function Football() {
     setSackMadeModal(false)
 }
 
+const endQuarter = () => {
+    setGameStats([{event: `Quarter ${currentQuarter} has ended.`}, ...gameStats])
+    setCurrentQuarter(currentQuarter+1)
+}
+
+const endGame = () => {
+    setGameStats([{event: `Quarter 4 has ended.`}, ...gameStats])
+    console.log('hy')
+}
+
 const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>{event.event}</div>))
 
     return (
@@ -243,8 +253,8 @@ const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>
                         <button onClick={sackMade}>Sack</button>
                       </div>
                       <div className='next-period'>
-                          {/* {currentQuarter < 4 && <button onClick={endQuarter}>End Quarter</button>}
-                          {currentQuarter >= 4 && <button onClick={endGame}>End Game</button>} */}
+                          {currentQuarter < 4 && <button onClick={endQuarter}>End Quarter</button>}
+                          {currentQuarter >= 4 && <button onClick={endGame}>End Game</button>}
                       </div>
                   </div>
                   <section className='play-by-play'>
