@@ -5,12 +5,12 @@ import RosterModal from './RosterModal'
 import {useNavigate} from 'react-router-dom'
 import GameComplete from './GameComplete'
 
-function Hockey() {
+function Soccer() {
 
     const {teamId, eventId} = useParams()
     const navigate = useNavigate();
 
-    const [currentPeriod, setCurrentPeriod] = useState(1)
+    const [currentHalf, setCurrentHalf] = useState(1)
     const [myScore, setMyScore] = useState(0)
     const [opponentScore, setOpponentScore] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
@@ -63,9 +63,9 @@ function Hockey() {
         setIsActive(true)
     }
 
-    const endPeriod = () => {
-        setGameStats([{event: `Period ${currentPeriod} has ended.`}, ...gameStats])
-        setCurrentPeriod((prevVal)=> prevVal+1)
+    const endHalf = () => {
+        setGameStats([{event: `Half ${currentHalf} has ended.`}, ...gameStats])
+        setCurrentHalf((prevVal)=> prevVal+1)
     }
 
     const closeModal = () => {
@@ -76,9 +76,9 @@ function Hockey() {
     }
 
     const endGame = async () => {
-        setGameStats([{event: `Period 3 has ended.`}, ...gameStats])
+        setGameStats([{event: `The game has concluded.`}, ...gameStats])
         try {
-            const response = await fetch(`http://localhost:2121/stats/updateHockeyStats/${teamId}/event/${eventId}`, {
+            const response = await fetch(`http://localhost:2121/stats/updateSoccerStats/${teamId}/event/${eventId}`, {
                 credentials: 'include',
                 method: 'POST',
                 headers: {'Content-Type' : 'application/json'},
@@ -133,7 +133,7 @@ function Hockey() {
         {isLoading ? <Spinner /> : (
             <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
                 <header className='logger-header'>
-                    <span className='logger-current-time'>Period {currentPeriod}</span>
+                    <span className='logger-current-time'>Half {currentHalf}</span>
                     <span className='logger-current-score'>{opponentScore} - {myScore}</span>
                     <div className='logger-scores'>
                       <span>{scheduledEvent.opponent}</span>
@@ -164,8 +164,8 @@ function Hockey() {
                             </div>
                         </div>
                         <div className='next-period'>
-                            {currentPeriod < 3 && <button onClick={endPeriod}>End Period</button>}
-                            {currentPeriod >= 3 && <button onClick={endGame}>End Game</button>}
+                            {currentHalf < 2 && <button onClick={endHalf}>End Half</button>}
+                            {currentHalf >= 2 && <button onClick={endGame}>End Game</button>}
                         </div>
                     </div>
                     <section className='play-by-play'>
@@ -181,4 +181,4 @@ function Hockey() {
     )
 }
 
-export default Hockey
+export default Soccer

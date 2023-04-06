@@ -57,6 +57,14 @@ function PlayerStats() {
             tackles: stats.tackleFB,
             sacks: stats.sackFB
           }
+        }else if (sport === 'Soccer'){
+          return {
+            goals: stats.goalsSoccer,
+            assists: stats.assistsSoccer,
+            points: stats.goalsSoccer + stats.assistsSoccer,
+            missedShots: stats.missedShotsSoccer,
+            saves: stats.savesSoccer,
+          }
         }else {
           return {}
         }
