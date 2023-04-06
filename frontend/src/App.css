@@ -475,8 +475,11 @@ button {
 /* Dashboard */
 
 .dashboard-container{
-	height: 100vh;
 	background: linear-gradient(169.29deg, #262B2F -0.68%, #16191D 74.03%);
+	color: rgb(239, 239, 239);
+	width: 100%;
+	border: 2px solid red;
+	min-height: 100vh;
 }
 
 .my-sport-team-container{
@@ -493,7 +496,6 @@ button {
 	align-items: center;
 	font-size: 2rem;
 	margin-bottom: 5%;
-
 	background-color: rgb(100, 110, 205);
 }
 
@@ -1593,14 +1595,12 @@ td{
 		padding-top: 15%;
 	}
 	.dashboard-container{
-		height: 100vh;
 		padding-bottom: 5%;
 	}
 }
 
 @media screen and (max-width: 425px){
 	.dashboard-container{
-		height: 100%;
 		padding-bottom: 5%;
 	}
 	.team-videos video {

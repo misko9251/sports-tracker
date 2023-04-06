@@ -84,7 +84,7 @@ function ParentDashboard() {
   return (
     <div>
       {isLoading ? <Spinner /> : (
-        <div className="main-dark-container dashboard-container">
+        <div className="dashboard-container">
           <nav>
             <h3>Home</h3>
             <span 
