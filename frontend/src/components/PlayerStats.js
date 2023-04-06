@@ -8,6 +8,7 @@ function PlayerStats() {
     const [currentPlayer, setCurrentPlayer] = useState([])
     const [isLoading, setisLoading] = useState(true)
     const [sport, setSport] = useState('')
+    console.log(sport)
 
     useEffect(()=> {
         async function fetchData(){
@@ -44,7 +45,19 @@ function PlayerStats() {
             steals: stats.stealBB,
             freeThrows: stats.freeThrowsBB
           }
-        } else {
+        } else if (sport === 'Football') {
+          return {
+            touchdowns: stats.touchdownFB,
+            fieldGoals: stats.fieldgoalFB,
+            extraPoints: stats.patFB,
+            twoPointConversions: stats.twoPointConversionFB,
+            safeties: stats.safetyFB,
+            touchdownPasses: stats.tdPassFB,
+            interceptions: stats.interceptionFB,
+            tackles: stats.tackleFB,
+            sacks: stats.sackFB
+          }
+        }else {
           return {}
         }
       }

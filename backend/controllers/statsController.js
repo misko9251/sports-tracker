@@ -101,7 +101,69 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
-    }
+    },
+    updateFootballStats: async (req, res) => {
+        const { gameStats } = req.body;
+        const { teamId, eventId } = req.params;
+
+        const currentTeam = await Team.findById({ _id: teamId });
+        const eventIndex = currentTeam.schedule.findIndex((game) => game._id == eventId);
+      
+        const events = gameStats.map((item) => item.event);
+        currentTeam.schedule[eventIndex].isComplete = true
+        currentTeam.schedule[eventIndex].gameEvents = events;
+      
+        try {
+          gameStats.forEach((stats) => {
+            const { event, playerId } = stats;
+      
+            const playerIndex = currentTeam.roster.findIndex((player) => player._id == playerId);
+      
+            if (event.includes('scored a touchdown')) {
+              if (playerIndex !== -1) {
+                currentTeam.roster[playerIndex].stats.touchdownFB++;
+              }
+            } else if (event.includes('drilled the field goal')) {
+              if (playerIndex !== -1) {
+                currentTeam.roster[playerIndex].stats.fieldgoalFB++;
+              }
+            } else if (event.includes('completed the PAT')) {
+              if (playerIndex !== -1) {
+                currentTeam.roster[playerIndex].stats.patFB++;
+              }
+            } else if (event.includes('scored a 2 point conversion')) {
+              if (playerIndex !== -1) {
+                currentTeam.roster[playerIndex].stats.twoPointConversionFB++;
+              }
+            } else if (event.includes('scored a safety')) {
+              if (playerIndex !== -1) {
+                currentTeam.roster[playerIndex].stats.safetyFB++;
+              }
+            } else if (event.includes('threw for a touchdown')) {
+              if (playerIndex !== -1) {
+                currentTeam.roster[playerIndex].stats.tdPassFB++;
+              }
+            } else if (event.includes('intercepted the ball')) {
+              if (playerIndex !== -1) {
+                currentTeam.roster[playerIndex].stats.interceptionFB++;
+              }
+            } else if (event.includes('made a tackle')) {
+              if (playerIndex !== -1) {
+                currentTeam.roster[playerIndex].stats.tackleFB++;
+              }
+            } else if (event.includes('made the sack')) {
+              if (playerIndex !== -1) {
+                currentTeam.roster[playerIndex].stats.sackFB++;
+              }
+            }
+          });
+      
+          await currentTeam.save();
+          res.status(200).json({ msg: 'Stats updated' });
+        } catch (error) {
+          console.log(error);
+        }
+      }
 }
 
 

@@ -8,7 +8,7 @@ import GameComplete from './GameComplete'
 function Football() {
 
     const {teamId, eventId} = useParams()
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState(true)
     const [currentQuarter, setCurrentQuarter] = useState(1)
@@ -111,9 +111,20 @@ const endQuarter = () => {
     setCurrentQuarter(currentQuarter+1)
 }
 
-const endGame = () => {
+const endGame = async () => {
     setGameStats([{event: `Quarter 4 has ended.`}, ...gameStats])
-    console.log('hy')
+    try {
+        const response = await fetch(`http://localhost:2121/stats/updateFootballStats/${teamId}/event/${eventId}`,{
+            method: 'POST',
+            credentials: 'include',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify({gameStats})
+        })
+        const json = await response.json()
+        navigate(`/dashboard/${teamId}`);
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>{event.event}</div>))

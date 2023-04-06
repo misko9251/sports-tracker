@@ -956,6 +956,10 @@ hr {
 
 /* Player Profile */
 
+.profile-container{
+	background-color: rgb(23, 28, 34);
+}
+
 .profile-header{
 	background-color: rgb(100, 110, 205);
 	height: 40vh;
@@ -1002,14 +1006,20 @@ hr {
 	font-weight: bold;
 }
 
-.player-videos-container, .player-stats-container{
+.player-videos-container{
 	background-color: rgb(23, 28, 34);
 	height: 100%;
 }
 
 /* Player Profile Stats */
 
-.player-stats{
+.player-stats-container{
+	background-color: rgb(23, 28, 34);
+	padding-bottom: 50px;
+	/* height: 100vh; */
+}
+
+.player-stats {
 	color: white;
 	font-size: 2rem;
 	text-align: center;
@@ -1017,8 +1027,7 @@ hr {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-
+  }
 
 /* Table */
 
