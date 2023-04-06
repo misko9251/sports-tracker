@@ -16,12 +16,17 @@ function Football() {
     const [myScore, setMyScore] = useState(0)
     const [roster, setRoster] = useState([])
     const [scheduledEvent, setScheduledEvent] = useState([])
+    const [gameStats, setGameStats] = useState([])
     const [isActive, setIsActive] = useState(false)
     const [touchdownModal, setTouchdownModal] = useState(false)
     const [fieldgoalModal, setFieldgoalModal] = useState(false)
     const [extraPointModal, setExtraPointModal] = useState(false)
     const [twoPointConversationModal, setTwoPointConversationModal] = useState(false)
     const [safetyScoredModal, setSafetyScoredModal] = useState(false)
+    const [tdPassModal, setTdPassModal] = useState(false)
+    const [passInterceptedModal, setPassInterceptedModal] = useState(false)
+    const [tackleMadeModal, setTackleMadeModal] = useState(false)
+    const [sackMadeModal, setSackMadeModal] = useState(false)
 
     useEffect(() => {
       async function fetchData(){
@@ -68,6 +73,26 @@ function Football() {
     setSafetyScoredModal(true)
   }
 
+  const tdPass = () => {
+    setIsActive(true)
+    setTdPassModal(true)
+  }
+
+  const passIntercepted = () => {
+    setIsActive(true)
+    setPassInterceptedModal(true)
+  }
+
+  const tackleMade = () => {
+    setIsActive(true)
+    setTackleMadeModal(true)
+  }
+
+  const sackMade = () => {
+    setIsActive(true)
+    setSackMadeModal(true)
+  }
+
   const closeModal = () => {
     setIsActive(false)
     setTouchdownModal(false)
@@ -75,7 +100,13 @@ function Football() {
     setExtraPointModal(false)
     setTwoPointConversationModal(false)
     setSafetyScoredModal(false)
+    setTdPassModal(false)
+    setPassInterceptedModal(false)
+    setTackleMadeModal(false)
+    setSackMadeModal(false)
 }
+
+const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>{event.event}</div>))
 
     return (
       <>
@@ -91,6 +122,60 @@ function Football() {
       extraPointModal={extraPointModal}
       twoPointConversationModal={twoPointConversationModal}
       safetyScoredModal={safetyScoredModal}
+      tdPassModal={tdPassModal}
+      passInterceptedModal={passInterceptedModal}
+      tackleMadeModal={tackleMadeModal}
+      sackMadeModal={sackMadeModal}
+      touchdownScored={(name, playerId)=>{
+        setMyScore(myScore + 6)
+        setGameStats([{playerId, event: `${name} scored a touchdown`}, ...gameStats])
+        setIsActive(false)
+        setTouchdownModal(false)
+      }}
+      fieldGoalMade={(name, playerId)=>{
+        setMyScore(myScore + 3)
+        setGameStats([{playerId, event: `${name} drilled the field goal`}, ...gameStats])
+        setIsActive(false)
+        setFieldgoalModal(false)
+      }}
+      patMade={(name, playerId)=>{
+        setMyScore(myScore + 1)
+        setGameStats([{playerId, event: `${name} completed the PAT`}, ...gameStats])
+        setIsActive(false)
+        setExtraPointModal(false)
+      }}
+      twoPtConversion={(name, playerId)=>{
+        setMyScore(myScore + 2)
+        setGameStats([{playerId, event: `${name} scored a 2 point conversion`}, ...gameStats])
+        setIsActive(false)
+        setTwoPointConversationModal(false)
+      }}
+      safetyScored={(name, playerId)=>{
+        setMyScore(myScore + 2)
+        setGameStats([{playerId, event: `${name} scored a safety`}, ...gameStats])
+        setIsActive(false)
+        setSafetyScoredModal(false)
+      }}
+      tdPassMade={(name, playerId)=>{
+        setGameStats([{playerId, event: `${name} threw for a touchdown`}, ...gameStats])
+        setIsActive(false)
+        setTdPassModal(false)
+      }}
+      passIntercepted={(name, playerId)=>{
+        setGameStats([{playerId, event: `${name} intercepted the ball`}, ...gameStats])
+        setIsActive(false)
+        setPassInterceptedModal(false)
+      }}
+      tackleMade={(name, playerId)=>{
+        setGameStats([{playerId, event: `${name} made a tackle`}, ...gameStats])
+        setIsActive(false)
+        setTackleMadeModal(false)
+      }}
+      sackMade={(name, playerId)=>{
+        setGameStats([{playerId, event: `${name} made the sack`}, ...gameStats])
+        setIsActive(false)
+        setSackMadeModal(false)
+      }}
       />
 
 
@@ -108,21 +193,21 @@ function Football() {
                   <div className='opponent-basket opponent-football'>
                     <div className='opponent-fb-stats'>
                         <div className='td-fg-container'>
-                            <button onClick=''>
+                            <button onClick={()=>setOpponentScore(opponentScore + 6)}>
                                   {scheduledEvent.opponent} Touchdown
                               </button>
-                              <button onClick=''>
+                              <button onClick={()=>setOpponentScore(opponentScore + 3)}>
                                   {scheduledEvent.opponent} Field Goal
                             </button>
                         </div>
                         <div className='other-fb-scores'>
-                            <button onClick=''>
+                            <button onClick={()=>setOpponentScore(opponentScore + 1)}>
                                   {scheduledEvent.opponent} PAT
                               </button>
-                              <button onClick=''>
+                              <button onClick={()=>setOpponentScore(opponentScore + 2)}>
                                   {scheduledEvent.opponent} 2 PT Conversion
                               </button>
-                              <button onClick=''>
+                              <button onClick={()=>setOpponentScore(opponentScore + 2)}>
                                   {scheduledEvent.opponent} Safety
                             </button>
                         </div>
@@ -152,10 +237,10 @@ function Football() {
                           </div>
                       </div>
                       <div className='fb-additional-stats'>
-                        <button>TD Pass</button>
-                        <button>Interception</button>
-                        <button>Tackle</button>
-                        <button>Sack</button>
+                        <button onClick={tdPass}>TD Pass</button>
+                        <button onClick={passIntercepted}>Interception</button>
+                        <button onClick={tackleMade}>Tackle</button>
+                        <button onClick={sackMade}>Sack</button>
                       </div>
                       <div className='next-period'>
                           {/* {currentQuarter < 4 && <button onClick={endQuarter}>End Quarter</button>}
@@ -165,7 +250,7 @@ function Football() {
                   <section className='play-by-play'>
                       <h3>Play by Play</h3>
                       <div>
-                          {/* {playByPlay} */}
+                          {playByPlay}
                       </div>
                   </section>
               </section>
