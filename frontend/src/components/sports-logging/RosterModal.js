@@ -46,7 +46,11 @@ function RosterModal({roster,
                       tdPassMade,
                       passIntercepted,
                       tackleMade,
-                      sackMade}) {
+                      sackMade,
+                      serveModal,
+                      ballServed,
+                      pointModal,
+                      pointScored}) {
 
     const myRoster = roster.map((player)=> {
         return (
@@ -96,6 +100,10 @@ function RosterModal({roster,
                     tackleMade(player.player, player._id)
                 }else if(sackMadeModal){
                     sackMade(player.player, player._id)
+                }else if(serveModal){
+                    ballServed(player.player, player._id)
+                }else if(pointModal){
+                    pointScored(player.player, player._id)
                 }else{
                     console.log('Error')
                 }}
@@ -132,7 +140,9 @@ function RosterModal({roster,
                 tdPassModal ? 'Touchdown pass made by:' : 
                 passInterceptedModal ? 'Football intercepted by:' : 
                 tackleMadeModal ? 'Tackle made by:' : 
-                sackMadeModal ? 'Sack made by:' : ''}</h3>
+                sackMadeModal ? 'Sack made by:' : 
+                serveModal ? 'Ball served by:' : 
+                pointModal ? 'Point scored by:' : ''}</h3>
           </div>
             <ul className='modal-player-list'>
                 {myRoster}
