@@ -69,6 +69,14 @@ function PlayerStats() {
             serves: stats.servesVB,
             points: stats.pointsVB
           }
+        }else if(sport === 'Lacrosse'){
+          return {
+            goals: stats.goalsLax,
+            assists: stats.assistsLax,
+            points: stats.goalsSoccer + stats.assistsLax,
+            missedShots: stats.missedShotsLax,
+            saves: stats.savesLax,
+          }
         }else {
           return {}
         }

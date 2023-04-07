@@ -7,6 +7,9 @@ router.post('/updateBasketballStats/:teamId/event/:eventId', statsController.upd
 router.post('/updateFootballStats/:teamId/event/:eventId', statsController.updateFootballStats)
 router.post('/updateSoccerStats/:teamId/event/:eventId', statsController.updateSoccerStats)
 router.post('/updateVolleyballStats/:teamId/event/:eventId', statsController.updateVolleyballStats)
+router.post('/updateLacrosseStats/:teamId/event/:eventId', statsController.updateLacrosseStats)
+
+
 
 
 

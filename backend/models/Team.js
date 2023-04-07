@@ -48,7 +48,11 @@ const TeamSchema = new mongoose.Schema({
             missedShotsSoccer: { type: Number, default: 0 },
             savesSoccer: { type: Number, default: 0 },
             servesVB: { type: Number, default: 0},
-            pointsVB: { type: Number, default: 0}
+            pointsVB: { type: Number, default: 0},
+            goalsLax: { type: Number, default: 0 },
+            assistsLax: { type: Number, default: 0 },
+            missedShotsLax: { type: Number, default: 0 },
+            savesLax: { type: Number, default: 0 },
         },
         position: { type: String },
         team: { type: String },

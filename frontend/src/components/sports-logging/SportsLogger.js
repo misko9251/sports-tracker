@@ -5,6 +5,7 @@ import Basketball from './Basketball'
 import Football from './Football'
 import Soccer from './Soccer'
 import Volleyball from './Volleyball'
+import Lacrosse from './Lacrosse'
 
 function SportsLogger() {
 
@@ -17,7 +18,8 @@ function SportsLogger() {
          sportType == 'basketball' ? <Basketball /> : 
          sportType == 'football' ? <Football /> : 
          sportType == 'soccer' ? <Soccer /> : 
-         sportType == 'volleyball' ? <Volleyball /> : ''}
+         sportType == 'volleyball' ? <Volleyball /> : 
+         sportType == 'lacrosse' ? <Lacrosse /> : ''}
       </section>
     )
 }
