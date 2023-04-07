@@ -63,15 +63,18 @@ function Volleyball() {
     }
 
     const endSet = () => {
-        setCurrentSet(currentSet + 1)
         if(myScore > opponentScore){
             setMyWins(myWins + 1)
             setMyScore(0)
             setOpponentScore(0)
-        }else{
+            setGameStats([{event: `${roster[0].team} won Set ${currentSet}`}, ...gameStats])
+            setCurrentSet(currentSet + 1)
+        }else if(opponentScore > myScore){
             setOpponentWins(opponentWins + 1)
             setMyScore(0)
             setOpponentScore(0)
+            setGameStats([{event: `${scheduledEvent.opponent} won Set ${currentSet}`}, ...gameStats])
+            setCurrentSet(currentSet + 1)
         }
     }
 
@@ -81,25 +84,21 @@ function Volleyball() {
         setPointModal(false)
     }
 
-    const endGame = () => {
-        console.log('game over')
+    const endGame = async () => {
+        setGameStats([{event: `The game has ended.`}, ...gameStats])
+        try {
+            const response = await fetch(`http://localhost:2121/stats/updateVolleyballStats/${teamId}/event/${eventId}`, {
+                credentials: 'include',
+                method: 'POST',
+                headers: {'Content-Type' : 'application/json'},
+                body: JSON.stringify({gameStats})
+            })
+            const json = await response.json()
+            navigate(`/dashboard/${teamId}`);
+        } catch (error) {
+            console.log(error)
+        }
     }
-
-    // const endGame = async () => {
-    //     setGameStats([{event: `Period 3 has ended.`}, ...gameStats])
-    //     try {
-    //         const response = await fetch(`http://localhost:2121/stats/updateHockeyStats/${teamId}/event/${eventId}`, {
-    //             credentials: 'include',
-    //             method: 'POST',
-    //             headers: {'Content-Type' : 'application/json'},
-    //             body: JSON.stringify({gameStats})
-    //         })
-    //         const json = await response.json()
-    //         navigate(`/dashboard/${teamId}`);
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
 
     const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>{event.event}</div>))
     
@@ -168,7 +167,6 @@ function Volleyball() {
                         </div>
                         <div className='next-period volleyball-btns'>
                             <button onClick={endSet}>End Set</button>
-                            <button onClick=''>End Game</button>
                         </div>
                     </div>
                     <section className='play-by-play'>

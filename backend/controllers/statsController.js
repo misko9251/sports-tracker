@@ -1,6 +1,7 @@
 const Team = require('../models/Team')
 
 module.exports = {
+    // Hockey 
     updateHockeyStats: async (req, res) => {
         // Game stats to loop through and grab events
         const {gameStats} = req.body
@@ -47,6 +48,7 @@ module.exports = {
          console.log(error)
         }
     },
+    // Basketball
     updateBasketballStats: async (req, res) => {
         const {gameStats} = req.body
         const {teamId, eventId} = req.params
@@ -102,6 +104,7 @@ module.exports = {
             console.log(error)
         }
     },
+    // Football
     updateFootballStats: async (req, res) => {
         const { gameStats } = req.body;
         const { teamId, eventId } = req.params;
@@ -164,6 +167,7 @@ module.exports = {
           console.log(error);
         }
       },
+    // Soccer
     updateSoccerStats: async (req, res) => {
       const {gameStats} = req.body
       const {teamId, eventId} = req.params
@@ -204,6 +208,39 @@ module.exports = {
        res.status(200).json({msg: 'Stats updated'});
       } catch (error) {
        console.log(error)
+      }
+    },
+    // Volleyball
+    updateVolleyballStats: async (req, res) => {
+      const {gameStats} = req.body
+      const {teamId, eventId} = req.params
+
+      const currentTeam = await Team.findById({_id: teamId})
+      const eventIndex = currentTeam.schedule.findIndex((game)=> game._id == eventId)
+
+      currentTeam.schedule[eventIndex].isComplete = true
+      const events = gameStats.map((item)=>item.event)
+      currentTeam.schedule[eventIndex].gameEvents = events
+
+      try {
+        gameStats.forEach((stat)=>{
+          const {event, playerId} = stat
+          if(event.includes('served the ball!')){
+            const playerIndex = currentTeam.roster.findIndex((player)=>player._id == playerId)
+            if(playerIndex !== -1){
+              currentTeam.roster[playerIndex].stats.servesVB++
+            }
+          }else if(event.includes('scored a point')){
+            const playerIndex = currentTeam.roster.findIndex((player) => player._id == playerId)
+            if(playerIndex !== -1){
+              currentTeam.roster[playerIndex].stats.pointsVB++
+            }
+          }
+        })
+        await currentTeam.save()
+        res.status(200).json({msg: 'Stats updated'});
+      } catch (error) {
+        console.log(error)
       }
     }
 }

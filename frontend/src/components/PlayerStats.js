@@ -8,7 +8,6 @@ function PlayerStats() {
     const [currentPlayer, setCurrentPlayer] = useState([])
     const [isLoading, setisLoading] = useState(true)
     const [sport, setSport] = useState('')
-    console.log(sport)
 
     useEffect(()=> {
         async function fetchData(){
@@ -64,6 +63,11 @@ function PlayerStats() {
             points: stats.goalsSoccer + stats.assistsSoccer,
             missedShots: stats.missedShotsSoccer,
             saves: stats.savesSoccer,
+          }
+        }else if(sport === 'Volleyball'){
+          return{
+            serves: stats.servesVB,
+            points: stats.pointsVB
           }
         }else {
           return {}
