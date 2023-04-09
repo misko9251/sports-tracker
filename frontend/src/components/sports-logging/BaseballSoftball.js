@@ -96,17 +96,19 @@ function BaseballSoftball() {
                     </div>
                     <div className='team-scoring-container'>
                         <span className='hockey-my-team-name'>{roster[0].team}</span>
-                        <div className='score-button-container'>
-                            <div className='goal-scored'>
+                        <div className='score-button-container baseball-btn-container'>
+                            <div className='goal-scored hit-out-btn'>
                                 <button onClick=''>Hit</button>
                             </div>
-                            <div className='save-assist-container'>
+                            <div className='baseball-stats'>
                                 <button onClick=''>Pitch</button>
                                 <button onClick=''>Hit by Pitch</button>
+                            </div>
+                            <div className='baseball-stats'>
                                 <button onClick=''>Foul Ball</button>
                                 <button onClick=''>Homerun</button>
                             </div>
-                            <div className='shot-missed'>
+                            <div className='shot-missed hit-out-btn'>
                                 <button onClick=''>Out</button>
                             </div>
                         </div>

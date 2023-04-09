@@ -1182,7 +1182,7 @@ td{
 	justify-content: space-around;
 }
 
-.save-assist-container{
+.save-assist-container, .baseball-stats{
 	display: flex;
 	flex-direction: column;
 	height: 100px;
@@ -1388,6 +1388,21 @@ td{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+/* Baseball Softball */
+
+.baseball-stats button{
+	height: 40px;
+	width: 80px;
+}
+
+.baseball-btn-container{
+	width: 70%;
+	margin: 0 auto;
+	height: 200px;
+	align-items: center;
+	justify-content: space-around;
 }
 
 /* Spinner */
@@ -1610,6 +1625,10 @@ td{
 	.fb-additional-stats{
 		width: 90%;
 	}
+	/* Baseball logger*/
+	.baseball-btn-container{
+		width: 90%;
+	}
 }
 
 @media screen and (max-width: 650px){
@@ -1640,5 +1659,13 @@ td{
 	.team-videos video {
 		flex-basis: 50%;
 		max-width: 350px;
+	}
+	.baseball-stats button{
+		width: 75px;
+		font-size: .7rem;
+	}
+	.hit-out-btn button{
+		height: 90px;
+		width: 75px;;
 	}
 }
