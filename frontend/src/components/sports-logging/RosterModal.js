@@ -50,7 +50,22 @@ function RosterModal({roster,
                       serveModal,
                       ballServed,
                       pointModal,
-                      pointScored}) {
+                      pointScored,
+
+                      ballHitModal,
+                      pitchModal,
+                      hitByPitchModal,
+                      foulBallModal,
+                      homerunModal,
+                      playerOutModal,
+                      
+                      ballHit,
+                      pitchMade,
+                      hitByPitch,
+                      foulBall,
+                      homerun,
+                      out,
+                        }) {
 
     const myRoster = roster.map((player)=> {
         return (
@@ -104,6 +119,18 @@ function RosterModal({roster,
                     ballServed(player.player, player._id)
                 }else if(pointModal){
                     pointScored(player.player, player._id)
+                }else if(ballHitModal){
+                    ballHit(player.player, player._id)
+                }else if(pitchModal){
+                    pitchMade(player.player, player._id)
+                }else if(hitByPitchModal){
+                    hitByPitch(player.player, player._id)
+                }else if(foulBallModal){
+                    foulBall(player.player, player._id)
+                }else if(homerunModal){
+                    homerun(player.player, player._id)
+                }else if(playerOutModal){
+                    out(player.player, player._id)
                 }else{
                     console.log('Error')
                 }}
@@ -142,7 +169,13 @@ function RosterModal({roster,
                 tackleMadeModal ? 'Tackle made by:' : 
                 sackMadeModal ? 'Sack made by:' : 
                 serveModal ? 'Ball served by:' : 
-                pointModal ? 'Point scored by:' : ''}</h3>
+                pointModal ? 'Point scored by:' : 
+                ballHitModal ? 'Ball hit by:' : 
+                pitchModal ? 'Pitch made by:' : 
+                hitByPitchModal ? 'Select the player who was hit by the pitch:' : 
+                foulBallModal ? 'Foul ball hit by:' : 
+                homerunModal ? 'Homerun crushed by:' : 
+                playerOutModal ? 'Select the player who is out:' : ''}</h3>
           </div>
             <ul className='modal-player-list'>
                 {myRoster}

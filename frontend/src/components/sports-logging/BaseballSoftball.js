@@ -10,7 +10,7 @@ function BaseballSoftball() {
     const {teamId, eventId} = useParams()
     const navigate = useNavigate();
 
-    const [currentHalf, setCurrentHalf] = useState(1)
+    const [currentInning, setCurrentInning] = useState(1)
     const [myScore, setMyScore] = useState(0)
     const [opponentScore, setOpponentScore] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
@@ -18,7 +18,12 @@ function BaseballSoftball() {
     const [scheduledEvent, setScheduledEvent] = useState([])
     const [gameStats, setGameStats] = useState([])
     const [isActive, setIsActive] = useState(false)
-    console.log(scheduledEvent.isComplete)
+    const [ballHitModal, setBallHitModal] = useState(false)
+    const [pitchModal, setPitchModal] = useState(false)
+    const [hitByPitchModal, setHitByPitchModal] = useState(false)
+    const [foulBallModal, setFoulBallModal] = useState(false)
+    const [homerunModal, setHomerunModal] = useState(false)
+    const [playerOutModal, setPlayerOutModal] = useState(false)
 
     useEffect(() => {
         async function fetchData(){
@@ -39,10 +44,44 @@ function BaseballSoftball() {
         fetchData()
     }, [])
 
+    const ballHit = () => {
+        setIsActive(true)
+        setBallHitModal(true)
+    }
 
+    const pitch = () => {
+        setIsActive(true)
+        setPitchModal(true)
+    }
+
+    const hitByPitch = () => {
+        setIsActive(true)
+        setHitByPitchModal(true)
+    }
+
+    const foulBall = () => {
+        setIsActive(true)
+        setFoulBallModal(true)
+    }
+
+    const homerun = () => {
+        setIsActive(true)
+        setHomerunModal(true)
+    }
+
+    const playerOut = () => {
+        setIsActive(true)
+        setPlayerOutModal(true)
+    }
 
     const closeModal = () => {
         setIsActive(false)
+        setBallHitModal(false)
+        setPitchModal(false)
+        setHitByPitchModal(false)
+        setFoulBallModal(false)
+        setHomerunModal(false)
+        setPlayerOutModal(false)
     }
 
     const endGame = async () => {
@@ -73,12 +112,48 @@ function BaseballSoftball() {
         roster={roster}
         isActive={isActive}
         closeModal={closeModal}
+        ballHitModal={ballHitModal}
+        pitchModal={pitchModal}
+        hitByPitchModal={hitByPitchModal}
+        foulBallModal={foulBallModal}
+        homerunModal={homerunModal}
+        playerOutModal={playerOutModal}
+        ballHit={(name, playerId)=>{
+            setGameStats([{playerId, event: `${name} got a hit!`}, ...gameStats])
+            setIsActive(false)
+            setBallHitModal(false)
+        }}
+        pitchMade={(name, playerId)=>{
+            setGameStats([{playerId, event: `${name} threw a pitch`}, ...gameStats])
+            setIsActive(false)
+            setPitchModal(false)
+        }}
+        hitByPitch={(name, playerId)=>{
+            setGameStats([{playerId, event: `${name} was hit by a pitch`}, ...gameStats])
+            setIsActive(false)
+            setHitByPitchModal(false)
+        }}
+        foulBall={(name, playerId)=>{
+            setGameStats([{playerId, event: `${name} fouled off the ball`}, ...gameStats])
+            setIsActive(false)
+            setFoulBallModal(false)
+        }}
+        homerun={(name, playerId)=>{
+            setGameStats([{playerId, event: `${name} hit a homerun!`}, ...gameStats])
+            setIsActive(false)
+            setHomerunModal(false)
+        }}
+        out={(name, playerId)=>{
+            setGameStats([{playerId, event: `${name} is out`}, ...gameStats])
+            setIsActive(false)
+            setPlayerOutModal(false)
+        }}
         />
 
         {isLoading ? <Spinner /> : (
             <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
                 <header className='logger-header'>
-                    <span className='logger-current-time'>Inning {currentHalf}</span>
+                    <span className='logger-current-time'>Inning {currentInning}</span>
                     <span className='logger-current-score'>{opponentScore} - {myScore}</span>
                     <div className='logger-scores'>
                       <span>{scheduledEvent.opponent}</span>
@@ -98,23 +173,23 @@ function BaseballSoftball() {
                         <span className='hockey-my-team-name'>{roster[0].team}</span>
                         <div className='score-button-container baseball-btn-container'>
                             <div className='goal-scored hit-out-btn'>
-                                <button onClick=''>Hit</button>
+                                <button onClick={ballHit}>Hit</button>
                             </div>
                             <div className='baseball-stats'>
-                                <button onClick=''>Pitch</button>
-                                <button onClick=''>Hit by Pitch</button>
+                                <button onClick={pitch}>Pitch</button>
+                                <button onClick={hitByPitch}>Hit by Pitch</button>
                             </div>
                             <div className='baseball-stats'>
-                                <button onClick=''>Foul Ball</button>
-                                <button onClick=''>Homerun</button>
+                                <button onClick={foulBall}>Foul Ball</button>
+                                <button onClick={homerun}>Homerun</button>
                             </div>
                             <div className='shot-missed hit-out-btn'>
-                                <button onClick=''>Out</button>
+                                <button onClick={playerOut}>Out</button>
                             </div>
                         </div>
                         <div className='next-period'>
-                            {currentHalf < 2 && <button onClick=''>End Inning</button>}
-                            {currentHalf >= 2 && <button onClick=''>End Game</button>}
+                            {currentInning < 9 && <button onClick={()=>setCurrentInning(currentInning+1)}>End Inning</button>}
+                            {currentInning >= 9 && <button onClick=''>End Game</button>}
                         </div>
                     </div>
                     <section className='play-by-play'>
