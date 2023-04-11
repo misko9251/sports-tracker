@@ -87,7 +87,7 @@ function BaseballSoftball() {
     const endGame = async () => {
         setGameStats([{event: `The game has concluded.`}, ...gameStats])
         try {
-            const response = await fetch(`http://localhost:2121/stats/updateSoccerStats/${teamId}/event/${eventId}`, {
+            const response = await fetch(`http://localhost:2121/stats/updateSoftballBaseballStats/${teamId}/event/${eventId}`, {
                 credentials: 'include',
                 method: 'POST',
                 headers: {'Content-Type' : 'application/json'},
@@ -189,7 +189,7 @@ function BaseballSoftball() {
                         </div>
                         <div className='next-period'>
                             {currentInning < 9 && <button onClick={()=>setCurrentInning(currentInning+1)}>End Inning</button>}
-                            {currentInning >= 9 && <button onClick=''>End Game</button>}
+                            {currentInning >= 9 && <button onClick={endGame}>End Game</button>}
                         </div>
                     </div>
                     <section className='play-by-play'>

@@ -284,7 +284,61 @@ module.exports = {
       } catch (error) {
        console.log(error)
       }
-    }
-}
+    },
+    updateSoftballBaseballStats: async (req, res) => {
+      const {gameStats} = req.body
+      const {teamId, eventId} = req.params
 
+      const currentTeam = await Team.findById({_id: teamId})
+      const eventIndex = currentTeam.schedule.findIndex((game)=> game._id == eventId)
+
+      currentTeam.schedule[eventIndex].isComplete = true
+      const events = gameStats.map((item)=> (item.event))
+      currentTeam.schedule[eventIndex].gameEvents = events
+
+      try {
+        gameStats.forEach((stat) => {
+          const {event, playerId} = stat
+          if(event.includes('got a hit')){
+            const playerIndex = currentTeam.roster.findIndex((player) => player._id == playerId)
+            if(playerIndex !== -1){
+              currentTeam.roster[playerIndex].stats.hitsBBSB++
+              currentTeam.roster[playerIndex].stats.atBatsBBSB++
+            }
+          }else if(event.includes('threw a pitch')){
+            const playerIndex = currentTeam.roster.findIndex((player) => player._id == playerId)
+            if(playerIndex !== -1){
+              currentTeam.roster[playerIndex].stats.pitchCountBBSB++
+            }
+          }else if(event.includes('was hit by a pitch')){
+            const playerIndex = currentTeam.roster.findIndex((player) => player._id == playerId)
+            if(playerIndex !== -1){
+              currentTeam.roster[playerIndex].stats.HBP++
+            }
+          }else if(event.includes('fouled off the ball')){
+            const playerIndex = currentTeam.roster.findIndex((player) => player._id == playerId)
+            if(playerIndex !== -1){
+              currentTeam.roster[playerIndex].stats.foulsBBSB++
+            }
+          }else if(event.includes('hit a homerun!')){
+            const playerIndex = currentTeam.roster.findIndex((player) => player._id == playerId)
+            if(playerIndex !== -1){
+              currentTeam.roster[playerIndex].stats.homerunsBBSB++
+              currentTeam.roster[playerIndex].stats.atBatsBBSB++
+            }
+          }else if(event.includes('is out')){
+            const playerIndex = currentTeam.roster.findIndex((player) => player._id == playerId)
+            if(playerIndex !== -1){
+              currentTeam.roster[playerIndex].stats.outsBBSB++
+              currentTeam.roster[playerIndex].stats.atBatsBBSB++
+            }
+          }
+        })
+        await currentTeam.save()
+        res.status(200).json({msg: 'Stats updated'})
+      } catch (error) {
+        console.log(error)
+      }
+  }
+}
 
