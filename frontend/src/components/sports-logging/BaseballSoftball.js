@@ -4,6 +4,7 @@ import Spinner from '../Spinner'
 import RosterModal from './RosterModal'
 import {useNavigate} from 'react-router-dom'
 import GameComplete from './GameComplete'
+import EmptyRoster from './EmptyRoster'
 
 function BaseballSoftball() {
 
@@ -24,6 +25,7 @@ function BaseballSoftball() {
     const [foulBallModal, setFoulBallModal] = useState(false)
     const [homerunModal, setHomerunModal] = useState(false)
     const [playerOutModal, setPlayerOutModal] = useState(false)
+    console.log(roster.length)
 
     useEffect(() => {
         async function fetchData(){
@@ -150,7 +152,8 @@ function BaseballSoftball() {
         }}
         />
 
-        {isLoading ? <Spinner /> : (
+        {isLoading ? <Spinner /> : 
+        roster.length == 0 ? <EmptyRoster /> : (
             <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
                 <header className='logger-header'>
                     <span className='logger-current-time'>Inning {currentInning}</span>

@@ -1470,6 +1470,44 @@ td{
 	background: linear-gradient(94.6deg, #32383E -60.81%, #17191C 185.78%);
 }
 
+/* No roster set */
+
+.empty-roster-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgb(129, 255, 167);
+	min-height: 100vh;
+}
+
+.empty-roster-container button{
+	margin-top: 50px;
+	background-color: rgb(255, 8, 8);
+	background-color: black;
+	border: none;
+	height: 50px;
+	color: white;
+	font-weight: bold;
+	border-radius: 10px;
+	padding: 0 20px;
+}
+
+.empty-roster-container h1{
+	width: 70%;
+	text-align: center;
+	margin-top: 50px;
+	font-size: 3rem;
+	font-weight: bold;
+}
+
+.empty-roster-img {
+	margin-top: 20px;
+}
+
+.empty-roster-img img{
+	height: 300px;
+}
+
 /* Media Queries */
 
 @media screen and (min-width: 1100px){
