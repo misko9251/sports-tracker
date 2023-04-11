@@ -313,7 +313,7 @@ module.exports = {
           }else if(event.includes('was hit by a pitch')){
             const playerIndex = currentTeam.roster.findIndex((player) => player._id == playerId)
             if(playerIndex !== -1){
-              currentTeam.roster[playerIndex].stats.HBP++
+              currentTeam.roster[playerIndex].stats.hitByPitch++
             }
           }else if(event.includes('fouled off the ball')){
             const playerIndex = currentTeam.roster.findIndex((player) => player._id == playerId)

@@ -53,10 +53,9 @@ const TeamSchema = new mongoose.Schema({
             assistsLax: { type: Number, default: 0 },
             missedShotsLax: { type: Number, default: 0 },
             savesLax: { type: Number, default: 0 },
-
             hitsBBSB: { type: Number, default: 0 },
             pitchCountBBSB: { type: Number, default: 0 },
-            HBP: { type: Number, default: 0 },
+            hitByPitch: { type: Number, default: 0 },
             foulsBBSB: { type: Number, default: 0 },
             homerunsBBSB: { type: Number, default: 0 },
             atBatsBBSB: { type: Number, default: 0 },

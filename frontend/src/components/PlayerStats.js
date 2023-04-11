@@ -77,6 +77,16 @@ function PlayerStats() {
             missedShots: stats.missedShotsLax,
             saves: stats.savesLax,
           }
+        }else if(sport === 'Baseball' || sport == 'Softball'){
+          return {
+            atBats: stats.atBatsBBSB,
+            hits: stats.hitsBBSB,
+            homeruns: stats.homerunsBBSB,
+            outs: stats.outsBBSB,
+            foulBalls: stats.foulsBBSB,
+            pitches: stats.pitchCountBBSB,
+            hitByPitch: stats.hitByPitch
+          }
         }else {
           return {}
         }
