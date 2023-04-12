@@ -27,6 +27,7 @@ module.exports = {
         }
         // Loop through the game action and grab all the events, save in a new array
         const events = gameStats.map((item)=> (item.event))
+        console.log(events)
         // Set the gameEvents value to the events we looped through above
         currentTeam.schedule[eventIndex].gameEvents = events
         try {
