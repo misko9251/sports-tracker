@@ -4,6 +4,7 @@ import Spinner from '../Spinner'
 import RosterModal from './RosterModal'
 import {useNavigate} from 'react-router-dom'
 import GameComplete from './GameComplete'
+import EmptyRoster from './EmptyRoster'
 
 function Football() {
 
@@ -200,7 +201,8 @@ const playByPlay = gameStats.map((event)=>(<div className='play-by-play-update'>
       />
 
 
-      {isLoading ? <Spinner /> : (
+      {isLoading ? <Spinner /> : 
+      roster.length == 0 ? <EmptyRoster /> : (
           <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
               <header className='logger-header'>
                   <span className='logger-current-time'>Quarter {currentQuarter}</span>
