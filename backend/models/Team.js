@@ -88,7 +88,9 @@ const TeamSchema = new mongoose.Schema({
         dayOfWeek: { type: String },
         isComplete: {type: Boolean, default: false},
         location: { type: String },
-        gameEvents: { type: [String] }
+        gameEvents: { type: [String] },
+        myScore: {type: Number, default: 0},
+        opponentScore: {type: Number, default: 0}
     }],
     videos: [{
         url: { type: String }, 
