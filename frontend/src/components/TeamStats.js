@@ -33,6 +33,11 @@ function TeamStats() {
     return (
       <>
         {isLoading ? <TabSpinner /> : 
+        events.length == 0 ? (
+            <section className='no-data-added-container dashboard-tabs'>
+                <h4>No Games Logged</h4>
+            </section>    
+        ) : 
         <section>
             {events}    
         </section>}

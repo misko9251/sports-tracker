@@ -92,7 +92,7 @@ function Volleyball() {
                 credentials: 'include',
                 method: 'POST',
                 headers: {'Content-Type' : 'application/json'},
-                body: JSON.stringify({gameStats})
+                body: JSON.stringify({gameStats, myScore, opponentScore})
             })
             const json = await response.json()
             navigate(`/dashboard/${teamId}`);
