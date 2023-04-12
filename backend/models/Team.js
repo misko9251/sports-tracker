@@ -95,7 +95,9 @@ const TeamSchema = new mongoose.Schema({
     videos: [{
         url: { type: String }, 
         description: { type: String }
-    }]
+    }],
+    wins: {type: Number, default: 0},
+    losses: {type: Number, default: 0}
 })
 
 module.exports = mongoose.model("Team", TeamSchema)
