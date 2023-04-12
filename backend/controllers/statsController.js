@@ -4,7 +4,10 @@ module.exports = {
     // Hockey 
     updateHockeyStats: async (req, res) => {
         // Game stats to loop through and grab events
-        const {gameStats} = req.body
+        const gameStats = req.body.gameStats
+        // Scores of the current game to track W/L ratio
+        const myScore = req.body.myScore
+        const opponentScore = req.body.opponentScore
         // Destructure current team and the eventId which represents the scheduled event we are on
         const {teamId, eventId} = req.params
         // Grab current team
@@ -13,6 +16,15 @@ module.exports = {
         const eventIndex = currentTeam.schedule.findIndex((game)=> game._id == eventId)
         // This method fires when we click end game, so below we are setting is complete to true
         currentTeam.schedule[eventIndex].isComplete = true
+        // Set the scores of the individual game
+        currentTeam.schedule[eventIndex].myScore = myScore
+        currentTeam.schedule[eventIndex].opponentScore = opponentScore
+        // Update individual team win loss ratio
+        if(myScore > opponentScore){
+          currentTeam.wins++
+        }else if(opponentScore > myScore){
+          currentTeam.losses++
+        }
         // Loop through the game action and grab all the events, save in a new array
         const events = gameStats.map((item)=> (item.event))
         // Set the gameEvents value to the events we looped through above
@@ -115,7 +127,9 @@ module.exports = {
     },
     // Football
     updateFootballStats: async (req, res) => {
-        const { gameStats } = req.body;
+        const gameStats = req.body.gameStats
+        const myScore = req.body.myScore
+        const opponentScore = req.body.opponentScore
         const { teamId, eventId } = req.params;
 
         const currentTeam = await Team.findById({ _id: teamId });
@@ -123,6 +137,13 @@ module.exports = {
       
         const events = gameStats.map((item) => item.event);
         currentTeam.schedule[eventIndex].isComplete = true
+        currentTeam.schedule[eventIndex].myScore = myScore
+        currentTeam.schedule[eventIndex].opponentScore = opponentScore
+        if(myScore > opponentScore){
+          currentTeam.wins++
+        }else if(opponentScore > myScore){
+          currentTeam.losses++
+        }
         currentTeam.schedule[eventIndex].gameEvents = events;
       
         try {
@@ -178,13 +199,22 @@ module.exports = {
       },
     // Soccer
     updateSoccerStats: async (req, res) => {
-      const {gameStats} = req.body
+      const gameStats = req.body.gameStats
+      const myScore = req.body.myScore
+      const opponentScore = req.body.opponentScore
       const {teamId, eventId} = req.params
 
       const currentTeam = await Team.findById({_id: teamId})
       const eventIndex = currentTeam.schedule.findIndex((game)=> game._id == eventId)
 
       currentTeam.schedule[eventIndex].isComplete = true
+      currentTeam.schedule[eventIndex].myScore = myScore
+      currentTeam.schedule[eventIndex].opponentScore = opponentScore
+      if(myScore > opponentScore){
+        currentTeam.wins++
+      }else if(opponentScore > myScore){
+        currentTeam.losses++
+      }
       const events = gameStats.map((item)=> (item.event))
       currentTeam.schedule[eventIndex].gameEvents = events
 
@@ -221,13 +251,22 @@ module.exports = {
     },
     // Volleyball
     updateVolleyballStats: async (req, res) => {
-      const {gameStats} = req.body
+      const gameStats = req.body.gameStats
+      const myScore = req.body.myScore
+      const opponentScore = req.body.opponentScore
       const {teamId, eventId} = req.params
 
       const currentTeam = await Team.findById({_id: teamId})
       const eventIndex = currentTeam.schedule.findIndex((game)=> game._id == eventId)
 
       currentTeam.schedule[eventIndex].isComplete = true
+      currentTeam.schedule[eventIndex].myScore = myScore
+      currentTeam.schedule[eventIndex].opponentScore = opponentScore
+      if(myScore > opponentScore){
+        currentTeam.wins++
+      }else if(opponentScore > myScore){
+        currentTeam.losses++
+      }
       const events = gameStats.map((item)=>item.event)
       currentTeam.schedule[eventIndex].gameEvents = events
 
@@ -252,14 +291,24 @@ module.exports = {
         console.log(error)
       }
     },
+    // Lacrosse
     updateLacrosseStats: async (req, res) => {
-      const {gameStats} = req.body
+      const gameStats = req.body.gameStats
+      const myScore = req.body.myScore
+      const opponentScore = req.body.opponentScore
       const {teamId, eventId} = req.params
 
       const currentTeam = await Team.findById({_id: teamId})
       const eventIndex = currentTeam.schedule.findIndex((game)=> game._id == eventId)
 
       currentTeam.schedule[eventIndex].isComplete = true
+      currentTeam.schedule[eventIndex].myScore = myScore
+      currentTeam.schedule[eventIndex].opponentScore = opponentScore
+      if(myScore > opponentScore){
+        currentTeam.wins++
+      }else if(opponentScore > myScore){
+        currentTeam.losses++
+      }
       const events = gameStats.map((item)=> (item.event))
       currentTeam.schedule[eventIndex].gameEvents = events
 
@@ -294,14 +343,24 @@ module.exports = {
        console.log(error)
       }
     },
+    // Softball and baseball
     updateSoftballBaseballStats: async (req, res) => {
-      const {gameStats} = req.body
+      const gameStats = req.body.gameStats
+      const myScore = req.body.myScore
+      const opponentScore = req.body.opponentScore
       const {teamId, eventId} = req.params
 
       const currentTeam = await Team.findById({_id: teamId})
       const eventIndex = currentTeam.schedule.findIndex((game)=> game._id == eventId)
 
       currentTeam.schedule[eventIndex].isComplete = true
+      currentTeam.schedule[eventIndex].myScore = myScore
+      currentTeam.schedule[eventIndex].opponentScore = opponentScore
+      if(myScore > opponentScore){
+        currentTeam.wins++
+      }else if(opponentScore > myScore){
+        currentTeam.losses++
+      }
       const events = gameStats.map((item)=> (item.event))
       currentTeam.schedule[eventIndex].gameEvents = events
 
