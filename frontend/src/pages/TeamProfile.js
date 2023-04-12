@@ -21,6 +21,7 @@ function TeamProfile() {
     const [isLoading, setIsLoading] = useState(true)
     const [sportLogo, setSportLogo] = useState('')
     const [currentTab, setCurrentTab] = useState('schedule')
+    console.log(team)
     
    useEffect(()=> {
     async function fetchData(){
@@ -63,7 +64,7 @@ function TeamProfile() {
               <div className='team-profile-info'>
                 <h2>{sportLogo}</h2>
                 <span className='team-profile-name'>{team.team.teamName}</span>
-                <span>{team.team.record}</span>
+                <span>{team.team.wins} - {team.team.losses}</span>
               </div>
               <ul className='team-profile-list'>
                 <li onClick={() => setCurrentTab('schedule')}>Schedule</li>

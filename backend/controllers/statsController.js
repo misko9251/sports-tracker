@@ -50,11 +50,20 @@ module.exports = {
     },
     // Basketball
     updateBasketballStats: async (req, res) => {
-        const {gameStats} = req.body
+        const gameStats = req.body.gameStats
+        const myScore = req.body.myScore
+        const opponentScore = req.body.opponentScore
         const {teamId, eventId} = req.params
         const currentTeam = await Team.findById({_id: teamId})
         const eventIndex = currentTeam.schedule.findIndex((event)=> event._id == eventId)
         currentTeam.schedule[eventIndex].isComplete = true
+        currentTeam.schedule[eventIndex].myScore = myScore
+        currentTeam.schedule[eventIndex].opponentScore = opponentScore
+        if(myScore > opponentScore){
+          currentTeam.wins++
+        }else if(opponentScore > myScore){
+          currentTeam.losses++
+        }
         const events = gameStats.map((item)=> (item.event))
         currentTeam.schedule[eventIndex].gameEvents = events
         try {

@@ -25,7 +25,7 @@ function TeamStats() {
         return (
             <div className='individual-events completed-game'>
                 <h2>Opponent: {event.opponent}</h2>
-                <span>Result: Loss</span>
+                <span>Result: {event.myScore > event.opponentScore ? 'Win' : 'Loss'}</span>
             </div>
         )
     })
