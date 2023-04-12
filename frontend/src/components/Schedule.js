@@ -12,7 +12,6 @@ function Schedule() {
   const [addEvent, setAddEvent] = useState(false)
   const [currentSport, setCurrentSport] = useState('')
   const {teamId} = useParams()
-  console.log(currentSport)
 
   useEffect(()=> {
     async function fetchData(){

@@ -955,6 +955,11 @@ hr {
 	display: block;
 }
 
+/* Game Stats */
+
+.completed-game{
+	justify-content: space-around;
+}
 
 /* Player Profile */
 

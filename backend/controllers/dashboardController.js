@@ -262,5 +262,15 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
+    },
+    getPastGames: async (req, res) => {
+        try {
+            const teamId = req.params.id
+            const currentTeam = await Team.findById({_id: teamId})
+            const completedGames = currentTeam.schedule.filter((event) => event.isComplete)
+            res.status(200).json({completedGames})
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
