@@ -7,6 +7,8 @@ function TeamStats() {
     const {teamId} = useParams()
     const [isLoading, setIsLoading] = useState(true)
     const [completedGames, setCompletedGames] = useState([])
+    const [selectedStats, setSelectedStats] = useState([])
+    const [showEvents, setShowEvents] = useState(true);
     
     useEffect(()=>{
         async function fetchData(){
@@ -16,16 +18,28 @@ function TeamStats() {
             const json = await response.json()
             setCompletedGames(json.completedGames)
             setIsLoading(false)
-            console.log(completedGames)
         }
         fetchData()
     }, [completedGames])
 
+    const handleClick = (event) => {
+        setSelectedStats(event.gameEvents)
+        setShowEvents(false)
+      };
+
     const events = completedGames.map((event)=>{
         return (
-            <div className='individual-events completed-game'>
+            <div onClick={()=>handleClick(event)}className='individual-events completed-game'>
                 <h2>Opponent: {event.opponent}</h2>
                 <span>Result: {event.myScore > event.opponentScore ? 'Win' : 'Loss'}</span>
+            </div>
+        )
+    })
+
+    const gameData = selectedStats.map((game)=>{
+        return (
+            <div className='individual-events game-data'>
+                <span>{game}</span>
             </div>
         )
     })
@@ -38,9 +52,24 @@ function TeamStats() {
                 <h4>No Games Logged</h4>
             </section>    
         ) : 
-        <section>
-            {events}    
-        </section>}
+        <section className='team-tab final-game-stats-container'>
+            {showEvents ? events : (
+                <>
+                    <div className='game-stats-header'>
+                        <h1>Game Highlights</h1>
+                        <button onClick={()=>setShowEvents(!showEvents)}>BACK</button>
+                    </div>
+                    <div className='individual-events game-data'>
+                        <span>The game has ended.</span>
+                    </div>
+                    {gameData}
+                    <div className='individual-events game-data'>
+                        <span>The game has started.</span>
+                    </div>
+                </>
+            )}
+        </section>
+        }
       </>
     )
 }
