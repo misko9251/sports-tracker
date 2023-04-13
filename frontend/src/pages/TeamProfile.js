@@ -14,8 +14,10 @@ import Schedule from '../components/Schedule'
 import Team from '../components/Team'
 import Video from '../components/Video'
 import TeamStats from '../components/TeamStats'
+import {useNavigate} from 'react-router-dom'
 
 function TeamProfile() {
+    const navigate = useNavigate();
     const {teamId} = useParams()
     const [team, setTeam] = useState({})
     const [isLoading, setIsLoading] = useState(true)
@@ -62,6 +64,9 @@ function TeamProfile() {
         <section className='dashboard-container'>
             <header className='team-profile-header'>
               <div className='team-profile-info'>
+                <div className='back-to-dashboard-btn'>
+                  <button onClick={()=>navigate('/getUser')}>Dashboard</button>
+                </div>
                 <h2>{sportLogo}</h2>
                 <span className='team-profile-name'>{team.team.teamName}</span>
                 <span>{team.team.wins} - {team.team.losses}</span>

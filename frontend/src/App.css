@@ -651,6 +651,17 @@ hr {
 	flex-direction: column;
 	box-sizing: border-box;
 }
+.back-to-dashboard-btn{
+	align-self: flex-end;
+	margin-right: 30px;
+	margin-top: 30px;
+}
+.back-to-dashboard-btn button{
+	border-radius: 5px;
+	border: none;
+	height: 30px;
+	background-color: rgb(129, 255, 167);
+}
 
 .team-profile-info{
 	display: flex;
