@@ -231,6 +231,22 @@ module.exports = {
             console.log(error)
         }
     },
+    addContact: async (req, res) => {
+        try {
+            const {teamId, playerId} = req.params
+            const currentTeam = await Team.findById({_id: teamId})
+            const playerIndex = currentTeam.roster.findIndex((player)=> player._id == playerId)
+            currentTeam.roster[playerIndex].contacts.push({
+                name: req.body.name,
+                relationship: req.body.relationship,
+                phoneNumber: req.body.number
+            })
+            await currentTeam.save()
+            res.status(200).json({msg: 'Player contact uploaded'})
+        } catch (error) {
+            console.log(error)
+        }
+    },
     getPlayerVideos: async (req, res) => {
         try {
             const {teamId, playerId} = req.params

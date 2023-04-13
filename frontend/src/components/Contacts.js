@@ -1,14 +1,26 @@
 import React, {useState} from 'react'
 import TabSpinner from './TabSpinner'
+import AddContact from './AddContact'
 
 function Contacts() {
     
     const [isLoading, setIsLoading] = useState(false)
     const [hasContacts, setHasContacts] = useState(false)
     const [addContact, setAddContact] = useState(false)
+
+    const closeForm = () => {
+        setAddContact(false)
+    }
     
     return (
       <>
+
+      <AddContact 
+      isActive={addContact}
+      onClose={closeForm}
+      />
+
+
       {isLoading ? <TabSpinner /> : (
         hasContacts ? (
             <>

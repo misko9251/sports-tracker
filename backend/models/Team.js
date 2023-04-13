@@ -71,6 +71,7 @@ const TeamSchema = new mongoose.Schema({
         }],
         contacts: [{
             name: { type: String },
+            relationship: { type: String },
             phoneNumber: { type: String }
         }]
     }],
