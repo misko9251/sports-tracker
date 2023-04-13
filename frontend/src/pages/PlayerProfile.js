@@ -4,6 +4,7 @@ import PlayerVideos from '../components/PlayerVideos'
 import {useParams} from 'react-router-dom'
 import Spinner from '../components/Spinner'
 import PlayerStats from '../components/PlayerStats'
+import Contacts from '../components/Contacts'
 
 function PlayerProfile() {
 
@@ -47,7 +48,8 @@ function PlayerProfile() {
             </header>
             <section className='tab-container'>
                  {currentTab === 'video' ? <PlayerVideos /> :
-                  currentTab === 'stats' ? <PlayerStats /> : null
+                  currentTab === 'stats' ? <PlayerStats /> : 
+                  currentTab === 'contacts' ? <Contacts /> : null
                 }
             </section>
         </section>

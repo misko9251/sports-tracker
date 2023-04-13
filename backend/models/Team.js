@@ -68,6 +68,10 @@ const TeamSchema = new mongoose.Schema({
         videos: [{
             url: { type: String },
             description: { type: String }
+        }],
+        contacts: [{
+            name: { type: String },
+            phoneNumber: { type: String }
         }]
     }],
     staff: [{
