@@ -49,6 +49,9 @@ function AddVideo(props) {
         headers: {'Content-Type' : 'application/json'},
         body: JSON.stringify({...formData, previewSource})
       })
+      props.onClose()
+      setFormData({name: '', position: ''})
+      e.target.reset()
     }
   }
     
