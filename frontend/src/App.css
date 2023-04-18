@@ -764,7 +764,7 @@ hr {
 	justify-content: center;
 }
   
-.scheduled-events button, .team-videos-container button {
+.scheduled-events button, .team-videos-container button, .contact-btn-container button {
 	align-self: center;
 	margin-top: 2%;
 	margin-bottom: 5%;
@@ -931,6 +931,34 @@ hr {
 	align-self: flex-end;
 	cursor: pointer;
 }
+
+/* Contact */
+
+.individual-contact{
+	margin-right: 100px;
+	justify-content: space-around;
+}
+
+.contact-name{
+	display: flex;
+	flex-direction: column;
+}
+
+.contact-relationship{
+	text-align: center;
+	font-size: .8rem;
+}
+
+.contact-btn-container{
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.contact-btn-container button{
+	padding: 10px;
+}
+
 
 /* Videos */
 

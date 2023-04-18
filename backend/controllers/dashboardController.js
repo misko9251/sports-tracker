@@ -247,6 +247,17 @@ module.exports = {
             console.log(error)
         }
     },
+    getPlayerContacts: async (req, res) => {
+        try {
+            const {teamId, playerId} = req.params
+            const currentTeam = await Team.findById({_id: teamId})
+            const playerIndex = currentTeam.roster.findIndex((player)=> player._id == playerId)
+            const contacts = currentTeam.roster[playerIndex].contacts
+            res.status(200).json({contacts: contacts})
+        } catch (error) {
+            console.log(error)
+        }
+    },
     getPlayerVideos: async (req, res) => {
         try {
             const {teamId, playerId} = req.params
