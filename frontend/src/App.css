@@ -764,7 +764,7 @@ hr {
 	justify-content: center;
 }
   
-.scheduled-events button, .team-videos-container button, .contact-btn-container button {
+.scheduled-events button, .team-videos-container button, .contact-btn-container button, .add-video-btn-container button {
 	align-self: center;
 	margin-top: 2%;
 	margin-bottom: 5%;
@@ -955,8 +955,17 @@ hr {
 	margin-top: 20px;
 }
 
-.contact-btn-container button{
+.add-video-btn-container{
+	display: flex;
+	justify-content: center;
+}
+
+.contact-btn-container button, .add-video-btn-container button{
 	padding: 10px;
+}
+
+.add-video-btn-container button{
+	margin-top: 2px;
 }
 
 
@@ -1087,8 +1096,10 @@ hr {
 
 .player-videos-container{
 	background-color: rgb(23, 28, 34);
-	height: 100%;
+	min-height: 100%;
 }
+
+
 
 /* Player Profile Stats */
 

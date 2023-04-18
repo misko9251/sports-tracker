@@ -11,6 +11,11 @@ function PlayerVideos() {
   const [videos, setVideos] = useState([])
   const [hasVideos, setHasVideos] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [shouldDisplay, setShouldDisplay] = useState(null)
+
+  useEffect(()=>{
+    setShouldDisplay(addVideo ? 'none' : 'block')
+  }, [addVideo])
 
   useEffect(()=> {
     async function fetchData(){
@@ -55,9 +60,12 @@ function PlayerVideos() {
     {isLoading ? <TabSpinner /> : (
       hasVideos ? (
         <>
-          <section className='player-videos-container'>
+          <section style={{display: shouldDisplay}} className='player-videos-container'>
             <div className='team-videos'>
               {playerVideos}
+            </div>
+            <div className='add-video-btn-container'>
+                <button onClick={() => setAddVideo(true)}>Add Video</button>
             </div>
           </section>
         </>
