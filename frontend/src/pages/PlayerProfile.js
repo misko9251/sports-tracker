@@ -12,7 +12,7 @@ function PlayerProfile() {
   const [currentTab, setCurrentTab] = useState('video')
   const [currentPlayer, setCurrentPlayer] = useState({})
   const [isLoading, setisLoading] = useState(true)
-  console.log(currentPlayer)
+  console.log(currentPlayer.image)
 
   useEffect(()=> {
     async function fetchData(){
@@ -33,7 +33,7 @@ function PlayerProfile() {
         <section className='profile-container'>
             <header className='profile-header'>
                 <div className='profile-pic-container'>
-                    <img src={currentPlayer.image}/>
+                    <img src={currentPlayer.image === '../assets/default-athlete.png' ? ProfilePic : currentPlayer.image}/>
                 </div>
                 <div className='player-info'>
                     <span className='player-name'>{currentPlayer.player}</span>
