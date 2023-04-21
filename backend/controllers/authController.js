@@ -35,5 +35,13 @@ module.exports = {
             await newUser.save()
             res.status(200).json({msg: 'User has been created and added to DB'})
         }
-    }
+    },
+    isAuthenticated: async (req, res) => {
+        try {
+          const isAuthenticated = Boolean(req.user)
+          res.status(200).json({ isAuthenticated })
+        } catch (error) {
+          console.log(error)
+        }
+      }
 }

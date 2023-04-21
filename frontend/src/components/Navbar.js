@@ -1,10 +1,12 @@
-import React, {useState} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import NavLogo from '../assets/logo.png'
 import SportsDropDown from './SportsDropDown'
 import {Link} from 'react-router-dom'
+import {AuthContext} from '../context/AuthContext'
 
 function Navbar() {
   const [isHovered, setIsHovered] = useState(false)
+  const {isAuthenticated, logout, loading} = useContext(AuthContext)
 
   return (
     <nav className='navBar'>
@@ -21,13 +23,17 @@ function Navbar() {
           >Sports
           </li>
           {isHovered && <SportsDropDown />}
-          <li>Features</li>
-          <Link style={{textDecoration: 'none', color: 'white'}} to='/login'>
-            <li>Sign In</li>
-          </Link>
+          {
+          loading ? <div class="lds-circle"><div></div></div> :
+          isAuthenticated ? <li onClick={() => logout()}>Logout</li> : // use isLoggedIn instead of isAuthenticated
+           <Link style={{textDecoration: 'none', color: 'white'}} to='/login'>
+             <li>Sign In</li>
+           </Link>
+          }
         </ul>
     </nav>
   )
 }
+
 
 export default Navbar
