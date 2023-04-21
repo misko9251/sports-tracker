@@ -5,8 +5,9 @@ const passport = require("passport")
 
 
 router.post('/register', authContoller.registerUser)
+router.get('/isAuthenticated', authContoller.isAuthenticated)
 
-router.post("/login", (req, res, next) => {
+router.post('/login', (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
     if (!user) res.json({message: "Email not found"});
