@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import Spinner from '../components/Spinner'
 import {GiHockey} from 'react-icons/gi'
 import {GiBaseballGlove} from 'react-icons/gi'
@@ -11,6 +11,7 @@ import {TbBallVolleyball} from 'react-icons/tb'
 import {GiBowlingStrike} from 'react-icons/gi'
 import AddTeam from '../components/AddTeam'
 import {Link} from 'react-router-dom'
+import {AuthContext} from '../context/AuthContext'
 
 function ParentDashboard() {
 
@@ -18,6 +19,7 @@ function ParentDashboard() {
   const [isLoading, setIsLoading] = useState(true)
   const [isSettingTeam, setIsSettingTeam] = useState(false)
   const [shouldDisplay, setShouldDisplay] = useState('flex')
+  const {isAuthenticated, logout, loading} = useContext(AuthContext)
 
   useEffect(()=> {
     setShouldDisplay(isSettingTeam ? 'none' : 'flex')
@@ -86,6 +88,12 @@ function ParentDashboard() {
       {isLoading ? <Spinner /> : (
         <div className="dashboard-container">
           <nav>
+            <span 
+            className='nav-logout'
+            onClick={logout}
+            >
+              Logout
+            </span>
             <h3>Home</h3>
             <span 
             className="add-team"

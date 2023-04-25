@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = React.createContext();
 
 function AuthProvider(props) {
+  const navigate = useNavigate()
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true)
 
@@ -20,8 +22,13 @@ function AuthProvider(props) {
     checkAuth();
   }, []); 
 
+  const redirect = () => {
+    navigate('/')
+  }
+
   const logout = async () => {
     try {
+      redirect()
        const response = await fetch('http://localhost:2121/auth/logout', {credentials: 'include'}) 
        const data = await response.json()
        setIsAuthenticated(false)

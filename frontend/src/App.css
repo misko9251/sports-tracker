@@ -490,24 +490,23 @@ button {
 
 .dashboard-container nav{
 	height: 4rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	font-size: 2rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	margin-bottom: 5%;
 	background-color: rgb(100, 110, 205);
 }
 
-.dashboard-container h3 {	
-	margin: 0 auto;
-	padding-left: 2rem;
-	font-size: 2rem;
+.nav-logout{
+	font-size: 1rem;
 }
 
-.add-team{
-	margin-right: 2rem;
+.dashboard-container nav span{
+	padding: 0 20px;
 	cursor: pointer;
 }
+
 
 .my-sport-team{
 	display: flex;
