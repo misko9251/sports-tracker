@@ -37,7 +37,7 @@ function ParentDashboard() {
       }
     }
     fetchData()
-  }, [myTeams])
+  }, [])
 
   function addTeam(){
     setIsSettingTeam(true)
