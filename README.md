@@ -45,12 +45,17 @@
 ### Don't forget to set your roster!
 
 <div style="display: flex;">
-  <div style="width: 40%"><img width="40%" alt="Screen Shot 2023-04-26 at 9 46 52 PM" src="https://user-images.githubusercontent.com/101610922/234739467-278ad8c3-e233-4188-8be5-c70d30bccbb3.png"></div>
-  <div style="width: 40%"><img width="40%" alt="Screen Shot 2023-04-26 at 9 49 48 PM" src="https://user-images.githubusercontent.com/101610922/234739474-d190592a-67a2-446d-addc-53177b757e69.png"></div>
+  <div><img width="60%" alt="Screen Shot 2023-04-26 at 9 46 52 PM" src="https://user-images.githubusercontent.com/101610922/234739467-278ad8c3-e233-4188-8be5-c70d30bccbb3.png"></div>
+  <div><img width="60%" alt="Screen Shot 2023-04-26 at 9 49 48 PM" src="https://user-images.githubusercontent.com/101610922/234739474-d190592a-67a2-446d-addc-53177b757e69.png"></div>
 </div>
 
+### Track game flow
 
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/101610922/234741573-0715c648-08f7-49d8-b81e-b86e370c8348.gif)
 
+### Individual player stats update on their own, head to their profile and take a look!
+
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/101610922/234742046-db58190f-cc3a-48c6-9f81-d041e2dbc64f.gif)
 
 
 
