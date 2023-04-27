@@ -1,15 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import LoginPhoto from '../assets/login.png'
 import {FcSportsMode} from 'react-icons/fc'
 import {FcGoogle} from 'react-icons/fc'
 import {Link, useNavigate} from 'react-router-dom'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {AuthContext} from '../context/AuthContext'
 
 function Login() {
+
+    const {isAuthenticated, logout, loading, setAuthenticated} = useContext(AuthContext)
   
     const [formData, setFormData] = useState({
-        username: '', 
+        email: '', 
         password: ''
     })
 
@@ -23,10 +26,6 @@ function Login() {
     }
 
     const navigate = useNavigate()
-
-    function redirect(){
-        navigate('/getUser')
-    }
 
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -52,7 +51,8 @@ function Login() {
                   });
             }
             if(json.message === 'Success'){
-                redirect()
+                setAuthenticated()
+                navigate('/getUser');
             }
         } catch (error) {
             console.log(error)
