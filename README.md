@@ -44,10 +44,12 @@
 
 ### Don't forget to set your roster!
 
-<div style="display: flex;">
+
   <div><img width="60%" alt="Screen Shot 2023-04-26 at 9 46 52 PM" src="https://user-images.githubusercontent.com/101610922/234739467-278ad8c3-e233-4188-8be5-c70d30bccbb3.png"></div>
+  
+### Much better!  
+
   <div><img width="60%" alt="Screen Shot 2023-04-26 at 9 49 48 PM" src="https://user-images.githubusercontent.com/101610922/234739474-d190592a-67a2-446d-addc-53177b757e69.png"></div>
-</div>
 
 ### Track game flow
 
