@@ -77,10 +77,6 @@
 
 <img width="55%" alt="Screen Shot 2023-05-02 at 8 27 50 PM" src="https://user-images.githubusercontent.com/101610922/235812591-09cda8c6-0647-4586-b7ce-89a4717cd377.png">
 
-### Soccer
-
-<img width="55%" alt="Screen Shot 2023-05-02 at 8 30 34 PM" src="https://user-images.githubusercontent.com/101610922/235812837-dac2c3ee-62a4-4d8e-bb63-ffd5fc750815.png">
-
 ### Lacrosse
 
 <img width="55%" alt="Screen Shot 2023-05-02 at 8 32 15 PM" src="https://user-images.githubusercontent.com/101610922/235812985-9f1201fd-9473-425f-80b4-fa0f28cfa1b1.png">
@@ -88,6 +84,10 @@
 ### Volleyball
 
 <img width="55%" alt="Screen Shot 2023-05-02 at 8 34 19 PM" src="https://user-images.githubusercontent.com/101610922/235813167-83b493e3-90db-4607-bdaf-b82357ea6230.png">
+
+### Soccer
+
+<img width="55%" alt="Screen Shot 2023-05-02 at 8 30 34 PM" src="https://user-images.githubusercontent.com/101610922/235812837-dac2c3ee-62a4-4d8e-bb63-ffd5fc750815.png">
 
 ### Bowling coming soon!
 
