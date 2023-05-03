@@ -59,6 +59,39 @@
 
 ![ezgif com-video-to-gif](https://user-images.githubusercontent.com/101610922/234742046-db58190f-cc3a-48c6-9f81-d041e2dbc64f.gif)
 
+# Log game action for all your favorite sports!
+
+### Hockey
+
+<img width="55%" alt="Screen Shot 2023-05-02 at 8 22 51 PM" src="https://user-images.githubusercontent.com/101610922/235812118-c81f3da3-57a5-4fba-a8f4-32df765f9863.png">
+
+### Basketball
+
+<img width="55%" alt="Screen Shot 2023-05-02 at 8 24 30 PM" src="https://user-images.githubusercontent.com/101610922/235812294-f93638e3-fe36-4fe0-a388-ddbc912acd1f.png">
+
+### Softball and Baseball
+
+<img width="55%" alt="Screen Shot 2023-05-02 at 8 26 02 PM" src="https://user-images.githubusercontent.com/101610922/235812437-05112626-9178-49c5-ae5b-23067f97e239.png">
+
+### Football
+
+<img width="55%" alt="Screen Shot 2023-05-02 at 8 27 50 PM" src="https://user-images.githubusercontent.com/101610922/235812591-09cda8c6-0647-4586-b7ce-89a4717cd377.png">
+
+### Soccer
+
+<img width="55%" alt="Screen Shot 2023-05-02 at 8 30 34 PM" src="https://user-images.githubusercontent.com/101610922/235812837-dac2c3ee-62a4-4d8e-bb63-ffd5fc750815.png">
+
+### Lacrosse
+
+<img width="55%" alt="Screen Shot 2023-05-02 at 8 32 15 PM" src="https://user-images.githubusercontent.com/101610922/235812985-9f1201fd-9473-425f-80b4-fa0f28cfa1b1.png">
+
+### Volleyball
+
+<img width="55%" alt="Screen Shot 2023-05-02 at 8 34 19 PM" src="https://user-images.githubusercontent.com/101610922/235813167-83b493e3-90db-4607-bdaf-b82357ea6230.png">
+
+### Bowling coming soon!
+
+
 
 
 
