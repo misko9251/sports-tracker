@@ -675,7 +675,7 @@ hr {
 
 .team-profile-name{
 	font-size: 2rem;
-	margin: 2% 0;
+	margin: 2px 0;
 }
 
 .sport-type{
@@ -690,8 +690,9 @@ hr {
 	display: flex;
 	justify-content: space-around;
 	margin-top: auto;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	font-weight: bolder;
+	max-width: 100%;
 }
 
 .team-profile-list li, .profile-list li{
